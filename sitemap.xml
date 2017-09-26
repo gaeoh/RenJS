@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://lunafromthemoon.github.io/RenJS/categories/</loc>
-    <priority>0</priority>
+    <loc>http://lunafromthemoon.github.io/RenJS/intro/</loc>
+    <lastmod>2017-09-25T23:26:05-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/api/</loc>
+    <lastmod>2017-09-25T23:22:43-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/setup/</loc>
+    <lastmod>2017-09-25T23:26:49-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/gui/</loc>
+    <lastmod>2017-09-25T23:26:55-03:00</lastmod>
   </url>
   
   <url>
     <loc>http://lunafromthemoon.github.io/RenJS/</loc>
+    <lastmod>2017-09-25T23:29:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/engine/</loc>
+    <lastmod>2017-09-25T23:27:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/categories/</loc>
     <priority>0</priority>
   </url>
   
