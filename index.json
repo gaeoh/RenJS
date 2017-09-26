@@ -1,10 +1,24 @@
 [
 {
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/showandhide/",
+	"title": "Show and Hide",
+	"tags": [],
+	"description": "",
+	"content": " The show action let\u0026rsquo;s you show game objects like backgrounds, characters and cgs. The hide action does the contrary, and allows you to hide them.\nBackgrounds Show - show background_id: [WITH transition_id]  The backgrounds will always be behind characters and cgs.\nHide - hide background_id: [WITH transition_id]  If no transition is specified, default transition is FADE (can be changed). Check what other transitions are available.\nCharacters Show - show character_id: [look_id] [WITH transition_id] [AT position] [flipped: true|false]  The characters will always be on top of the backgrounds and behind cgs. If no look is specified, default look is \u0026ldquo;normal\u0026rdquo;. If no position is specified, default position is CENTER. A position can be a coordinate like 400,600 or one of the pre defined positions. The anchor of a character is the center bottom of the sprite (usually the feet), so center position will be center bottom of the screen. Other pre defined positions are:\n CENTER: Center bottom of the screen. LEFT: 1\u0026frasl;6 of the screen width, bottom. OUTLEFT: -1\u0026frasl;6 of the screen width, bottom. Outside of the screen. RIGHT: 5\u0026frasl;6 of the screen width, bottom. OUTRIGHT: 7\u0026frasl;6 of the screen width, bottom. Outside of the screen.  Hide - hide character_id: [WITH transition_id]  If no transition is specified, default transition is CUT (can be changed). Check what other transitions are available.\nShow CGS Show - show cgs_id: [WITH transition_id] [AT position] [zoom: number] [position: coordinate] [angle: number]  The cgs will always be on top of characters and cgs.\nHide - hide cgs_id: [WITH transition_id]  If no transition is specified, default transition is FADE (can be changed). Check what other transitions are available.\n"
+},
+{
 	"uri": "http://lunafromthemoon.github.io/RenJS/intro/",
 	"title": "Intro",
 	"tags": [],
 	"description": "",
 	"content": " Intro What is RenJS Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/sayandtext/",
+	"title": "Say and Text",
+	"tags": [],
+	"description": "",
+	"content": " These actions let you show text inside the text box. The difference between them is that the say action will also display the name of the character inside the name box, in the colour of the propery speechText defined for that character.\nText - text: text  Say - character_id says: text  The text will be shown letter by letter inside the text box and after it is displayed whole, the ctc (click to continue) will be shown. After this the game will wait until the player clicks anywhere on the screen to continue with the next action.\n"
 },
 {
 	"uri": "http://lunafromthemoon.github.io/RenJS/api/",
@@ -14,6 +28,13 @@
 	"content": " Story API Check all the actions you can use Lorem Ipsum.\n"
 },
 {
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/playandstop/",
+	"title": "Play and Stop",
+	"tags": [],
+	"description": "",
+	"content": " These actions allow you to play and stop background music. Play can be used to play sound effects too. Background music will be looped by default, while sound effects will play only once.\nPlay - play music_id|sfc_id: [WITH transition_id] [looped: true|false]  Stop - stop music_id|sfc_id: [WITH transition_id]  If no transition is specified, default transition is FADE (can be changed). The only other transition available is CUT.\n"
+},
+{
 	"uri": "http://lunafromthemoon.github.io/RenJS/setup/",
 	"title": "Setup",
 	"tags": [],
@@ -21,11 +42,25 @@
 	"content": " Story Setup How to setup the story Lorem Ipsum.\n"
 },
 {
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/choiceandinterrupt/",
+	"title": "Choice and Interrupt",
+	"tags": [],
+	"description": "",
+	"content": " The choice action allows you to show a menu of text options. The story will then pause and wait for the player to make a decision.\nEach option has a list of further actions to be executed if it\u0026rsquo;s chosen. After executing those actions, the story will continue with the actions right after the choice action. These ations can be any of the available story actions, including another choice or a scene change. If the scene is changed, the actions after the choice will not be executed, but the scene will change immediately.\nChoice - choice: - option1: - action1 - action2 ... - option2: - action3 - action4 ... - optionN: - actionN - actionN1 ... - actionAfterChoice1 - actionAfterChoice2  Interrupt - interrupt number: - option1: - action1 - action2 ... - option2: - action3 - action4 ... - optionN: - actionN - actionN1 ... - actionAfterInterrupt1 - actionAfterInterrupt2  The interrupt action is very similar to the choice action, but the story will not wait for the player to choose, and instead will continue with the actions after the interrupt while showing the options. The number specified referes to the amount of actions the menu will stay shown. So, if you have an interrupt 5, the menu will be shown for the 5 next actions, in which the player can use them. If the player doesn\u0026rsquo;t choose any option, then they will be hidden.\nConditional options - choice: - option1: - action1 - action2 ... - option2 !if (condition1): - action3 - action4 ... - optionN !if (conditionN): - actionN - actionN1 ... - actionAfterChoice1 - actionAfterChoice2  Sometimes you need to show an option only if a condition is met. In these cases, the conditional option can be used for either choices or interrupts. If the condition is not satisfied, that option will not be shown. Check more about how to make conditions.\n"
+},
+{
 	"uri": "http://lunafromthemoon.github.io/RenJS/gui/",
 	"title": "GUI",
 	"tags": [],
 	"description": "",
 	"content": " GUI How to personalize the GUI Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/var/",
+	"title": "Variables",
+	"tags": [],
+	"description": "",
+	"content": " The var action allows you to store important values during the story. This values then can be display as text or dialogue and can be used to compare and form conditions.\nAsignation To set the value of a variable we use the var action. This kind of action is often called an asignation. An asignation is said to have two parts, left and rigth, separated by a colon. The left part has information about the variable being set, and in our case, also includes the name of the action. The right part contains the value that will be set to that variable. This value can be of three types:\n Number Boolean String  The right part can therefore be text, a number or true|false.\n- var var1: number - var var2: true|false - var var3: text  String variables String variables are text, and can be combined with other variables to make more complex sentences. To use a value on the right part you use the variable name surrounded by curly braces, i.e. {varX}.\n- var name: Spike - var score: 10 - var report: \u0026quot;Hi {name}, you have {score} points!\u0026quot;  Show variables Variables of any kind can be shown with text or say action, in the same way used to conform string variables.\n- text: {report} - spike says: \u0026quot;What? Only {score} points? I though I was doing so well.\u0026quot;  Operations The right part can also be an operation whose result is any of the above mentioned types. These operations use special symbols depending on the type, and can use constant values and other variables.\nArithmetic Operations The first kind of operations are arithmetic: addition, substraction, etc. These operations should resolve to a numberic value.\nThe symbols used for these operations are:\n + (Plus symbol): Means addition. - (Dash symbol): Means substraction. * (Asterisck symbol): Means multiplication. / (Slash symbol): Means division.  The operations also can use parenthesis () to change the solving order of the operation. As with normal arithmetic operations, multiplication and division have precedence over addition and substraction.\n- var var1: 5 - var var1: \u0026quot;{var1} + 1\u0026quot; - var var2: \u0026quot;{var1} * 6\u0026quot; - var var3: \u0026quot;({var1} - {var2})/3\u0026quot;  The right part should usually be between inverted commas. This is because the parser will sometimes freakout if if finds strange symbols. To ensure it reads the whole line as one, better to be safe and surround it by inverted commas.\n Boolean Operations Boolean operations should resolve to a true or false value.\nThe symbols used for these operations are:\n \u0026amp;\u0026amp; (AND): The operation will be true if both values between the AND are true. || (OR): The operation will be true if either value between the OR is true. ! (NOT): The operation will be true if the value next to the NOT is false.  The operations can also use parenthesis () to change the solving order. As with normal logic operations, NOT has precedence over AND, who has precedence over OR.\n- var var1: true - var var2: \u0026quot;!{var1}\u0026quot; - var var3: \u0026quot;{var1} \u0026amp;\u0026amp; {var2}\u0026quot; - var var4: \u0026quot;!({var1} || {var2})\u0026quot;  Another way of getting a boolean value is by comparing numbers and numeric variables. The symbols used for these operations are:\n \u0026gt; (Greater than): The operation will be true if the left value is greater than the right value. \u0026gt;= (Greater than or equal to): The operation will be true if the left value is greater than or equal to the right value. == (Equal): The operation will be true if both values are equal. \u0026lt;= (Less than or equal to): The operation will be true if the left value is less than or equal to the right value. \u0026lt; (Less than): The operation will be true if the left value is less than the right value.  As with the previous operations, parenthesis () are allowed.\n- var var1: 5 - var var2: 7 - var var3: \u0026quot;{var1} \u0026gt; {var2}\u0026quot; - var var4: \u0026quot;({var1}*2) \u0026gt; {var2}) \u0026amp;\u0026amp; ({var2}-2 == {var2})\u0026quot;  String variables can also be compared in this way using the equal operator.\n"
 },
 {
 	"uri": "http://lunafromthemoon.github.io/RenJS/",
@@ -40,6 +75,55 @@
 	"tags": [],
 	"description": "",
 	"content": " RenJS Engine How the whole thing works Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/if/",
+	"title": "If",
+	"tags": [],
+	"description": "",
+	"content": "The if action allows you to branch your story. The if action contains a condition and a list of actions that will only be executed if the condition is true. Optionally, it can also have a list of actions to execute if the condition is false. Either list of actions can contain whatever action available. After the right actions are done, the story will continue with the actions after the if (or else, if present).\n- if (condition): - action1 - action2 ... [- else: - action3 - action4 ...] - actionAfterIf1 - actionAfterIf2  The condition can be any boolean variable or operation, as seen in the variables section.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/scene/",
+	"title": "Scene",
+	"tags": [],
+	"description": "",
+	"content": "The scene action is used to change from one scene to the other. Every scene in the story has a name and a list of actions that conform it. The scenes are not numbered, so to change from one to the other, an explicit call should be made. If no scene is called before the end of the scene, the game will return to the main menu.\nscene1: - action1 - action2 - action3 ... - scene: scene2 scene2: - action4 - action5 ...  "
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/wait/",
+	"title": "Wait time or click",
+	"tags": [],
+	"description": "",
+	"content": "Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/animate/",
+	"title": "Animate CGS",
+	"tags": [],
+	"description": "",
+	"content": "Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/call/",
+	"title": "Call",
+	"tags": [],
+	"description": "",
+	"content": "Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/effectandambient/",
+	"title": "Effects and Ambients",
+	"tags": [],
+	"description": "",
+	"content": "Lorem Ipsum.\n"
+},
+{
+	"uri": "http://lunafromthemoon.github.io/RenJS/api/transitions/",
+	"title": "Transitions",
+	"tags": [],
+	"description": "",
+	"content": "Lorem Ipsum.\n"
 },
 {
 	"uri": "http://lunafromthemoon.github.io/RenJS/categories/",

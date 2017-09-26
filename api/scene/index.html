@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>RenJS :: RenJS</title>
+    <title>Scene :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1506466921" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/">
+  <body class="" data-url="/RenJS/api/scene/">
     <nav id="sidebar" class="">
 
 
@@ -95,7 +95,7 @@
   
     
     <li data-nav-id="/RenJS/api/" title="API" class="dd-item 
-        
+        parent
         
         
         ">
@@ -266,8 +266,8 @@
   
     
     <li data-nav-id="/RenJS/api/scene/" title="Scene" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/RenJS/api/scene/">
@@ -498,22 +498,83 @@
         <div id="overlay"></div>
         <div class="padding highlightable sticky-parent">
               
+              <div class="sticky-spacer">
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/api/'>API</a> > Scene
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
 
         
         <div id="body-inner">
           
+            <h1>Scene</h1>
+          
 
         
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
 
- 
+<p>The <em>scene</em> action is used to change from one scene to the other. Every scene in the story has a name and a list of actions that conform it. The scenes are not numbered, so to change from one to the other, an explicit call should be made.
+If no scene is called before the end of the scene, the game will return to the main menu.</p>
+
+<pre><code class="language-yaml">    
+    scene1:
+      - action1
+      - action2
+      - action3
+      ...
+      - scene: scene2
+
+    scene2:
+      - action4
+      - action5
+      ...
+
+</code></pre>
 
 
-<h1 id="welcome-to-renjs">Welcome to RenJS</h1>
+<footer class=" footline" >
 	
-  
+</footer>
+
         
         </div> 
       </div>
@@ -562,6 +623,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -577,21 +639,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -689,6 +738,26 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -822,8 +891,10 @@
 
 
         
+            <a class="nav nav-prev" href="/RenJS/api/if/" title="If"> <i class="fa fa-chevron-left"></i></a>
         
-            <a class="nav nav-next" href="/RenJS/intro/" title="Intro" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+            <a class="nav nav-next" href="/RenJS/api/wait/" title="Wait time or click" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

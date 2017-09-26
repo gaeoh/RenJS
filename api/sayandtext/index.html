@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>RenJS :: RenJS</title>
+    <title>Say and Text :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1506466921" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/">
+  <body class="" data-url="/RenJS/api/sayandtext/">
     <nav id="sidebar" class="">
 
 
@@ -95,7 +95,7 @@
   
     
     <li data-nav-id="/RenJS/api/" title="API" class="dd-item 
-        
+        parent
         
         
         ">
@@ -146,8 +146,8 @@
   
     
     <li data-nav-id="/RenJS/api/sayandtext/" title="Say and Text" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/RenJS/api/sayandtext/">
@@ -498,22 +498,92 @@
         <div id="overlay"></div>
         <div class="padding highlightable sticky-parent">
               
+              <div class="sticky-spacer">
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/api/'>API</a> > Say and Text
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#text">Text</a></li>
+<li><a href="#say">Say</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
 
         
         <div id="body-inner">
           
+            <h1>Say and Text</h1>
+          
 
         
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-
- 
 
 
-<h1 id="welcome-to-renjs">Welcome to RenJS</h1>
+
+<p>These actions let you show text inside the text box. The difference between them is that the <em>say</em> action will also display the name of the character inside the name box, in the colour of the propery <em>speechText</em> defined for that character.</p>
+
+<h3 id="text">Text</h3>
+
+<pre><code class="language-yaml">    - text: text
+</code></pre>
+
+<h3 id="say">Say</h3>
+
+<pre><code class="language-yaml">    - character_id says: text
+</code></pre>
+
+<p>The text will be shown letter by letter inside the text box and after it is displayed whole, the <em>ctc</em> (click to continue) will be shown. After this the game will wait until the player clicks anywhere on the screen to continue with the next action.</p>
+
+
+<footer class=" footline" >
 	
-  
+</footer>
+
         
         </div> 
       </div>
@@ -562,6 +632,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -576,6 +647,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -593,21 +667,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -624,6 +683,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -764,6 +826,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -822,8 +900,10 @@
 
 
         
+            <a class="nav nav-prev" href="/RenJS/api/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
         
-            <a class="nav nav-next" href="/RenJS/intro/" title="Intro" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+            <a class="nav nav-next" href="/RenJS/api/playandstop/" title="Play and Stop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

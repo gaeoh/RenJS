@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
 
-    <title>RenJS :: RenJS</title>
+    <title>Show and Hide :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1506466921" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/">
+  <body class="" data-url="/RenJS/api/showandhide/">
     <nav id="sidebar" class="">
 
 
@@ -95,7 +95,7 @@
   
     
     <li data-nav-id="/RenJS/api/" title="API" class="dd-item 
-        
+        parent
         
         
         ">
@@ -122,8 +122,8 @@
   
     
     <li data-nav-id="/RenJS/api/showandhide/" title="Show and Hide" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/RenJS/api/showandhide/">
@@ -498,22 +498,157 @@
         <div id="overlay"></div>
         <div class="padding highlightable sticky-parent">
               
+              <div class="sticky-spacer">
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/api/'>API</a> > Show and Hide
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#backgrounds">Backgrounds</a>
+<ul>
+<li><a href="#show">Show</a></li>
+<li><a href="#hide">Hide</a></li>
+</ul></li>
+<li><a href="#characters">Characters</a>
+<ul>
+<li><a href="#show-1">Show</a></li>
+<li><a href="#hide-1">Hide</a></li>
+</ul></li>
+<li><a href="#show-cgs">Show CGS</a>
+<ul>
+<li><a href="#show-2">Show</a></li>
+<li><a href="#hide-2">Hide</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
 
         
         <div id="body-inner">
           
+            <h1>Show and Hide</h1>
+          
 
         
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
-
- 
 
 
-<h1 id="welcome-to-renjs">Welcome to RenJS</h1>
+
+<p>The show action let&rsquo;s you show game objects like backgrounds, characters and cgs. The hide action does the contrary, and allows you to hide them.</p>
+
+<hr />
+
+<h3 id="backgrounds">Backgrounds</h3>
+
+<h4 id="show">Show</h4>
+
+<pre><code class="language-yaml">    - show background_id: [WITH transition_id]
+</code></pre>
+
+<p>The backgrounds will always be behind characters and cgs.</p>
+
+<h4 id="hide">Hide</h4>
+
+<pre><code class="language-yaml">    - hide background_id: [WITH transition_id]
+</code></pre>
+
+<p>If no transition is specified, default transition is <strong>FADE</strong> (can be changed). Check what other <a href="../transitions/">transitions</a> are available.</p>
+
+<h3 id="characters">Characters</h3>
+
+<h4 id="show-1">Show</h4>
+
+<pre><code class="language-yaml">    - show character_id: [look_id] [WITH transition_id] [AT position]
+      [flipped: true|false]
+</code></pre>
+
+<p>The characters will always be on top of the backgrounds and behind cgs.
+If no look is specified, default look is &ldquo;normal&rdquo;.
+If no position is specified, default position is <strong>CENTER.</strong> A position can be a coordinate like <em>400,600</em> or one of the pre defined positions. The anchor of a character is the center bottom of the sprite (usually the feet), so center position will be center bottom of the screen. Other pre defined positions are:</p>
+
+<ul>
+<li><strong>CENTER</strong>: Center bottom of the screen.</li>
+<li><strong>LEFT</strong>: <sup>1</sup>&frasl;<sub>6</sub> of the screen width, bottom.</li>
+<li><strong>OUTLEFT</strong>: -<sup>1</sup>&frasl;<sub>6</sub> of the screen width, bottom. Outside of the screen.</li>
+<li><strong>RIGHT</strong>: <sup>5</sup>&frasl;<sub>6</sub> of the screen width, bottom.</li>
+<li><strong>OUTRIGHT</strong>: <sup>7</sup>&frasl;<sub>6</sub> of the screen width, bottom. Outside of the screen.</li>
+</ul>
+
+<h4 id="hide-1">Hide</h4>
+
+<pre><code class="language-yaml">    - hide character_id: [WITH transition_id]
+</code></pre>
+
+<p>If no transition is specified, default transition is <strong>CUT</strong> (can be changed). Check what other <a href="../transitions/">transitions</a> are available.</p>
+
+<h3 id="show-cgs">Show CGS</h3>
+
+<h4 id="show-2">Show</h4>
+
+<pre><code class="language-yaml">    - show cgs_id: [WITH transition_id] [AT position]
+      [zoom: number]
+      [position: coordinate]
+      [angle: number]
+</code></pre>
+
+<p>The cgs will always be on top of characters and cgs.</p>
+
+<h4 id="hide-2">Hide</h4>
+
+<pre><code class="language-yaml">    - hide cgs_id: [WITH transition_id]
+</code></pre>
+
+<p>If no transition is specified, default transition is <strong>FADE</strong> (can be changed). Check what other <a href="../transitions/">transitions</a> are available.</p>
+
+
+<footer class=" footline" >
 	
-  
+</footer>
+
         
         </div> 
       </div>
@@ -562,6 +697,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -576,6 +712,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -593,21 +730,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -764,6 +888,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -822,8 +962,10 @@
 
 
         
+            <a class="nav nav-prev" href="/RenJS/api/" title="API"> <i class="fa fa-chevron-left"></i></a>
         
-            <a class="nav nav-next" href="/RenJS/intro/" title="Intro" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+            <a class="nav nav-next" href="/RenJS/api/sayandtext/" title="Say and Text" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
