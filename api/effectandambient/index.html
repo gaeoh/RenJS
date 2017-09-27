@@ -13,17 +13,17 @@
     <title>Effects and Ambients :: RenJS</title>
     
     
-    <link href="/RenJS/css/nucleus.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/font-awesome.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/hybrid.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/featherlight.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/perfect-scrollbar.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/horsey.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/theme.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/hugo-theme.css?1506466921" rel="stylesheet">
+    <link href="/RenJS/css/nucleus.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/font-awesome.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/horsey.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1506478429" rel="stylesheet">
     
 
-    <script src="/RenJS/js/jquery-2.x.min.js?1506466921"></script>
+    <script src="/RenJS/js/jquery-2.x.min.js?1506478429"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -49,14 +49,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/RenJS/js/lunr.min.js?1506466921"></script>
-<script type="text/javascript" src="/RenJS/js/horsey.js?1506466921"></script>
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1506478429"></script>
+<script type="text/javascript" src="/RenJS/js/horsey.js?1506478429"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lunafromthemoon.github.io\/RenJS";
     
 </script>
-<script type="text/javascript" src="/RenJS/js/search.js?1506466921"></script>
+<script type="text/javascript" src="/RenJS/js/search.js?1506478429"></script>
 
     
   </div>
@@ -313,13 +313,13 @@
  
   
     
-    <li data-nav-id="/RenJS/api/animate/" title="Animate CGS" class="dd-item 
+    <li data-nav-id="/RenJS/api/animate/" title="Animate" class="dd-item 
         
         
         
         ">
       <a href="/RenJS/api/animate/">
-          Animate CGS
+          Animate
           
       </a>
       
@@ -535,7 +535,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#ambients">Ambients</a></li>
+<li><a href="#effects">Effects</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -552,7 +563,125 @@
 
         
 
-<p>Lorem Ipsum.</p>
+
+
+<p>These actions allow you to show visual and sound effects. The difference between them is <em>effect</em> action is an instant effect that ends after its execution, and <em>ambient</em> effects perdure over time. For example, an <em>effect</em> can be a thunder, while an <em>ambient</em> can be rain.</p>
+
+<pre><code class="language-yaml">    - ambient ambient_id:
+      param1: value1
+      param2: value2
+    - effect effect_id:
+      param3: value3
+      param4: value4
+    - ambient CLEAR:
+
+</code></pre>
+
+<p>There are a few ambients and effects already coded, but these depend almost entirely on the kind of game you&rsquo;re making. You can check the defined ambients and effects and tailor them to your needs.
+The effects and ambients usually use extra assets, either images, spritesheets, music and even code. All of this should be loaded in the <em>extra</em> section of the setup file. Check the <a href="/../../Setup">Setup Guide</a> for more info about this file.</p>
+
+<h3 id="ambients">Ambients</h3>
+
+<p>The ambients are defined inside the file <em>RenJS/Ambient.js</em>, inside the map called RenJS.ambient. A special ambient called CLEAR takes care of stopping any ambient set before. Other ambients are:</p>
+
+<ul>
+<li><strong>BGS</strong>: Adds a looped background sound and nothing more. The sound id should be specified with the param <em>sfx</em>.</li>
+<li><strong>RAIN</strong>: Starts a particle emitter and background sound for a rain mood. Additional assets:
+
+<ul>
+<li>image:
+
+<ul>
+<li><strong>rain</strong>: A sprite of the <a href="/RenJS/img/rain.png">raindrop</a>.</li>
+</ul></li>
+<li>music:
+
+<ul>
+<li><strong>rain</strong>: A loopable <a href="/RenJS/audio/Rain.mp3">audio</a>.</li>
+</ul></li>
+</ul></li>
+<li><strong>SAKURA</strong>: Starts two particle emitters for a cherry blossoms falling ambient. Additional assets:
+
+<ul>
+<li>spritesheet:
+
+<ul>
+<li><strong>sakura</strong>: A sprite of the <a href="/RenJS/img/sakura-petals.png">cherry blossom</a>, with 5 frames (17x17 px).</li>
+</ul></li>
+</ul></li>
+<li><strong>SNOW</strong>: Starts three particles emitters for a snowy mood. Additional assets:
+
+<ul>
+<li>spritesheet:
+
+<ul>
+<li><strong>snowflakes</strong>: A sprite of the <a href="/RenJS/img/snowflakes.png">small snowflakes</a>, with 5 frames (17x17 px).</li>
+<li><strong>snowflakes_large</strong>: A sprite of the <a href="/RenJS/img/snowflakes_large.png">large snowflakes</a>, with 5 frames (64x64 px).</li>
+</ul></li>
+</ul></li>
+<li><strong>DRUGS</strong>: A strange hallucinogenic effect. No additional assets required. For this effect to work the game mode should be WEBGL (set the game mode on the file <em>RenJSBootstrap.js</em>).</li>
+<li><strong>BADTRIP</strong>: An extra effect to call after the DRUGS effect.</li>
+</ul>
+
+<p>To make your own effect you can either modify the ones already coded, or make a completely different thing taking advantage of the visual effects and sprite manipulation capabilities of Phaser. The only thing you should remember is to call the funtion <em>RenJS.resolve()</em> when you finish. This function tells the automat that controls the story that it can continue with the next action. Another usefull thing is to add a function to call when the ambient is cleared. You can push a function to <em>RenJS.ambient.clearFunctions</em> and it will be called when the ambient CLEAR is set. This way you can destroy any sprite, stop any music, etc, that your ambient uses.</p>
+
+<h3 id="effects">Effects</h3>
+
+<p>Very similar to ambients, the effects are defined inside the <em>RenJS/Effects.js</em> file. Some of the effects available are:</p>
+
+<ul>
+<li><strong>SHAKE</strong>: Screen shake!</li>
+<li><strong>SOUND</strong>: It takes a param with the name <em>sfx</em> and reproduces it. It&rsquo;s the same as the <em>play</em> action.</li>
+<li><strong>ROLLINGCREDITS</strong>: Sets a black screen and shows a list of text defined on the param <em>text</em>. It also takes the param <em>endGame</em> to directly end the game after the effect is over. The text list can have <em>null</em> lines that will be empty lines.</li>
+</ul>
+
+<pre><code class="language-yaml">  - effect ROLLINGCREDITS:
+    endGame: true
+    text:
+      - Thank you for playing
+      - Game Name
+      - null
+      - made by
+      - lunafromthemoon
+      - null
+      - with
+      - RenJS
+      - null
+      - whatever else you want to say
+
+</code></pre>
+
+<ul>
+<li><strong>SHOWTITLE</strong>: Shows an image with a title and subtitle overimposed. The image should be loaded with the name <em>title</em>. The params <em>title</em> and <em>subtitle</em> will be shown in the middle of the image, with the first font defined in the Setup file. You can play with this effect and make up the titles however you like.</li>
+<li><strong>THUNDER</strong>: Quickly shows and hides a thunder image, accompanied by a thunder sound effect. Needs extra parameters:
+
+<ul>
+<li>image:
+
+<ul>
+<li><strong>thunder</strong>: The <a href="/RenJS/img/Thunder_Effect.png">thunder image</a>.</li>
+</ul></li>
+<li>sfx:
+
+<ul>
+<li><strong>thunderSFX</strong>: The <a href="/RenJS/audio/thunder_strike_1.mp3">thunder sound</a>.</li>
+</ul></li>
+</ul></li>
+<li><strong>EXPLOSION</strong>: Shows an explosion animation, with an explosion sound. Needs extra parameters:
+
+<ul>
+<li>spritesheet:
+
+<ul>
+<li><strong>explosion</strong>: The <a href="/RenJS/img/explosion.png">explosion</a> animation (274x300px).</li>
+</ul></li>
+<li>sfx:
+
+<ul>
+<li><strong>explosionSound</strong>: The explosion sound.</li>
+</ul></li>
+</ul></li>
+</ul>
 
 
 <footer class=" footline" >
@@ -887,20 +1016,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/RenJS/js/clipboard.min.js?1506466921"></script>
-    <script src="/RenJS/js/perfect-scrollbar.min.js?1506466921"></script>
-    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1506466921"></script>
-    <script src="/RenJS/js/jquery.sticky-kit.min.js?1506466921"></script>
-    <script src="/RenJS/js/featherlight.min.js?1506466921"></script>
-    <script src="/RenJS/js/html5shiv-printshiv.min.js?1506466921"></script>
-    <script src="/RenJS/js/highlight.pack.js?1506466921"></script>
+    <script src="/RenJS/js/clipboard.min.js?1506478429"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1506478429"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1506478429"></script>
+    <script src="/RenJS/js/jquery.sticky-kit.min.js?1506478429"></script>
+    <script src="/RenJS/js/featherlight.min.js?1506478429"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1506478429"></script>
+    <script src="/RenJS/js/highlight.pack.js?1506478429"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/RenJS/js/modernizr.custom.71422.js?1506466921"></script>
-    <script src="/RenJS/js/learn.js?1506466921"></script>
-    <script src="/RenJS/js/hugo-learn.js?1506466921"></script>
+    <script src="/RenJS/js/modernizr.custom.71422.js?1506478429"></script>
+    <script src="/RenJS/js/learn.js?1506478429"></script>
+    <script src="/RenJS/js/hugo-learn.js?1506478429"></script>
 
-    <link href="/RenJS/mermaid/mermaid.css?1506466921" type="text/css" rel="stylesheet" />
-    <script src="/RenJS/mermaid/mermaid.js?1506466921"></script>
+    <link href="/RenJS/mermaid/mermaid.css?1506478429" type="text/css" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1506478429"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

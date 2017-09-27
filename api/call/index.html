@@ -13,17 +13,17 @@
     <title>Call :: RenJS</title>
     
     
-    <link href="/RenJS/css/nucleus.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/font-awesome.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/hybrid.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/featherlight.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/perfect-scrollbar.min.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/horsey.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/theme.css?1506466921" rel="stylesheet">
-    <link href="/RenJS/css/hugo-theme.css?1506466921" rel="stylesheet">
+    <link href="/RenJS/css/nucleus.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/font-awesome.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/horsey.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1506478429" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1506478429" rel="stylesheet">
     
 
-    <script src="/RenJS/js/jquery-2.x.min.js?1506466921"></script>
+    <script src="/RenJS/js/jquery-2.x.min.js?1506478429"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -49,14 +49,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/RenJS/js/lunr.min.js?1506466921"></script>
-<script type="text/javascript" src="/RenJS/js/horsey.js?1506466921"></script>
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1506478429"></script>
+<script type="text/javascript" src="/RenJS/js/horsey.js?1506478429"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lunafromthemoon.github.io\/RenJS";
     
 </script>
-<script type="text/javascript" src="/RenJS/js/search.js?1506466921"></script>
+<script type="text/javascript" src="/RenJS/js/search.js?1506478429"></script>
 
     
   </div>
@@ -313,13 +313,13 @@
  
   
     
-    <li data-nav-id="/RenJS/api/animate/" title="Animate CGS" class="dd-item 
+    <li data-nav-id="/RenJS/api/animate/" title="Animate" class="dd-item 
         
         
         
         ">
       <a href="/RenJS/api/animate/">
-          Animate CGS
+          Animate
           
       </a>
       
@@ -535,7 +535,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#interesting-resources">Interesting resources</a></li>
+<li><a href="#phaser">Phaser</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -552,7 +563,54 @@
 
         
 
-<p>Lorem Ipsum.</p>
+
+
+<p>The <em>call</em> action allows you to call your very own javascript functions.</p>
+
+<pre><code class="language-yaml">    
+    - call function_name:
+      param1: value1
+      param2: value2
+      ...
+
+</code></pre>
+
+<p>The function must be located in the file RenJS/CustomContent.js, inside the map customContent defined there.</p>
+
+<pre><code class="language-js">RenJS.customContent = {
+	//put here your own functions
+
+	function_name: function (params) {
+	  console.log(params.param1);
+	  console.log(params.param2);
+	  RenJS.resolve();
+	}
+
+}
+</code></pre>
+
+<p>You can do anything inside this function. The most important thing to remember is to call <em>RenJS.resolve()</em> after all your processing is finished. This usually means it should be at the end of the function, but it could be in a callback for an asynchronous method.
+The <em>RenJS.resolve()</em> function tells the automat that it can continue with the story and execute the next action after the call.</p>
+
+<h3 id="interesting-resources">Interesting resources</h3>
+
+<p>RenJS provides all of the information and state of the game for you to use in your own function, some of the most important things to check are:</p>
+
+<ul>
+<li><strong>RenJS.waitForClick(callback)</strong>: This function will make the game wait until the player clicks anywhere on the screen. If callback is not defined, the action executed after the click will be RenJS.resolve(). Similar to this function there&rsquo;s also  <strong>waitTimeout(time,callback)</strong> and **waitForClickOrTimeout(time,callback)<em>s</em>.</li>
+<li><strong>RenJS.logicManager.vars</strong>: This is the map of all the story variables set during the game with the action <em>var</em>.</li>
+<li><strong>RenJS.bgManager.current</strong>: The current background sprite. *RenJS.bgManager.backgrounds** contains all of the backgrounds.</li>
+<li><strong>RenJS.bgManager.showing</strong>: A map with all the characters currently on screen with look, position and if it&rsquo;s flipped. <strong>RenJS.bgManager.characters</strong> contains all of the characters, with name, speechColour and looks (as a map of Sprites).</li>
+<li><strong>RenJS.cgsManager.current</strong>: A map with all the cgs currently on screen. <strong>RenJS.bgManager.cgs</strong> contains all of the cgs sprites.</li>
+<li><strong>RenJS.save(slot)</strong> and <strong>RenJS.load(slot)</strong>: Saves and load on a specific slot.</li>
+<li><strong>RenJS.setBlackOverlay()</strong> and <strong>RenJS.removeBlackOverlay()</strong>: Fades in and out a black overlay over everything in the game, including the GUI.</li>
+<li><strong>RenJS.pause()</strong> and <strong>RenJS.unpause()</strong>: Pauses and unpauses the game.</li>
+<li><strong>RenJS.onInterpretActions</strong>: Map of functions called every time an action is interpreted, meaning on each step of the story. The only defined function at the start of the game is &lsquo;updateStack&rsquo; which controls the execution stack of the story, but you can add and remove functions that would then execute every time an action is interpreted.</li>
+</ul>
+
+<h3 id="phaser">Phaser</h3>
+
+<p>As RenJS is built over <a href="https://phaser.io/">Phaser</a>, you can use any Phaser method to do whatever you want. Just be careful not to break everything!</p>
 
 
 <footer class=" footline" >
@@ -875,7 +933,7 @@
 
 
         
-            <a class="nav nav-prev" href="/RenJS/api/animate/" title="Animate CGS"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/api/animate/" title="Animate"> <i class="fa fa-chevron-left"></i></a>
         
         
             <a class="nav nav-next" href="/RenJS/api/effectandambient/" title="Effects and Ambients" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -887,20 +945,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/RenJS/js/clipboard.min.js?1506466921"></script>
-    <script src="/RenJS/js/perfect-scrollbar.min.js?1506466921"></script>
-    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1506466921"></script>
-    <script src="/RenJS/js/jquery.sticky-kit.min.js?1506466921"></script>
-    <script src="/RenJS/js/featherlight.min.js?1506466921"></script>
-    <script src="/RenJS/js/html5shiv-printshiv.min.js?1506466921"></script>
-    <script src="/RenJS/js/highlight.pack.js?1506466921"></script>
+    <script src="/RenJS/js/clipboard.min.js?1506478429"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1506478429"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1506478429"></script>
+    <script src="/RenJS/js/jquery.sticky-kit.min.js?1506478429"></script>
+    <script src="/RenJS/js/featherlight.min.js?1506478429"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1506478429"></script>
+    <script src="/RenJS/js/highlight.pack.js?1506478429"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/RenJS/js/modernizr.custom.71422.js?1506466921"></script>
-    <script src="/RenJS/js/learn.js?1506466921"></script>
-    <script src="/RenJS/js/hugo-learn.js?1506466921"></script>
+    <script src="/RenJS/js/modernizr.custom.71422.js?1506478429"></script>
+    <script src="/RenJS/js/learn.js?1506478429"></script>
+    <script src="/RenJS/js/hugo-learn.js?1506478429"></script>
 
-    <link href="/RenJS/mermaid/mermaid.css?1506466921" type="text/css" rel="stylesheet" />
-    <script src="/RenJS/mermaid/mermaid.js?1506466921"></script>
+    <link href="/RenJS/mermaid/mermaid.css?1506478429" type="text/css" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1506478429"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
