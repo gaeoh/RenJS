@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
+<link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
+    <title>File Structure :: RenJS</title>
+    
+    
+    <link href="/RenJS/css/nucleus.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/font-awesome.min.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/auto-complete.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1526654304" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1526654304" rel="stylesheet">
+    
+
+    <script src="/RenJS/js/jquery-2.x.min.js?1526654304"></script>
+    
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{ 
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/RenJS/quickstart/structure/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://lunafromthemoon.itch.io/renjs">RenJS</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1526654304"></script>
+<script type="text/javascript" src="/RenJS/js/auto-complete.js?1526654304"></script>
+<script type="text/javascript">
+    
+        var baseurl = '\/RenJS';
+    
+</script>
+<script type="text/javascript" src="/RenJS/js/search.js?1526654304"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/RenJS/quickstart/">
+          <b>1. </b>Quickstart
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/quickstart/structure/" title="File Structure" class="dd-item active">
+        <a href="/RenJS/quickstart/structure/">
+        <b>1.1 </b>File Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/quickstart/structure-story/" title="Story Structure" class="dd-item ">
+        <a href="/RenJS/quickstart/structure-story/">
+        <b>1.2 </b>Story Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/">
+          <b>2. </b>Actions Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/showandhide/" title="Show and Hide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/showandhide/">
+          Show and Hide
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/sayandtext/">
+          Say and Text
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/playandstop/" title="Play and Stop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/playandstop/">
+          Play and Stop
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/choiceandinterrupt/" title="Choice and Interrupt" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/choiceandinterrupt/">
+          Choice and Interrupt
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/var/" title="Variables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/var/">
+          Variables
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/if/" title="If" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/if/">
+          If
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/scene/" title="Scene" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/scene/">
+          Scene
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/wait/" title="Wait time or click" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/wait/">
+          Wait time or click
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/animate/" title="Animate" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/animate/">
+          Animate
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/call/" title="Call" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/call/">
+          Call
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/effectandambient/" title="Effects and Ambients" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/effectandambient/">
+          Effects and Ambients
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/transitions/" title="Transitions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/transitions/">
+          Transitions
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/setup/" title="Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/setup/">
+          <b>3. </b>Setup
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/gui/" title="GUI" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/gui/">
+          <b>X. </b>GUI
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/engine/" title="Engine" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/engine/">
+          <b>5. </b>Engine
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/quickstart/'>Quickstart</a> > File Structure
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#index-and-config">Index and Config</a></li>
+<li><a href="#renjs">RenJS</a></li>
+<li><a href="#other-libraries">Other Libraries</a></li>
+<li><a href="#the-story-and-its-assets">The Story and its Assets</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h1>File Structure</h1>
+          
+
+        
+
+
+
+
+<p>The quickstart is composed of a few files and folders, including the &ldquo;executable&rdquo; file index.html. Creating a game with RenJS means creating also a web page that runs said game. This allows you to ship your game to any platform that can run a web browser: Linux, Mac, Windows and even mobile devices, without needing to change your code.</p>
+
+<p>Let&rsquo;s take a look at these files:</p>
+
+<ul>
+<li>RenJS</li>
+<li>libs</li>
+<li>assets</li>
+<li>story</li>
+<li>index.html</li>
+<li>config.js</li>
+</ul>
+
+<h2 id="index-and-config">Index and Config</h2>
+
+<p>The index.html file is what the web page where the game will be shown. It&rsquo;s contents are minimal. First, it loads the most important library, Phaser, and then the bootstrap for RenJS. In the body of the webpage, the only important element is a div with the id &ldquo;RenJS&rdquo;, which will be used to load the game.</p>
+
+<pre><code class="language-html">    &lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+		&lt;head&gt;
+			&lt;meta charset=&quot;utf-8&quot; /&gt;
+			&lt;title&gt; RenJS &lt;/title&gt;
+			&lt;script type=&quot;text/javascript&quot; src=&quot;libs/phaser.min.js&quot;&gt;&lt;/script&gt;
+			&lt;script type=&quot;text/javascript&quot; src=&quot;config.js&quot;&gt;&lt;/script&gt;     
+			&lt;script type=&quot;text/javascript&quot; src=&quot;RenJS/RenJSBootstrap.js&quot;&gt;&lt;/script&gt;
+		&lt;/head&gt;
+		&lt;body&gt;		
+			&lt;div id=&quot;RenJS&quot;&gt; &lt;/div&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+</code></pre>
+
+<p>The config file contains very important configuration parameters for starting the game. These are the minimal requirements to create the frame in the web page and start loading its contents.</p>
+
+<pre><code class="language-js">	var globalConfig = {
+	  w:800,
+	  h:600,
+	  mode: &quot;AUTO&quot;,
+	  splash: { //The &quot;Loading&quot; page for your game
+	    loadingScreen: &quot;assets/gui/splash.png&quot;, //splash background
+	    loadingBar: {
+	      fullBar: &quot;assets/gui/loadingbar.png&quot;,
+	      position: {x:111,y:462}
+	    }
+	  },
+	  fonts: &quot;assets/gui/fonts.css&quot;,
+	  guiConfig: &quot;story/GUI.yaml&quot;,
+	  storySetup: &quot;story/Setup.yaml&quot;,
+	  //as many story text files as you want
+	  storyText: [
+	        &quot;story/YourStory.yaml&quot;
+	    ],
+	}
+</code></pre>
+
+<p>First, width and height of the game. You can use any resolution you want, but you&rsquo;ll have to make sure your GUI, backgrounds and other images matchs with it.
+The mode refers to Phaser&rsquo;s rendering mode. Unless you need to extend RenJS, you shouldn&rsquo;t touch this option.
+Splash is an image that will be shown while the game is loading. Depending on the size of the assets, it might take a while, so you can also add a loading bar, that will fill up from left to right to show the loading progress. If you show a bar, you will also need to specify where to show it, with the option &ldquo;position&rdquo;.
+The fonts parameter specifies where to find the fonts.css file. This file is just to load your fonts onto the web page, and make it easier for Phaser to find it and use it to show all the texts in the game.
+Finally, guiConfig, storySetup and storyText are the files that make up your story, and usually, the files that will change the most (along with the assets) from story to story.</p>
+
+<h2 id="renjs">RenJS</h2>
+
+<p>The files on the RenJS folder constitute the core of the game engine, the code that interprets your story and shows it to the players. The only one you need to take into account for now is RenJSBootstrap.js. This file is in charge of loading all the other .js files, and also every asset (images, music, etc) used by your game. If you know javascript programming and want to learn more about how it works, the <a href="../engine">Engine</a> section has comprehensive documentation of the library.</p>
+
+<h2 id="other-libraries">Other Libraries</h2>
+
+<p>The files on the libs folder are external libraries that RenJS needs to work properly, the most importan being PhaserJS, the &ldquo;parent&rdquo; engine, that provides the methods for showing images, playing music, etc.</p>
+
+<h2 id="the-story-and-its-assets">The Story and its Assets</h2>
+
+<p>The assets folder contains all the resources used by your game. This includes the character images, backgrounds, music, etc, and also everything that makes up the GUI, like the menus backgrounds, buttons and everything else. This folder is not mandatory for every game, and neither is the structure followed by this quickstart. Your assets can be anywhere inside the root folder, and organized however you like.</p>
+
+<p>Inside the story folder there are three .yaml files. As with the assets, you don&rsquo;t really need to have them inside this or any folder, but it&rsquo;s a good practice. These three files contain the story, its text and its configuration. You should have one GUI configuration file, one story setup file and as many story text files as you want. You can name these files whatever you like, and it&rsquo;d be a good idea to have descriptive names for each one. The text of your story could be separated in many different files named after the sections of the game it contains, for example:</p>
+
+<ul>
+<li>intro.yaml</li>
+<li>path1.yaml</li>
+<li>path2.yaml</li>
+<li>endings.yaml</li>
+</ul>
+
+<p>In the next chapter, we&rsquo;ll take a look at the contents of these three files.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="/RenJS/quickstart/" title="Quickstart"> <i class="fa fa-chevron-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="/RenJS/quickstart/structure-story/" title="Story Structure" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/RenJS/js/clipboard.min.js?1526654304"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1526654304"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1526654304"></script>
+    <script src="/RenJS/js/jquery.sticky.js?1526654304"></script>
+    <script src="/RenJS/js/featherlight.min.js?1526654304"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1526654304"></script>
+    <script src="/RenJS/js/highlight.pack.js?1526654304"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/RenJS/js/modernizr.custom.71422.js?1526654304"></script>
+    <script src="/RenJS/js/learn.js?1526654304"></script>
+    <script src="/RenJS/js/hugo-learn.js?1526654304"></script>
+
+    <link href="/RenJS/mermaid/mermaid.css?1526654304" type="text/css" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1526654304"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+
