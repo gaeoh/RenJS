@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Say and Text :: RenJS</title>
+    <title>Electron :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527176291" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/actions/sayandtext/">
+  <body class="" data-url="/RenJS/mobileanddesktop/electron/">
     <nav id="sidebar" class="">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -193,8 +193,8 @@
   
     
     <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/actions/sayandtext/">
@@ -508,7 +508,7 @@
   
     
     <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
-        
+        parent
         
         
         ">
@@ -532,7 +532,7 @@
  
   
     
-      <li data-nav-id="/RenJS/mobileanddesktop/electron/" title="Electron" class="dd-item ">
+      <li data-nav-id="/RenJS/mobileanddesktop/electron/" title="Electron" class="dd-item active">
         <a href="/RenJS/mobileanddesktop/electron/">
         <b>5.1 </b>Electron
         
@@ -662,7 +662,7 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/actions/'>Actions Guide</a> > Say and Text
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/mobileanddesktop/'>Mobile and Desktop</a> > Electron
           
          
           
@@ -680,10 +680,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#text">Text</a></li>
-<li><a href="#say">Say</a></li>
+<li><a href="#package-the-game">Package the game</a></li>
 </ul></li>
-<li><a href="#examples">Examples</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -698,7 +696,7 @@
         
         <div id="body-inner">
           
-            <h1>Say and Text</h1>
+            <h1>Electron</h1>
           
 
         
@@ -706,32 +704,66 @@
 
 
 
-<p>These actions let you show text inside the text box. The difference between them is that the <em>say</em> action will also display the name of the character inside the name box, in the colour of the propery <em>speechText</em> defined for that character.</p>
+<p>One way to port the game to a native desktop application easily is by using Electron. Electron is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. If you don&rsquo;t know anything about it, don&rsquo;t worry too much, here you can find the <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstartElectron">RenJS Quickstart</a> ported to it.</p>
 
-<h3 id="text">Text</h3>
+<p>The way to write your game will be the same, since the Engine doesn&rsquo;t actually change, we only add Electron as a wrapper over it. The way electron works, it creates a native windows for the target platform and calls a web page to load it on it. That page will be the one we use to show the game.</p>
 
-<pre><code class="language-yaml">    - text: text
+<p>The only difference in the code lays in the config.js file, with this little part at the end of it:</p>
+
+<pre><code class="language-js">if (typeof module !== 'undefined' &amp;&amp; module.exports) {
+  module.exports = globalConfig;
+} 
 </code></pre>
 
-<h3 id="say">Say</h3>
+<p>This is a way for Electron to find this configuration, so it can get the right windows size for loading the game. Another difference you may notice is in the index.html file. We add a style to make the game fit the window without any extra margins. As always, your own game should be in the story folder, the assets in the assets folder and the engine in the RenJS folder. If you made any change to it (adding new functions, changing default values, etc), you should copy not only your story and assets over the Quickstart, but also your modified version of RenJS.</p>
 
-<pre><code class="language-yaml">    - character_id says: text
+<h3 id="package-the-game">Package the game</h3>
+
+<p>Now to the &ldquo;hard&rdquo; part: The terminal.</p>
+
+<p>To run and package the game as a desktop application, you&rsquo;ll need to use the terminal. If you&rsquo;ve never used it before, it may seem a bit scary, but it&rsquo;s really easy. To begin with, we need to install the dependencies for running and packaging Electron, these are:</p>
+
+<ul>
+<li>node</li>
+<li>npm</li>
+<li>electron-packager</li>
+</ul>
+
+<p>Node and npm usually come together, when you install one, the other one is installed too. Node is the engine behind Electron that lets it run as a local server on a computer. This is how we &ldquo;serve&rdquo; our game web page to the window Electron creates. Npm is just a package manager that lets you install libraries and dependencies easily. Once you have npm, you can use it to install electron-packager like this:</p>
+
+<pre><code class="language-bash">npm install electron-packager -g
 </code></pre>
 
-<p>The text will be shown letter by letter inside the text box and after it is displayed whole, the <em>ctc</em> (click to continue) will be shown. After this the game will wait until the player clicks anywhere on the screen to continue with the next action.</p>
+<p>After you have all of the requirements, we need to install the rest of the project. To do this, we will use npm. In the root of the Quickstart project we&rsquo;ll find a file called package.json. This file has all the information npm needs to install and run the project.</p>
 
-<h2 id="examples">Examples</h2>
-
-<pre><code class="language-yaml">  - text: It's the first day of school and you're wondering who's that girl that's been looking at you all morning
-  - deuzi says: Welcome {name}!
-  - deuzi says: How are you today?
-  - text: How does she know your name?
+<pre><code class="language-bash"># Go into the repository
+cd RenJSQuickstartElectron
+# Install project
+npm install
+# Run it
+npm start
 </code></pre>
+
+<p>If you checked the package.json file, there&rsquo;s a section called <em>scripts</em>. Here there are some scripts ready to use, the main one is start, which simply runs the game with electron. The other ones are to package the whole project as an executable for each of the platforms.</p>
+
+<p>Once the game is finished and you&rsquo;re ready to package you have to simply call the previously mentioned scripts:</p>
+
+<pre><code class="language-bash"># For linux
+npm run package-linux
+# For mac
+npm run package-mac
+# For windows
+npm run package-win
+
+</code></pre>
+
+<p>And that&rsquo;s it!</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -815,7 +847,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -830,9 +861,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -850,7 +878,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -866,9 +893,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1065,6 +1089,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1072,6 +1097,45 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
                     
                         
             
@@ -1107,50 +1171,15 @@
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
         
         
 
 
         
-            <a class="nav nav-prev" href="/RenJS/actions/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/mobileanddesktop/" title="Mobile and Desktop"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/actions/playandstop/" title="Play and Stop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/mobileanddesktop/cordova/" title="Cordova" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1180,3 +1209,4 @@
 
   </body>
 </html>
+

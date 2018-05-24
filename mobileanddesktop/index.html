@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Say and Text :: RenJS</title>
+    <title>Mobile and Desktop :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527176291" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/actions/sayandtext/">
+  <body class="" data-url="/RenJS/mobileanddesktop/">
     <nav id="sidebar" class="">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -193,8 +193,8 @@
   
     
     <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/actions/sayandtext/">
@@ -508,8 +508,8 @@
   
     
     <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/RenJS/mobileanddesktop/">
@@ -648,8 +648,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
-                  
                   <span class="links">
                     
           
@@ -658,13 +656,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/actions/'>Actions Guide</a> > Say and Text
-          
-         
+            <a href='/RenJS/'>RenJS</a> > Mobile and Desktop
           
          
           
@@ -672,33 +664,14 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#text">Text</a></li>
-<li><a href="#say">Say</a></li>
-</ul></li>
-<li><a href="#examples">Examples</a></li>
-</ul></li>
-</ul>
-</nav>
-    </div>
-</div>
-
-                
               </div>
             </div>
             
 
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>Say and Text</h1>
           
 
         
@@ -706,33 +679,23 @@
 
 
 
-<p>These actions let you show text inside the text box. The difference between them is that the <em>say</em> action will also display the name of the character inside the name box, in the colour of the propery <em>speechText</em> defined for that character.</p>
+<h3 id="mobile-and-desktop">Mobile and Desktop</h3>
 
-<h3 id="text">Text</h3>
+<h1 id="run-your-games-everywhere">Run your games everywhere</h1>
 
-<pre><code class="language-yaml">    - text: text
-</code></pre>
+<p>RenJS allows you to create HTML5 games, that is, games that run in a web browser. This means that any platform with a running web browser should be able to run your game. Linux, Mac, Windows and even mobile devices can do this, so by creating your game with RenJS, it&rsquo;s effectively multiplatform.</p>
 
-<h3 id="say">Say</h3>
+<p>There&rsquo;s one catch, what if you don&rsquo;t want it online? Distributing the source code and executing an html file locally would work, but there&rsquo;s a better alternative. You can package your game as an executable for each platform, and your players would install it and play it in their favourite one like they do with other games.</p>
 
-<pre><code class="language-yaml">    - character_id says: text
-</code></pre>
-
-<p>The text will be shown letter by letter inside the text box and after it is displayed whole, the <em>ctc</em> (click to continue) will be shown. After this the game will wait until the player clicks anywhere on the screen to continue with the next action.</p>
-
-<h2 id="examples">Examples</h2>
-
-<pre><code class="language-yaml">  - text: It's the first day of school and you're wondering who's that girl that's been looking at you all morning
-  - deuzi says: Welcome {name}!
-  - deuzi says: How are you today?
-  - text: How does she know your name?
-</code></pre>
+<p>In this section we will see a few different ways to achieve this.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
+        
+            </div> 
         
         </div> 
         
@@ -815,7 +778,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -830,9 +792,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -850,7 +809,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -866,9 +824,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1065,6 +1020,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1072,6 +1028,44 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
                     
                         
             
@@ -1107,50 +1101,15 @@
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
         
         
 
 
         
-            <a class="nav nav-prev" href="/RenJS/actions/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/gui/" title="GUI"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/actions/playandstop/" title="Play and Stop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/mobileanddesktop/electron/" title="Electron" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

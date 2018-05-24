@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Say and Text :: RenJS</title>
+    <title>Cordova :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527176291" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/actions/sayandtext/">
+  <body class="" data-url="/RenJS/mobileanddesktop/cordova/">
     <nav id="sidebar" class="">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -193,8 +193,8 @@
   
     
     <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/actions/sayandtext/">
@@ -508,7 +508,7 @@
   
     
     <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
-        
+        parent
         
         
         ">
@@ -551,7 +551,7 @@
  
   
     
-      <li data-nav-id="/RenJS/mobileanddesktop/cordova/" title="Cordova" class="dd-item ">
+      <li data-nav-id="/RenJS/mobileanddesktop/cordova/" title="Cordova" class="dd-item active">
         <a href="/RenJS/mobileanddesktop/cordova/">
         <b>5.2 </b>Cordova
         
@@ -662,7 +662,7 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/actions/'>Actions Guide</a> > Say and Text
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/mobileanddesktop/'>Mobile and Desktop</a> > Cordova
           
          
           
@@ -674,19 +674,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#text">Text</a></li>
-<li><a href="#say">Say</a></li>
-</ul></li>
-<li><a href="#examples">Examples</a></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -698,40 +686,61 @@
         
         <div id="body-inner">
           
-            <h1>Say and Text</h1>
+            <h1>Cordova</h1>
           
 
         
 
 
+<p>For creating native mobile application we can use Cordova. Just like Electron, Cordova is a wrapper for HTML5 applications to run as native apps in mobile devices: Android, iOS and Windows Phones.</p>
 
+<p>To make things easier, grab the [RenJS Quickstart with Cordova](), and let&rsquo;s see the main differences. The biggest one is that the game is now inside the folder www. Everything inside of it is the same, you write your story as always.</p>
 
-<p>These actions let you show text inside the text box. The difference between them is that the <em>say</em> action will also display the name of the character inside the name box, in the colour of the propery <em>speechText</em> defined for that character.</p>
+<p>To test it in your computer, with a browswer, let&rsquo;s install the project. You will need:</p>
 
-<h3 id="text">Text</h3>
+<ul>
+<li>node</li>
+<li>npm</li>
+<li>Cordova</li>
+</ul>
 
-<pre><code class="language-yaml">    - text: text
+<p>Node and npm usually come together, when you install one, the other one is installed too. Node is the engine behind Electron that lets it run as a local server on a computer. This is how we &ldquo;serve&rdquo; our game web page to the window Electron creates. Npm is just a package manager that lets you install libraries and dependencies easily. Once you have npm, you can use it to install electron-packager like this:</p>
+
+<pre><code class="language-bash">npm install -g cordova
 </code></pre>
 
-<h3 id="say">Say</h3>
+<p>To test it we need to add browser support, and then run it:</p>
 
-<pre><code class="language-yaml">    - character_id says: text
+<pre><code class="language-bash"># Add browswer support
+cordova platform add browser
+cordova plugin add cordova-plugin-browsersync
+# Run it
+cordova run browser --live-reload
 </code></pre>
 
-<p>The text will be shown letter by letter inside the text box and after it is displayed whole, the <em>ctc</em> (click to continue) will be shown. After this the game will wait until the player clicks anywhere on the screen to continue with the next action.</p>
+<p>Once the game is finished and you&rsquo;re ready to package, we need to add first whatever platform you want to target:</p>
 
-<h2 id="examples">Examples</h2>
-
-<pre><code class="language-yaml">  - text: It's the first day of school and you're wondering who's that girl that's been looking at you all morning
-  - deuzi says: Welcome {name}!
-  - deuzi says: How are you today?
-  - text: How does she know your name?
+<pre><code class="language-bash"># Add android platform
+cordova platform add android
+# Add ios platform
+cordova platform add ios
+# Add windows phone platform
+cordova platform add windows
 </code></pre>
+
+<p>And then build it like this:</p>
+
+<pre><code class="language-bash"># Build it for android
+cordova build --release android
+</code></pre>
+
+<p>There are more steps involved in the creation of a mobile app, like signing the application for publishing and so on. <a href="http://www.9bitstudios.com/2016/01/submit-apache-cordova-applications-for-ios-and-android-to-the-apple-app-store-google-play/">Here is a good article about it</a>. Once you have a signed app, you can then install it in a mobile device and check how it looks!</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -815,7 +824,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -830,9 +838,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -850,7 +855,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -866,9 +870,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1065,6 +1066,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1078,40 +1080,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1129,6 +1099,45 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -1147,10 +1156,10 @@
 
 
         
-            <a class="nav nav-prev" href="/RenJS/actions/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/mobileanddesktop/electron/" title="Electron"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/actions/playandstop/" title="Play and Stop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/engine/" title="Engine" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1180,3 +1189,4 @@
 
   </body>
 </html>
+
