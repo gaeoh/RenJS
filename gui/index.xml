@@ -11,5 +11,15 @@
 	<atom:link href="http://lunafromthemoon.github.io/RenJS/gui/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>The GUI File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/gui/gui/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/gui/gui/</guid>
+      <description>The GUI file (identified in the config.js file as &amp;ldquo;guiConfig&amp;rdquo;) has three main sections:
+ assets: The list of assets used to build the gui, with key and file name. hud: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like autoplay, skip or save.</description>
+    </item>
+    
   </channel>
 </rss>

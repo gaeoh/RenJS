@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Quickstart :: RenJS</title>
+    <title>The Setup File :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527249558" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/quickstart/">
+  <body class="" data-url="/RenJS/setup/setup/">
     <nav id="sidebar" class="">
 
 
@@ -72,8 +72,8 @@
   
     
     <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/quickstart/">
@@ -464,7 +464,7 @@
   
     
     <li data-nav-id="/RenJS/setup/" title="Setup" class="dd-item 
-        
+        parent
         
         
         ">
@@ -488,7 +488,7 @@
  
   
     
-      <li data-nav-id="/RenJS/setup/setup/" title="The Setup File" class="dd-item ">
+      <li data-nav-id="/RenJS/setup/setup/" title="The Setup File" class="dd-item active">
         <a href="/RenJS/setup/setup/">
         <b>3.1 </b>The Setup File
         
@@ -725,6 +725,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
                   <span class="links">
                     
           
@@ -733,7 +735,13 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > Quickstart
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/setup/'>Setup</a> > The Setup File
+          
+         
           
          
           
@@ -741,14 +749,36 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#backgrounds">Backgrounds</a></li>
+<li><a href="#characters">Characters</a></li>
+<li><a href="#cgs">CGS</a></li>
+<li><a href="#music">Music</a></li>
+<li><a href="#sfx">SFX</a></li>
+<li><a href="#extra">Extra</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>The Setup File</h1>
           
 
         
@@ -756,29 +786,111 @@
 
 
 
-<h3 id="developer-guide">Developer Guide</h3>
+<p>The setup file (usually something like Setup.yaml) has many sections, that can be written down in any order, and you might not need them all.</p>
 
-<h1 id="make-your-own-game">Make your own game</h1>
+<h3 id="backgrounds">Backgrounds</h3>
 
-<p>If you&rsquo;re reading this, you&rsquo;re probably thinking about developing a Visual Novel. It doesn&rsquo;t matter if you&rsquo;ve never made a game before, in this guide you&rsquo;ll find how to do it from scratch. You&rsquo;ve probably heard about other game engines, like Unity or Game Maker. Those tools provide a whole environment for developing many kinds of games.
-RenJS is a bit different. First, RenJS is specially tailored to make games of the Visual Novel genre. You can use it for other kinds of games, but for that you&rsquo;ll need to extend the engine itself. If don&rsquo;t know programming though, you can still write classic VNs easily.
-The second difference is that RenJS refers only to the code that will be the core of your game. This means, unlike Unity or Game Maker, RenJS doesn&rsquo;t provide a development environment. There&rsquo;s no &ldquo;program&rdquo; you have to install or open to make your game. RenJS is just a bunch of files that know how to read a story and show it in a web browser. To write the story you only need a text processor, even something as simple as Gedit or Notepad.</p>
+<p>A simple list of all the backgrounds of the game, with key (the name called from the story text) and filename.</p>
 
-<p>The quickstart is a package with all the necesary files to start creating a game. Besides the RenJS library and it&rsquo;s dependencies, it comes also with a basic GUI (the one used in the tutorial game), one background, one character, and one small &ldquo;hello world&rdquo; scene.</p>
+<pre><code class="language-yaml">backgrounds:
+  room: assets/backgrounds/room_day.jpg
+  room_night: assets/backgrounds/room_night.jpg
+  room_night_light: assets/backgrounds/room_night_light.jpg
+  school_morning: assets/backgrounds/school_corridor.jpg
+  school_afternoon: assets/backgrounds/school_corridor_afternoon.jpg
+</code></pre>
 
-<p>Once you <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstart">download the quickstart</a>, you can play it by opening the &ldquo;index.html&rdquo; file with a web browser (Firefox recommended).</p>
+<h3 id="characters">Characters</h3>
 
-<p>There&rsquo;s no text or image processor mandatory for the development, but my recomendations, and the ones I use for developing myself, are <a href="https://www.sublimetext.com/">Sublime Text</a> and <a href="https://www.gimp.org/">Gimp</a>. They are both free, lightweight and multiplatform.</p>
+<p>The characters have some extra properties.</p>
 
-<p>In the next section, we&rsquo;ll see the file structure that makes up the quickstart and which are the files that contain your story.</p>
+<ul>
+<li>displayName: The key will be used to reference the character in the story text, but the display name is the one that will be shown to the player, and it can contain spaces and special characters, it can also be changed during the game.</li>
+<li>speechColour: The colour used for showing the name in the namebox.</li>
+<li>looks: A list with key and filename for every look of the character. The key can be anything you want, but it&rsquo;s better to make it as descriptive as possible, to make the story writting more easy and natural.</li>
+</ul>
+
+<pre><code class="language-yaml">characters:
+  deuzi:
+    displayName: Deuzilene
+    speechColour: &quot;#ca90cf&quot;
+    looks:
+      normal_school: assets/characters/Char3NormalSchool.png
+      happy_school: assets/characters/Char3HappySchool.png
+      angry_school: assets/characters/Char3AngrySchool.png
+      normal_casual: assets/characters/Char3Normal.png
+      happy_casual: assets/characters/Char3Happy.png
+      angry_casual: assets/characters/Char3Angry.png
+  liz:
+    displayName: Liz
+    speechColour: &quot;#d5e6e7&quot;
+    looks:
+      normal_school: assets/characters/Char2NormalSchool.png
+      happy_school: assets/characters/Char2HappySchool.png
+      angry_school: assets/characters/Char2AngrySchool.png
+      normal_casual: assets/characters/Char2Normal.png
+      happy_casual: assets/characters/Char2Happy.png
+      angry_casual: assets/characters/Char2Angry.png
+</code></pre>
+
+<h3 id="cgs">CGS</h3>
+
+<p>CGS stands for computer graphics, but in RenJS it just means any extra object you need to show in the game. It will probably be renamed in the future. As with the backgrounds, the only information we need is a key name and a file name.</p>
+
+<pre><code class="language-yaml">cgs:
+  phone1: assets/objects/phone1.png
+  phone2: assets/objects/phone2.png
+</code></pre>
+
+<h3 id="music">Music</h3>
+
+<p>The music tracks, with a key and file name. These files can be .mp3, .ogg or other sound files. The music declared here is meant to be played in a loop, that is, as background music. If you just need a one off sound effect, you need to declare is as an sfx.</p>
+
+<pre><code class="language-yaml">music:
+  morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
+  storeBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3
+</code></pre>
+
+<h3 id="sfx">SFX</h3>
+
+<p>Sound effects, meant to be played one time, declared with key and file name as always.</p>
+
+<pre><code class="language-yaml">sfx:
+  ringtonePinkPhone: assets/audio/nokia6210-24-elise.mp3
+  ringtoneGreenPhone: assets/audio/alcatel-top_secret.mp3
+</code></pre>
+
+<h3 id="extra">Extra</h3>
+
+<p>You can load any extra image, sound or resource you need in this section. Why would you need extra resources? For the effects and ambients, for example, or for any extra game code you add. Each extra resource has to be listed under its resource type. So, images will be under <em>image</em> and audio under <em>audio</em>.</p>
+
+<p>You can also load spritesheets, this is a normal image that contains the frames of an animation. Currently, RenJS doesn&rsquo;t have any action that suppports the use of spritesheets directly, but it&rsquo;s used in some of the effect examples. Besides the key and the file name, the spritesheet needs two numbers that indicate height and width of each of the frames it contains.</p>
+
+<p>Another thing you could load is scripts, to load for example, a piece of code needed for an effect.</p>
+
+<pre><code class="language-yaml">  extra:
+    image:
+      title: assets/gui/titles.png
+      rain: assets/ambient/rain.png
+      thunder: assets/effects/Thunder_Effect.png
+    audio:
+      cicadas: assets/audio/Cicada.mp3
+      rain: assets/audio/Rain.mp3
+      thunder: assets/audio/thunder_strike_1.mp3
+    spritesheets:
+      explosion: assets/effects/explosion.png 450 274
+      static: assets/ambient/static.png 320 256
+    scripts:
+      marble: assets/ambient/Marble.js
+      lightbeam: assets/ambient/LightBeam.js
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div> 
         
@@ -810,20 +922,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -831,43 +929,6 @@ The second difference is that RenJS refers only to the code that will be the cor
                 
 
                     
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
                     
                     
 
@@ -887,6 +948,40 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
             
         
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
                     
                         
             
@@ -1064,6 +1159,91 @@ The second difference is that RenJS refers only to the code that will be the cor
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1092,105 +1272,6 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
                     
 
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
             
         
@@ -1229,15 +1310,50 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
             
         
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
         
         
 
 
         
-            <a class="nav nav-prev" href="/RenJS/" title="RenJS"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/setup/" title="Setup"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/quickstart/structure/" title="File Structure" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/gui/" title="GUI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1267,3 +1383,4 @@ The second difference is that RenJS refers only to the code that will be the cor
 
   </body>
 </html>
+

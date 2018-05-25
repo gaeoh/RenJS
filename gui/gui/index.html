@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Quickstart :: RenJS</title>
+    <title>The GUI File :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527249558" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/quickstart/">
+  <body class="" data-url="/RenJS/gui/gui/">
     <nav id="sidebar" class="">
 
 
@@ -72,8 +72,8 @@
   
     
     <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/quickstart/">
@@ -515,7 +515,7 @@
   
     
     <li data-nav-id="/RenJS/gui/" title="GUI" class="dd-item 
-        
+        parent
         
         
         ">
@@ -539,7 +539,7 @@
  
   
     
-      <li data-nav-id="/RenJS/gui/gui/" title="The GUI File" class="dd-item ">
+      <li data-nav-id="/RenJS/gui/gui/" title="The GUI File" class="dd-item active">
         <a href="/RenJS/gui/gui/">
         <b>4.1 </b>The GUI File
         
@@ -725,6 +725,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
                   <span class="links">
                     
           
@@ -733,7 +735,13 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > Quickstart
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/gui/'>GUI</a> > The GUI File
+          
+         
           
          
           
@@ -741,14 +749,33 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#assets">Assets</a>
+<ul>
+<li><a href="#fonts">Fonts</a></li>
+</ul></li>
+<li><a href="#hud">HUD</a></li>
+<li><a href="#menus">Menus</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>The GUI File</h1>
           
 
         
@@ -756,29 +783,270 @@
 
 
 
-<h3 id="developer-guide">Developer Guide</h3>
+<p>The GUI file (identified in the config.js file as &ldquo;guiConfig&rdquo;) has three main sections:</p>
 
-<h1 id="make-your-own-game">Make your own game</h1>
+<ul>
+<li>assets: The list of assets used to build the gui, with key and file name.</li>
+<li>hud: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like <em>autoplay</em>, <em>skip</em> or <em>save</em>.</li>
+<li>menus: All the different menus of the game. You should at least have one main menu to start the game, and can have as many extra menus as you want. Some examples of what extra menus you could need are a <em>settings menu</em>, a <em>load game menu</em>, a <em>scenes menu</em>, etc.</li>
+</ul>
 
-<p>If you&rsquo;re reading this, you&rsquo;re probably thinking about developing a Visual Novel. It doesn&rsquo;t matter if you&rsquo;ve never made a game before, in this guide you&rsquo;ll find how to do it from scratch. You&rsquo;ve probably heard about other game engines, like Unity or Game Maker. Those tools provide a whole environment for developing many kinds of games.
-RenJS is a bit different. First, RenJS is specially tailored to make games of the Visual Novel genre. You can use it for other kinds of games, but for that you&rsquo;ll need to extend the engine itself. If don&rsquo;t know programming though, you can still write classic VNs easily.
-The second difference is that RenJS refers only to the code that will be the core of your game. This means, unlike Unity or Game Maker, RenJS doesn&rsquo;t provide a development environment. There&rsquo;s no &ldquo;program&rdquo; you have to install or open to make your game. RenJS is just a bunch of files that know how to read a story and show it in a web browser. To write the story you only need a text processor, even something as simple as Gedit or Notepad.</p>
+<h2 id="assets">Assets</h2>
 
-<p>The quickstart is a package with all the necesary files to start creating a game. Besides the RenJS library and it&rsquo;s dependencies, it comes also with a basic GUI (the one used in the tutorial game), one background, one character, and one small &ldquo;hello world&rdquo; scene.</p>
+<p>A list of all the assets, ordered by their types: images, spritesheets (for the buttons), audio, etc. The spritesheets take two extra parameters that indicate the width and height of each of its frames.</p>
 
-<p>Once you <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstart">download the quickstart</a>, you can play it by opening the &ldquo;index.html&rdquo; file with a web browser (Firefox recommended).</p>
+<pre><code class="language-yaml">assets:
+  fonts:
+    - audimat-mono
+  images:
+    mainBackground: assets/gui/menu.png
+    settingsBackground: assets/gui/settings.png
+    sliderFull: assets/gui/slider.png
+    messageBox:  assets/gui/textbox.png
+    nameBox:  assets/gui/namebox.png
+    ctc: assets/gui/ctc.png
+  spritesheets:
+    startButton: assets/gui/startbutton.png 163 83
+    loadButton: assets/gui/loadbutton.png 163 83
+    saveButton: assets/gui/savebutton.png 163 83
+    settingsButton: assets/gui/settingsbutton.png 163 83
+    returnButton: assets/gui/returnbutton.png 163 83
+    qmAutoButton: assets/gui/qmenuauto.png 47 45
+    qmSkipButton: assets/gui/qmenuskip.png 47 45
+    qmSettingsButton: assets/gui/qmenusettings.png 47 45
+    qmMuteButton: assets/gui/Mute.png 50 50
+    qmSaveButton: assets/gui/qmenusave.png 47 45
+    choice: assets/gui/choice.png 716 65
+    interrupt: assets/gui/interrupt.png 716 95
+  audio:
+    mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
+</code></pre>
 
-<p>There&rsquo;s no text or image processor mandatory for the development, but my recomendations, and the ones I use for developing myself, are <a href="https://www.sublimetext.com/">Sublime Text</a> and <a href="https://www.gimp.org/">Gimp</a>. They are both free, lightweight and multiplatform.</p>
+<p>You can call each of this assets whatever you like, but it&rsquo;s a good practice to use descriptive names for each one.</p>
 
-<p>In the next section, we&rsquo;ll see the file structure that makes up the quickstart and which are the files that contain your story.</p>
+<h3 id="fonts">Fonts</h3>
+
+<p>The fonts are a special case, you need a list of the font names used declared in the assets section of the GUI file, like this:</p>
+
+<pre><code class="language-css">assets:
+  fonts:
+    - audimat-mono
+    - old-standard
+    - playfair
+
+</code></pre>
+
+<p>These fonts should also be declared in a css file, referenced in the config.js file (e.g. fonts.css).</p>
+
+<pre><code class="language-css">@font-face {
+  font-family: 'audimat-mono';
+  src: url('assets/gui/audimat-mono.ttf');
+  src: url('assets/gui/audimat-mono.ttf').format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'old-standard';
+  src: url('assets/gui/OldStandard-Regular.ttf');
+  src: url('assets/gui/OldStandard-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'playfair';
+  src: url('assets/gui/PlayfairDisplaySC-Regular.ttf');
+  src: url('assets/gui/PlayfairDisplaySC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+</code></pre>
+
+<p>This css file will be loaded onto the browser along with the game, and will allow it to find the font files (in this case only one: audimat-mono.ttf) and making them available for RenJS to use them.</p>
+
+<h2 id="hud">HUD</h2>
+
+<p>The hud, as explained above, is the part of the user interface shown during the game. In a visual novel, we have a set of elements common to most of them, like:</p>
+
+<ul>
+<li>Text box: Where the text and dialogs of the game will be shown. If there is no text to show, this box will be hidden.
+
+<ul>
+<li>CTC: The click to continue symbol is usually an animated or blinking image that indicates the player they have to click to continue with the story.</li>
+</ul></li>
+<li>Name box: Where the name of the talking character is displayed. If no character is talking, this box will be hidden.</li>
+<li>Quick menu: A little menu the player can use during the game, the usual options are:
+
+<ul>
+<li>Autoplay: Instead of waiting for the player to click after each dialog, the game will wait for a moment and continue until it needs the player input to make a choice.</li>
+<li>Skip: Like autoplay, but the game will be going <em>fast</em>. Used mostly to catch up and get quickly to the different ramifications of the game.</li>
+<li>Save: The the current state of the game, to be able to continue later. It could also open a Save Menu and let the player choose a slot for saving.</li>
+<li>Settings: Open the settings menu</li>
+</ul></li>
+<li>Choice button: Usually when the player has to make a choice, it will be by pressing a button with the desired option text.
+
+<ul>
+<li>Interrupt button: Same as the choice button, but for an <em>interrupting</em> option. It can be the same as the choice, or change slightly.</li>
+</ul></li>
+</ul>
+
+<p>A usual Hud setup looks like this:</p>
+
+<pre><code class="language-yaml">hud:
+  area:
+    - 640 450 748 554
+  message:
+    position: 
+      x: 46 
+      y: 435
+    textPosition: 
+      x: 36 
+      y: 36
+    textStyle:
+      font: 16pt audimat-mono
+      wordWrap: true
+      wordWrapWidth: 545
+      fill: &quot;#ac9393&quot;
+  name:
+    position: 
+      x: 36 
+      y: -40
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+  ctc: 
+    position:
+      x: 570 
+      y: 90
+    animated: false
+  choice:
+    separation: 95
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+      fill: &quot;#666666&quot;
+  interrupt:
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+      fill: &quot;#664b4b&quot;        
+  buttons:
+    auto: 
+      position:
+        x: 647
+        y: 502
+      sprite: qmAutoButton
+    skip: 
+      position:
+        x: 694
+        y: 502
+      sprite: qmSkipButton
+    save: 
+      position:
+        x: 694
+        y: 457
+      sprite: qmSaveButton
+    settings: 
+      position:
+        x: 647
+        y: 457
+      sprite: qmSettingsButton
+</code></pre>
+
+<p>The <em>area</em> refers to a space defined by two points in the screen (x1 y1 x2 y2) inside of which the clicks of the player don&rsquo;t count as &ldquo;game clicks&rdquo;. So, if the game is waiting for the player to click, to continue with the story, but the player clicks inside this area, the game will not continue. We need this area to manage the interaction with the quick menu in the Hud. If the player clicks in the save button, it just means it wants to save, not continue with the story. This area doesn&rsquo;t have to be exactly the size of the menu, and it can actually cover more parts of the screen. You can define as many &ldquo;non clickable areas&rdquo; as you like.</p>
+
+<p>The <em>message</em> is the text box, or message box, definition. It takes a position in the screen to show the image (from it&rsquo;s left up corner), a text position to define where to start writing the text, relative to the message position; and the text style defined by font, if it should wordwrap and the width and the text color. You can add more text style options as long as they are valid for a Phaser text object.</p>
+
+<p>The <em>name</em> tag defines the namebox. It&rsquo;s position should be relative to the text box, and you also need to define a text style for it.</p>
+
+<p>The <em>ctc</em> is the click to continue, you just need to define a position relative to the text box, and say if it&rsquo;s animated or not. If not animated (not a spritesheet) it will blink.</p>
+
+<p>The <em>choice</em> is the choice button. Unless you specify a position, it will be centered in the screen. You also need to define a text style and a separation, in pixels, to show all of the choices as a list.</p>
+
+<p>In <em>interrupt</em> you can only define a different text style, since it will take the same parameters defined for the choice.</p>
+
+<p>The <em>buttons</em> tag refers to the quick menu. For each button you need to declare a key. This key is important, because it will be used to determine what the button will do. For example, the button save will call the save action, the button skip will call the skip action, and so on. If you have an extra button in your GUI that needs to do something different, you can add it with a specific key here, and then make sure you have a function to pair it with. The button has also a position and a sprite.</p>
+
+<p>You proably noticed that there&rsquo;s no sprites declared for <em>message</em>, <em>name</em>, etc. This is because the names of the assets are the default ones. If you change the asset name, then you would need to define also a sprite name in each of these elements.</p>
+
+<h2 id="menus">Menus</h2>
+
+<p>The menus section is a list with the different available menus of the game. The only mandatory one has to be called main, and it&rsquo;s the menu that will be called when the game loads. Each menu has a background (if not declared, it will take the default asset _menuname_Background), optionally music, and a list of buttons. To make it easier for making a settings menu, you can define also sliders, for things like volume or game speed.</p>
+
+<pre><code class="language-yaml">menus:
+  main: 
+    music: mainMusic
+    buttons: 
+      start: 
+        position:
+          x: 112
+          y: 462
+        sprite: startButton
+      load:  
+        position:
+          x: 320
+          y: 462
+        sprite: loadButton
+      settings:
+        position:
+          x: 528
+          y: 462
+        sprite: settingsButton
+  settings:
+    buttons:
+      return: 
+        position:
+          x: 112
+          y: 500
+        sprite: returnButton
+      start:  
+        position:
+          x: 320
+          y: 500
+        sprite: startButton
+      load:
+        position:
+          x: 528
+          y: 500
+        sprite: loadButton
+    sliders:
+      textSpeed: 
+        position:
+          x: 436
+          y: 235
+        sprite: sliderFull
+      autoSpeed:
+        position:
+          x: 436
+          y: 364
+        sprite: sliderFull
+      bgmv:
+        position:
+          x: 147
+          y: 235
+        sprite: sliderFull
+      sfxv:
+        position:
+          x: 147
+          y: 364
+        sprite: sliderFull
+</code></pre>
+
+<p>As with the quick menu, the actions of the buttons and properties of the slider will be defined by its key name.</p>
+
+<p>This kind of GUI is called a simple GUI because it lets you create a very simple but highly personalized GUI. You can check in the <a href="../../games">games section</a> some of what you can achieve with this simple system.</p>
+
+<p>If you want, you can also replace the simple gui entirely and code your own. For that, chech the <a href="../../engine">engine section</a> to see more details on how the gui interacts with the game.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div> 
         
@@ -810,20 +1078,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -831,43 +1085,6 @@ The second difference is that RenJS refers only to the code that will be the cor
                 
 
                     
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
                     
                     
 
@@ -887,6 +1104,40 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
             
         
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
                     
                         
             
@@ -1064,22 +1315,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
             
             
@@ -1136,6 +1371,43 @@ The second difference is that RenJS refers only to the code that will be the cor
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1234,10 +1506,10 @@ The second difference is that RenJS refers only to the code that will be the cor
 
 
         
-            <a class="nav nav-prev" href="/RenJS/" title="RenJS"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/gui/" title="GUI"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/quickstart/structure/" title="File Structure" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/mobileanddesktop/" title="Mobile and Desktop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1267,3 +1539,4 @@ The second difference is that RenJS refers only to the code that will be the cor
 
   </body>
 </html>
+

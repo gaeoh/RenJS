@@ -33,6 +33,28 @@ Let&amp;rsquo;s take a look at these files:
     </item>
     
     <item>
+      <title>The GUI File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/gui/gui/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/gui/gui/</guid>
+      <description>The GUI file (identified in the config.js file as &amp;ldquo;guiConfig&amp;rdquo;) has three main sections:
+ assets: The list of assets used to build the gui, with key and file name. hud: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like autoplay, skip or save.</description>
+    </item>
+    
+    <item>
+      <title>The Setup File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/setup/setup/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/setup/setup/</guid>
+      <description>The setup file (usually something like Setup.yaml) has many sections, that can be written down in any order, and you might not need them all.
+Backgrounds A simple list of all the backgrounds of the game, with key (the name called from the story text) and filename.
+backgrounds: room: assets/backgrounds/room_day.jpg room_night: assets/backgrounds/room_night.jpg room_night_light: assets/backgrounds/room_night_light.jpg school_morning: assets/backgrounds/school_corridor.jpg school_afternoon: assets/backgrounds/school_corridor_afternoon.jpg  Characters The characters have some extra properties.
+ displayName: The key will be used to reference the character in the story text, but the display name is the one that will be shown to the player, and it can contain spaces and special characters, it can also be changed during the game.</description>
+    </item>
+    
+    <item>
       <title>Story Structure</title>
       <link>http://lunafromthemoon.github.io/RenJS/quickstart/structure-story/</link>
       <pubDate>Wed, 16 May 2018 15:27:25 +0200</pubDate>
@@ -49,7 +71,16 @@ Let&amp;rsquo;s take a look at these files:
       
       <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cordova/</guid>
       <description>For creating native mobile application we can use Cordova. Just like Electron, Cordova is a wrapper for HTML5 applications to run as native apps in mobile devices: Android, iOS and Windows Phones.
-To make things easier, grab the [RenJS Quickstart with Cordova](), and let&amp;rsquo;s see the main differences. The biggest one is that the game is now inside the folder www. Everything inside of it is the same, you write your story as always.</description>
+To make things easier, grab the RenJS Quickstart with Cordova, and let&amp;rsquo;s see the main differences. The biggest one is that the game is now inside the folder www. Everything inside of it is the same, you write your story as always.</description>
+    </item>
+    
+    <item>
+      <title>Cocoon</title>
+      <link>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cocoon/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cocoon/</guid>
+      <description>The easiest way to package your game is by using Cocoon. Cocoon is a cloud service, that means you don&amp;rsquo;t really need to install or do anything on your own computer, everything will be done on their servers. You just need to get an account in the Cocoon Platform, upload your code (based on this RenJS Quickstart with Cocoon), press a button to compile, and press another to download the packaged results.</description>
     </item>
     
   </channel>

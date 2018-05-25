@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Quickstart :: RenJS</title>
+    <title>Cocoon :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1527249558" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/quickstart/">
+  <body class="" data-url="/RenJS/mobileanddesktop/cocoon/">
     <nav id="sidebar" class="">
 
 
@@ -72,8 +72,8 @@
   
     
     <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/quickstart/">
@@ -566,7 +566,7 @@
   
     
     <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
-        
+        parent
         
         
         ">
@@ -628,7 +628,7 @@
  
   
     
-      <li data-nav-id="/RenJS/mobileanddesktop/cocoon/" title="Cocoon" class="dd-item ">
+      <li data-nav-id="/RenJS/mobileanddesktop/cocoon/" title="Cocoon" class="dd-item active">
         <a href="/RenJS/mobileanddesktop/cocoon/">
         <b>5.3 </b>Cocoon
         
@@ -725,6 +725,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
                   <span class="links">
                     
           
@@ -733,7 +735,13 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > Quickstart
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/mobileanddesktop/'>Mobile and Desktop</a> > Cocoon
+          
+         
           
          
           
@@ -741,44 +749,56 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>Cocoon</h1>
           
 
         
 
 
+<p>The easiest way to package your game is by using Cocoon. Cocoon is a cloud service, that means you don&rsquo;t really need to install or do anything on your own computer, everything will be done on their servers. You just need to get an account in the <a href="cocoon.io">Cocoon Platform</a>, upload your code (based on this <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstartMobile">RenJS Quickstart with Cocoon</a>), press a button to compile, and press another to download the packaged results. Very easy!</p>
 
+<p>But there&rsquo;s a catch: As almost every cloud service out there, if you really want to use it, you need to pay. There&rsquo;s a free version, of course, but limited to two projects of less than 50mb each. Unless your game is really small, you&rsquo;ll reach this limit really quickly. The RenJS Quickstart, as small as it is, weights around 25mb already.</p>
 
-<h3 id="developer-guide">Developer Guide</h3>
+<p>Let&rsquo;s check the differences with the RenJS Quickstart. The most noticeable one is now the game code is inside the folder www. As with Cordova (as Cocoon uses Cordova internally), we are adding a wrapper to the game that will allow it to execute into a webview in a mobile phone, a desktop window, etc.</p>
 
-<h1 id="make-your-own-game">Make your own game</h1>
+<p>Another difference is in the index: We add a style to the body, so it won&rsquo;t have any extra margins and the game adapts perfectly to the screen; and we add an event listener that tells us when the device is ready and we can start executing the game. That&rsquo;s it, the rest of the game code is exactly the same.</p>
 
-<p>If you&rsquo;re reading this, you&rsquo;re probably thinking about developing a Visual Novel. It doesn&rsquo;t matter if you&rsquo;ve never made a game before, in this guide you&rsquo;ll find how to do it from scratch. You&rsquo;ve probably heard about other game engines, like Unity or Game Maker. Those tools provide a whole environment for developing many kinds of games.
-RenJS is a bit different. First, RenJS is specially tailored to make games of the Visual Novel genre. You can use it for other kinds of games, but for that you&rsquo;ll need to extend the engine itself. If don&rsquo;t know programming though, you can still write classic VNs easily.
-The second difference is that RenJS refers only to the code that will be the core of your game. This means, unlike Unity or Game Maker, RenJS doesn&rsquo;t provide a development environment. There&rsquo;s no &ldquo;program&rdquo; you have to install or open to make your game. RenJS is just a bunch of files that know how to read a story and show it in a web browser. To write the story you only need a text processor, even something as simple as Gedit or Notepad.</p>
+<p>The wrapper contains a config.xml file with information like the App name, description, etc. You don&rsquo;t really need to change anything in this file, since you can do it more easily from the Cocoon platform. There&rsquo;s also a folder called res, containing the icons to use for each platform, that is, the icon you will use to open the game App.</p>
 
-<p>The quickstart is a package with all the necesary files to start creating a game. Besides the RenJS library and it&rsquo;s dependencies, it comes also with a basic GUI (the one used in the tutorial game), one background, one character, and one small &ldquo;hello world&rdquo; scene.</p>
+<p>To package the game you need to upload the code to Cocoon.io. If you still haven&rsquo;t got an account there, go and make one. Once you&rsquo;re logged in you&rsquo;ll find a Create project section, that will allow you to upload a zip file, that should contain all your code.</p>
 
-<p>Once you <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstart">download the quickstart</a>, you can play it by opening the &ldquo;index.html&rdquo; file with a web browser (Firefox recommended).</p>
+<p>After it&rsquo;s uploaded, there are some important settings to check before compiling:</p>
 
-<p>There&rsquo;s no text or image processor mandatory for the development, but my recomendations, and the ones I use for developing myself, are <a href="https://www.sublimetext.com/">Sublime Text</a> and <a href="https://www.gimp.org/">Gimp</a>. They are both free, lightweight and multiplatform.</p>
+<ul>
+<li>In settings/default: The webview engine has to be <em>Webview</em>. Orientation should probably be landscape, unless your game is taller than longer.</li>
+<li>Choose the targets: In the list there&rsquo;s a checkbox to choose what target you want to compile your game to. Android, iOS, Windows 10 (for both mobile and desktop), X OS or Ubuntu.</li>
+<li>Signing: In the signing section you should set your keystores for the chosen targets (except Ubuntu).</li>
+</ul>
 
-<p>In the next section, we&rsquo;ll see the file structure that makes up the quickstart and which are the files that contain your story.</p>
+<p>After setting up everything, you have to compile it. To do this, you just need to press the <em>Compile</em> button, at the header of the project page. This process may take a while depending on what and how many targets you chose. You will receive an email when it&rsquo;s ready, and you&rsquo;ll be able to download the package for each target from the same project page.</p>
+
+<p>That&rsquo;s it! Install and play!</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div> 
         
@@ -810,20 +830,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -831,43 +837,6 @@ The second difference is that RenJS refers only to the code that will be the cor
                 
 
                     
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
                     
                     
 
@@ -887,6 +856,40 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
             
         
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
                     
                         
             
@@ -1064,22 +1067,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
             
             
@@ -1160,6 +1147,42 @@ The second difference is that RenJS refers only to the code that will be the cor
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1181,6 +1204,7 @@ The second difference is that RenJS refers only to the code that will be the cor
             
                 
                     
+                    
                 
                 
 
@@ -1191,6 +1215,25 @@ The second difference is that RenJS refers only to the code that will be the cor
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
             
         
@@ -1211,22 +1254,6 @@ The second difference is that RenJS refers only to the code that will be the cor
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
         
@@ -1234,10 +1261,10 @@ The second difference is that RenJS refers only to the code that will be the cor
 
 
         
-            <a class="nav nav-prev" href="/RenJS/" title="RenJS"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/mobileanddesktop/cordova/" title="Cordova"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/quickstart/structure/" title="File Structure" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/engine/" title="Engine" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1267,3 +1294,4 @@ The second difference is that RenJS refers only to the code that will be the cor
 
   </body>
 </html>
+
