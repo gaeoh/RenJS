@@ -9,20 +9,20 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Engine :: RenJS</title>
+    <title>Extending RenJS :: RenJS</title>
     
     
-    <link href="/RenJS/css/nucleus.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/font-awesome.min.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/hybrid.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/featherlight.min.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/perfect-scrollbar.min.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/auto-complete.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/theme.css?1527249558" rel="stylesheet">
-    <link href="/RenJS/css/hugo-theme.css?1527249558" rel="stylesheet">
+    <link href="/RenJS/css/nucleus.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/font-awesome.min.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/auto-complete.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1527499462" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1527499462" rel="stylesheet">
     
 
-    <script src="/RenJS/js/jquery-2.x.min.js?1527249558"></script>
+    <script src="/RenJS/js/jquery-2.x.min.js?1527499462"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -48,14 +48,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/RenJS/js/lunr.min.js?1527249558"></script>
-<script type="text/javascript" src="/RenJS/js/auto-complete.js?1527249558"></script>
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1527499462"></script>
+<script type="text/javascript" src="/RenJS/js/auto-complete.js?1527499462"></script>
 <script type="text/javascript">
     
         var baseurl = '\/RenJS';
     
 </script>
-<script type="text/javascript" src="/RenJS/js/search.js?1527249558"></script>
+<script type="text/javascript" src="/RenJS/js/search.js?1527499462"></script>
 
     
   </div>
@@ -178,6 +178,42 @@
           
       </a>
       
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/showandhide/transitions/" title="Transitions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/showandhide/transitions/">
+          <b>2.1.1 </b>Transitions
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -425,30 +461,6 @@
 
             
           
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/transitions/" title="Transitions" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/transitions/">
-          <b>2.12 </b>Transitions
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
         
         </ul>
               
@@ -654,16 +666,64 @@
  
   
     
-    <li data-nav-id="/RenJS/engine/" title="Engine" class="dd-item 
+    <li data-nav-id="/RenJS/engine/" title="Extending RenJS" class="dd-item 
         parent
         active
         
         ">
       <a href="/RenJS/engine/">
-          <b>6. </b>Engine
+          <b>6. </b>Extending RenJS
           
       </a>
       
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/engine/transitions/" title="Adding New Transitions" class="dd-item ">
+        <a href="/RenJS/engine/transitions/">
+        <b>6.1 </b>Adding New Transitions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/engine/docs/" title="Engine documentation" class="dd-item ">
+        <a href="/RenJS/engine/docs/">
+        <b>6.4 </b>Engine documentation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -733,7 +793,7 @@
             
           
           
-            <a href='/RenJS/'>RenJS</a> > Engine
+            <a href='/RenJS/'>RenJS</a> > Extending RenJS
           
          
           
@@ -756,11 +816,22 @@
 
 
 
-<h3 id="renjs-engine">RenJS Engine</h3>
+<h3 id="extending-renjs">Extending RenJS</h3>
 
-<h1 id="how-the-whole-thing-works">How the whole thing works</h1>
+<h1 id="add-your-own-code">Add your own code</h1>
 
-<p>Lorem Ipsum.</p>
+<p>Extending RenJS is not that hard. As it&rsquo;s based on PhaserJS creating new functionality is really easy. There&rsquo;s a lot of <a href="https://phaser.io/docs/2.6.2/index">documentation</a> about Phaser, and there&rsquo;s also a great <a href="https://phaser.io/examples">examples gallery</a> that can help you achieve whatever you want.</p>
+
+<p>To make it easier, here you&rsquo;ll find the most common ways to extend a RenJS game:</p>
+
+<ul>
+<li>Adding new transitions: FADE, CUT and MOVE are the most usual transitions for characters and background, but what if you want to do something else? You can add your own transition and use it just as the other ones.</li>
+<li>Adding new effects and ambients: The effects and ambients shipped with RenJS are just examples used in other games created with it, but this should not limit what you can do. You can have any kind of effect, any kind of ambient you can imagine, and just as with transitions, use them in your story in a normal way.</li>
+<li>Adding new general functions: With RenJS you can create more than just classical Visual Novels. You can add your own code and extend RenJS to add new game mechanics: RPG elements, fight scenes, hidden image puzzles, whatever you want!</li>
+<li>Extending the GUI: The simple GUI used by RenJS is that, simple. But you can do many things with a GUI, adding new buttons and information display to the HUD, add a save and load menu, or an CGSs gallery.</li>
+</ul>
+
+<p>If you want to do even more, you can find here some <a href="/docs">documentation of the engine architecture</a>, that should help you understand the flow of the game and add the code exactly where you need to.</p>
 
 
 <footer class=" footline" >
@@ -871,6 +942,40 @@
 
                     
                     
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
                     
 
                     
@@ -1021,38 +1126,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1198,6 +1271,22 @@
                     
 
                     
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -1206,8 +1295,24 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1230,7 +1335,7 @@
             <a class="nav nav-prev" href="/RenJS/mobileanddesktop/cocoon/" title="Cocoon"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/games/" title="Games" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/engine/transitions/" title="Adding New Transitions" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1239,20 +1344,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/RenJS/js/clipboard.min.js?1527249558"></script>
-    <script src="/RenJS/js/perfect-scrollbar.min.js?1527249558"></script>
-    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1527249558"></script>
-    <script src="/RenJS/js/jquery.sticky.js?1527249558"></script>
-    <script src="/RenJS/js/featherlight.min.js?1527249558"></script>
-    <script src="/RenJS/js/html5shiv-printshiv.min.js?1527249558"></script>
-    <script src="/RenJS/js/highlight.pack.js?1527249558"></script>
+    <script src="/RenJS/js/clipboard.min.js?1527499462"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1527499462"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1527499462"></script>
+    <script src="/RenJS/js/jquery.sticky.js?1527499462"></script>
+    <script src="/RenJS/js/featherlight.min.js?1527499462"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1527499462"></script>
+    <script src="/RenJS/js/highlight.pack.js?1527499462"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/RenJS/js/modernizr.custom.71422.js?1527249558"></script>
-    <script src="/RenJS/js/learn.js?1527249558"></script>
-    <script src="/RenJS/js/hugo-learn.js?1527249558"></script>
+    <script src="/RenJS/js/modernizr.custom.71422.js?1527499462"></script>
+    <script src="/RenJS/js/learn.js?1527499462"></script>
+    <script src="/RenJS/js/hugo-learn.js?1527499462"></script>
 
-    <link href="/RenJS/mermaid/mermaid.css?1527249558" type="text/css" rel="stylesheet" />
-    <script src="/RenJS/mermaid/mermaid.js?1527249558"></script>
+    <link href="/RenJS/mermaid/mermaid.css?1527499462" type="text/css" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1527499462"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

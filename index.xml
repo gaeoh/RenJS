@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Adding New Transitions</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/transitions/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/transitions/</guid>
+      <description>The transitions are used everytime we show, hide or change an image. This affects how that will be achieved. There are a few usual transitions ready to use with the game: CUT, FADE, FUSION, MOVE. This are usually enought in a very classical game, but you don&amp;rsquo;t have to be limited to them. Creating transitions is really easy if you know some javascript.
+All of the code concerning the transitions is inside the file RenJS/Transitions.</description>
+    </item>
+    
+    <item>
       <title>Electron</title>
       <link>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/electron/</link>
       <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
@@ -19,6 +29,17 @@
       <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/electron/</guid>
       <description>One way to port the game to a native desktop application easily is by using Electron. Electron is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. If you don&amp;rsquo;t know anything about it, don&amp;rsquo;t worry too much, here you can find the RenJS Quickstart ported to it.
 The way to write your game will be the same, since the Engine doesn&amp;rsquo;t actually change, we only add Electron as a wrapper over it.</description>
+    </item>
+    
+    <item>
+      <title>Engine documentation</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/docs/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/docs/</guid>
+      <description>Page under construction If you&amp;rsquo;re a javascript developer and you&amp;rsquo;re thinking about extending RenJS, this is the place to start. In this section we&amp;rsquo;ll see how RenJS works, how to add new story actions, new functionality for the menus, etc.
+RenJS is separated into many files that each take care of a subsystem of it:
+ RenJSBootstrap: The bootstrap, it creates the game instance, loads a splash screen and kicks off the preloading process for the whole game.</description>
     </item>
     
     <item>
