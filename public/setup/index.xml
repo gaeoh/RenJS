@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on RenJS</title>
+    <link>http://lunafromthemoon.github.io/RenJS/setup/</link>
+    <description>Recent content in Setup on RenJS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Sep 2017 23:26:49 -0300</lastBuildDate>
+    
+	<atom:link href="http://lunafromthemoon.github.io/RenJS/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Setup File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/setup/setup/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/setup/setup/</guid>
+      <description>The setup file (usually something like Setup.yaml) has many sections, that can be written down in any order, and you might not need them all.
+Backgrounds A simple list of all the backgrounds of the game, with key (the name called from the story text) and filename.
+backgrounds: room: assets/backgrounds/room_day.jpg room_night: assets/backgrounds/room_night.jpg room_night_light: assets/backgrounds/room_night_light.jpg school_morning: assets/backgrounds/school_corridor.jpg school_afternoon: assets/backgrounds/school_corridor_afternoon.jpg  Characters The characters have some extra properties.
+ displayName: The key will be used to reference the character in the story text, but the display name is the one that will be shown to the player, and it can contain spaces and special characters, it can also be changed during the game.</description>
+    </item>
+    
+  </channel>
+</rss>

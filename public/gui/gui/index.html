@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
+<link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
+    <title>The GUI File :: RenJS</title>
+    
+    
+    <link href="/RenJS/css/nucleus.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/font-awesome.min.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/auto-complete.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1528275553" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1528275553" rel="stylesheet">
+    
+
+    <script src="/RenJS/js/jquery-2.x.min.js?1528275553"></script>
+    
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{ 
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/RenJS/gui/gui/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/RenJS">RenJS</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1528275553"></script>
+<script type="text/javascript" src="/RenJS/js/auto-complete.js?1528275553"></script>
+<script type="text/javascript">
+    
+        var baseurl = '\/RenJS';
+    
+</script>
+<script type="text/javascript" src="/RenJS/js/search.js?1528275553"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/quickstart/">
+          <b>1. </b>Quickstart
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/quickstart/structure/" title="File Structure" class="dd-item ">
+        <a href="/RenJS/quickstart/structure/">
+        <b>1.1 </b>File Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/quickstart/structure-story/" title="Story Structure" class="dd-item ">
+        <a href="/RenJS/quickstart/structure-story/">
+        <b>1.2 </b>Story Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/">
+          <b>2. </b>Actions Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/showandhide/" title="Show and Hide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/showandhide/">
+          <b>2.1 </b>Show and Hide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/showandhide/transitions/" title="Transitions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/showandhide/transitions/">
+          <b>2.1.1 </b>Transitions
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/sayandtext/">
+          <b>2.2 </b>Say and Text
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/playandstop/" title="Play and Stop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/playandstop/">
+          <b>2.3 </b>Play and Stop
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/choiceandinterrupt/" title="Choice and Interrupt" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/choiceandinterrupt/">
+          <b>2.4 </b>Choice and Interrupt
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/var/" title="Variables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/var/">
+          <b>2.5 </b>Variables
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/if/" title="If" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/if/">
+          <b>2.6 </b>If
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/scene/" title="Scene" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/scene/">
+          <b>2.7 </b>Scene
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/wait/" title="Wait time or click" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/wait/">
+          <b>2.8 </b>Wait time or click
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/animate/" title="Animate" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/animate/">
+          <b>2.9 </b>Animate
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/call/" title="Call" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/call/">
+          <b>2.10 </b>Call
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/actions/effectandambient/" title="Effects and Ambients" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/actions/effectandambient/">
+          <b>2.11 </b>Effects and Ambients
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/setup/" title="Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/setup/">
+          <b>3. </b>Setup
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/setup/setup/" title="The Setup File" class="dd-item ">
+        <a href="/RenJS/setup/setup/">
+        <b>3.1 </b>The Setup File
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/gui/" title="GUI" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/RenJS/gui/">
+          <b>4. </b>GUI
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/gui/gui/" title="The GUI File" class="dd-item active">
+        <a href="/RenJS/gui/gui/">
+        <b>4.1 </b>The GUI File
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/mobileanddesktop/">
+          <b>5. </b>Mobile and Desktop
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/mobileanddesktop/electron/" title="Electron" class="dd-item ">
+        <a href="/RenJS/mobileanddesktop/electron/">
+        <b>5.1 </b>Electron
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/mobileanddesktop/cordova/" title="Cordova" class="dd-item ">
+        <a href="/RenJS/mobileanddesktop/cordova/">
+        <b>5.2 </b>Cordova
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/mobileanddesktop/cocoon/" title="Cocoon" class="dd-item ">
+        <a href="/RenJS/mobileanddesktop/cocoon/">
+        <b>5.3 </b>Cocoon
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/multilang/" title="I18n" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/multilang/">
+          <b>6. </b>I18n
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/multilang/multilang/" title="MultiLanguage Quickstart" class="dd-item ">
+        <a href="/RenJS/multilang/multilang/">
+        <b>6.1 </b>MultiLanguage Quickstart
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/engine/" title="Extending RenJS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/engine/">
+          <b>7. </b>Extending RenJS
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/engine/transitions/" title="Adding New Transitions" class="dd-item ">
+        <a href="/RenJS/engine/transitions/">
+        <b>6.1 </b>Adding New Transitions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/RenJS/engine/docs/" title="Engine documentation" class="dd-item ">
+        <a href="/RenJS/engine/docs/">
+        <b>6.4 </b>Engine documentation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/RenJS/games/" title="Games" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/RenJS/games/">
+          <b>8. </b>Games
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/gui/'>GUI</a> > The GUI File
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#assets">Assets</a>
+<ul>
+<li><a href="#fonts">Fonts</a></li>
+</ul></li>
+<li><a href="#hud">HUD</a></li>
+<li><a href="#menus">Menus</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h1>The GUI File</h1>
+          
+
+        
+
+
+
+
+<p>The GUI file (identified in the config.js file as &ldquo;guiConfig&rdquo;) has three main sections:</p>
+
+<ul>
+<li>assets: The list of assets used to build the gui, with key and file name.</li>
+<li>hud: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like <em>autoplay</em>, <em>skip</em> or <em>save</em>.</li>
+<li>menus: All the different menus of the game. You should at least have one main menu to start the game, and can have as many extra menus as you want. Some examples of what extra menus you could need are a <em>settings menu</em>, a <em>load game menu</em>, a <em>scenes menu</em>, etc.</li>
+</ul>
+
+<h2 id="assets">Assets</h2>
+
+<p>A list of all the assets, ordered by their types: images, spritesheets (for the buttons), audio, etc. The spritesheets take two extra parameters that indicate the width and height of each of its frames.</p>
+
+<pre><code class="language-yaml">assets:
+  fonts:
+    - audimat-mono
+  images:
+    mainBackground: assets/gui/menu.png
+    settingsBackground: assets/gui/settings.png
+    sliderFull: assets/gui/slider.png
+    messageBox:  assets/gui/textbox.png
+    nameBox:  assets/gui/namebox.png
+    ctc: assets/gui/ctc.png
+  spritesheets:
+    startButton: assets/gui/startbutton.png 163 83
+    loadButton: assets/gui/loadbutton.png 163 83
+    saveButton: assets/gui/savebutton.png 163 83
+    settingsButton: assets/gui/settingsbutton.png 163 83
+    returnButton: assets/gui/returnbutton.png 163 83
+    qmAutoButton: assets/gui/qmenuauto.png 47 45
+    qmSkipButton: assets/gui/qmenuskip.png 47 45
+    qmSettingsButton: assets/gui/qmenusettings.png 47 45
+    qmMuteButton: assets/gui/Mute.png 50 50
+    qmSaveButton: assets/gui/qmenusave.png 47 45
+    choice: assets/gui/choice.png 716 65
+    interrupt: assets/gui/interrupt.png 716 95
+  audio:
+    mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
+</code></pre>
+
+<p>You can call each of this assets whatever you like, but it&rsquo;s a good practice to use descriptive names for each one.</p>
+
+<h3 id="fonts">Fonts</h3>
+
+<p>The fonts are a special case, you need a list of the font names used declared in the assets section of the GUI file, like this:</p>
+
+<pre><code class="language-css">assets:
+  fonts:
+    - audimat-mono
+    - old-standard
+    - playfair
+
+</code></pre>
+
+<p>These fonts should also be declared in a css file, referenced in the config.js file (e.g. fonts.css).</p>
+
+<pre><code class="language-css">@font-face {
+  font-family: 'audimat-mono';
+  src: url('assets/gui/audimat-mono.ttf');
+  src: url('assets/gui/audimat-mono.ttf').format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'old-standard';
+  src: url('assets/gui/OldStandard-Regular.ttf');
+  src: url('assets/gui/OldStandard-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'playfair';
+  src: url('assets/gui/PlayfairDisplaySC-Regular.ttf');
+  src: url('assets/gui/PlayfairDisplaySC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+</code></pre>
+
+<p>This css file will be loaded onto the browser along with the game, and will allow it to find the font files (in this case only one: audimat-mono.ttf) and making them available for RenJS to use them.</p>
+
+<h2 id="hud">HUD</h2>
+
+<p>The hud, as explained above, is the part of the user interface shown during the game. In a visual novel, we have a set of elements common to most of them, like:</p>
+
+<ul>
+<li>Text box: Where the text and dialogs of the game will be shown. If there is no text to show, this box will be hidden.
+
+<ul>
+<li>CTC: The click to continue symbol is usually an animated or blinking image that indicates the player they have to click to continue with the story.</li>
+</ul></li>
+<li>Name box: Where the name of the talking character is displayed. If no character is talking, this box will be hidden.</li>
+<li>Quick menu: A little menu the player can use during the game, the usual options are:
+
+<ul>
+<li>Autoplay: Instead of waiting for the player to click after each dialog, the game will wait for a moment and continue until it needs the player input to make a choice.</li>
+<li>Skip: Like autoplay, but the game will be going <em>fast</em>. Used mostly to catch up and get quickly to the different ramifications of the game.</li>
+<li>Save: The the current state of the game, to be able to continue later. It could also open a Save Menu and let the player choose a slot for saving.</li>
+<li>Settings: Open the settings menu</li>
+</ul></li>
+<li>Choice button: Usually when the player has to make a choice, it will be by pressing a button with the desired option text.
+
+<ul>
+<li>Interrupt button: Same as the choice button, but for an <em>interrupting</em> option. It can be the same as the choice, or change slightly.</li>
+</ul></li>
+</ul>
+
+<p>A usual Hud setup looks like this:</p>
+
+<pre><code class="language-yaml">hud:
+  area:
+    - 640 450 748 554
+  message:
+    position: 
+      x: 46 
+      y: 435
+    textPosition: 
+      x: 36 
+      y: 36
+    textStyle:
+      font: 16pt audimat-mono
+      wordWrap: true
+      wordWrapWidth: 545
+      fill: &quot;#ac9393&quot;
+  name:
+    position: 
+      x: 36 
+      y: -40
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+  ctc: 
+    position:
+      x: 570 
+      y: 90
+    animated: false
+  choice:
+    separation: 95
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+      fill: &quot;#666666&quot;
+  interrupt:
+    textStyle:
+      font: 20pt audimat-mono
+      boundsAlignH: center
+      boundsAlignV: middle
+      fill: &quot;#664b4b&quot;        
+  buttons:
+    auto: 
+      position:
+        x: 647
+        y: 502
+      sprite: qmAutoButton
+    skip: 
+      position:
+        x: 694
+        y: 502
+      sprite: qmSkipButton
+    save: 
+      position:
+        x: 694
+        y: 457
+      sprite: qmSaveButton
+    settings: 
+      position:
+        x: 647
+        y: 457
+      sprite: qmSettingsButton
+</code></pre>
+
+<p>The <em>area</em> refers to a space defined by two points in the screen (x1 y1 x2 y2) inside of which the clicks of the player don&rsquo;t count as &ldquo;game clicks&rdquo;. So, if the game is waiting for the player to click, to continue with the story, but the player clicks inside this area, the game will not continue. We need this area to manage the interaction with the quick menu in the Hud. If the player clicks in the save button, it just means it wants to save, not continue with the story. This area doesn&rsquo;t have to be exactly the size of the menu, and it can actually cover more parts of the screen. You can define as many &ldquo;non clickable areas&rdquo; as you like.</p>
+
+<p>The <em>message</em> is the text box, or message box, definition. It takes a position in the screen to show the image (from it&rsquo;s left up corner), a text position to define where to start writing the text, relative to the message position; and the text style defined by font, if it should wordwrap and the width and the text color. You can add more text style options as long as they are valid for a Phaser text object.</p>
+
+<p>The <em>name</em> tag defines the namebox. It&rsquo;s position should be relative to the text box, and you also need to define a text style for it.</p>
+
+<p>The <em>ctc</em> is the click to continue, you just need to define a position relative to the text box, and say if it&rsquo;s animated or not. If not animated (not a spritesheet) it will blink.</p>
+
+<p>The <em>choice</em> is the choice button. Unless you specify a position, it will be centered in the screen. You also need to define a text style and a separation, in pixels, to show all of the choices as a list.</p>
+
+<p>In <em>interrupt</em> you can only define a different text style, since it will take the same parameters defined for the choice.</p>
+
+<p>The <em>buttons</em> tag refers to the quick menu. For each button you need to declare a key. This key is important, because it will be used to determine what the button will do. For example, the button save will call the save action, the button skip will call the skip action, and so on. If you have an extra button in your GUI that needs to do something different, you can add it with a specific key here, and then make sure you have a function to pair it with. The button has also a position and a sprite.</p>
+
+<p>You proably noticed that there&rsquo;s no sprites declared for <em>message</em>, <em>name</em>, etc. This is because the names of the assets are the default ones. If you change the asset name, then you would need to define also a sprite name in each of these elements.</p>
+
+<h2 id="menus">Menus</h2>
+
+<p>The menus section is a list with the different available menus of the game. The only mandatory one has to be called main, and it&rsquo;s the menu that will be called when the game loads. Each menu has a background (if not declared, it will take the default asset _menuname_Background), optionally music, and a list of buttons. To make it easier for making a settings menu, you can define also sliders, for things like volume or game speed.</p>
+
+<pre><code class="language-yaml">menus:
+  main: 
+    music: mainMusic
+    buttons: 
+      start: 
+        position:
+          x: 112
+          y: 462
+        sprite: startButton
+      load:  
+        position:
+          x: 320
+          y: 462
+        sprite: loadButton
+      settings:
+        position:
+          x: 528
+          y: 462
+        sprite: settingsButton
+  settings:
+    buttons:
+      return: 
+        position:
+          x: 112
+          y: 500
+        sprite: returnButton
+      start:  
+        position:
+          x: 320
+          y: 500
+        sprite: startButton
+      load:
+        position:
+          x: 528
+          y: 500
+        sprite: loadButton
+    sliders:
+      textSpeed: 
+        position:
+          x: 436
+          y: 235
+        sprite: sliderFull
+      autoSpeed:
+        position:
+          x: 436
+          y: 364
+        sprite: sliderFull
+      bgmv:
+        position:
+          x: 147
+          y: 235
+        sprite: sliderFull
+      sfxv:
+        position:
+          x: 147
+          y: 364
+        sprite: sliderFull
+</code></pre>
+
+<p>As with the quick menu, the actions of the buttons and properties of the slider will be defined by its key name.</p>
+
+<p>This kind of GUI is called a simple GUI because it lets you create a very simple but highly personalized GUI. You can check in the <a href="../../games">games section</a> some of what you can achieve with this simple system.</p>
+
+<p>If you want, you can also replace the simple gui entirely and code your own. For that, chech the <a href="../../engine">engine section</a> to see more details on how the gui interacts with the game.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="/RenJS/gui/" title="GUI"> <i class="fa fa-chevron-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="/RenJS/mobileanddesktop/" title="Mobile and Desktop" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/RenJS/js/clipboard.min.js?1528275553"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1528275553"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1528275553"></script>
+    <script src="/RenJS/js/jquery.sticky.js?1528275553"></script>
+    <script src="/RenJS/js/featherlight.min.js?1528275553"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1528275553"></script>
+    <script src="/RenJS/js/highlight.pack.js?1528275553"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/RenJS/js/modernizr.custom.71422.js?1528275553"></script>
+    <script src="/RenJS/js/learn.js?1528275553"></script>
+    <script src="/RenJS/js/hugo-learn.js?1528275553"></script>
+
+    <link href="/RenJS/mermaid/mermaid.css?1528275553" type="text/css" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1528275553"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

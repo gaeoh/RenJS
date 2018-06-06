@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Extending RenJS on RenJS</title>
+    <link>http://lunafromthemoon.github.io/RenJS/engine/</link>
+    <description>Recent content in Extending RenJS on RenJS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Sep 2017 23:27:00 -0300</lastBuildDate>
+    
+	<atom:link href="http://lunafromthemoon.github.io/RenJS/engine/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adding New Transitions</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/transitions/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/transitions/</guid>
+      <description>The transitions are used everytime we show, hide or change an image. This affects how that will be achieved. There are a few usual transitions ready to use with the game: CUT, FADE, FUSION, MOVE. This are usually enought in a very classical game, but you don&amp;rsquo;t have to be limited to them. Creating transitions is really easy if you know some javascript.
+All of the code concerning the transitions is inside the file RenJS/Transitions.</description>
+    </item>
+    
+    <item>
+      <title>Engine documentation</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/docs/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/docs/</guid>
+      <description>Page under construction If you&amp;rsquo;re a javascript developer and you&amp;rsquo;re thinking about extending RenJS, this is the place to start. In this section we&amp;rsquo;ll see how RenJS works, how to add new story actions, new functionality for the menus, etc.
+RenJS is separated into many files that each take care of a subsystem of it:
+ RenJSBootstrap: The bootstrap, it creates the game instance, loads a splash screen and kicks off the preloading process for the whole game.</description>
+    </item>
+    
+  </channel>
+</rss>

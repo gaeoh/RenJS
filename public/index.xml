@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RenJS</title>
+    <link>http://lunafromthemoon.github.io/RenJS/</link>
+    <description>Recent content on RenJS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Sep 2017 23:29:44 -0300</lastBuildDate>
+    
+	<atom:link href="http://lunafromthemoon.github.io/RenJS/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adding New Transitions</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/transitions/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/transitions/</guid>
+      <description>The transitions are used everytime we show, hide or change an image. This affects how that will be achieved. There are a few usual transitions ready to use with the game: CUT, FADE, FUSION, MOVE. This are usually enought in a very classical game, but you don&amp;rsquo;t have to be limited to them. Creating transitions is really easy if you know some javascript.
+All of the code concerning the transitions is inside the file RenJS/Transitions.</description>
+    </item>
+    
+    <item>
+      <title>Electron</title>
+      <link>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/electron/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/electron/</guid>
+      <description>One way to port the game to a native desktop application easily is by using Electron. Electron is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS. If you don&amp;rsquo;t know anything about it, don&amp;rsquo;t worry too much, here you can find the RenJS Quickstart ported to it.
+The way to write your game will be the same, since the Engine doesn&amp;rsquo;t actually change, we only add Electron as a wrapper over it.</description>
+    </item>
+    
+    <item>
+      <title>Engine documentation</title>
+      <link>http://lunafromthemoon.github.io/RenJS/engine/docs/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/engine/docs/</guid>
+      <description>Page under construction If you&amp;rsquo;re a javascript developer and you&amp;rsquo;re thinking about extending RenJS, this is the place to start. In this section we&amp;rsquo;ll see how RenJS works, how to add new story actions, new functionality for the menus, etc.
+RenJS is separated into many files that each take care of a subsystem of it:
+ RenJSBootstrap: The bootstrap, it creates the game instance, loads a splash screen and kicks off the preloading process for the whole game.</description>
+    </item>
+    
+    <item>
+      <title>File Structure</title>
+      <link>http://lunafromthemoon.github.io/RenJS/quickstart/structure/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/quickstart/structure/</guid>
+      <description>The quickstart is composed of a few files and folders, including the &amp;ldquo;executable&amp;rdquo; file index.html. Creating a game with RenJS means creating also a web page that runs said game. This allows you to ship your game to any platform that can run a web browser: Linux, Mac, Windows and even mobile devices, without needing to change your code.
+Let&amp;rsquo;s take a look at these files:
+ RenJS libs assets story index.</description>
+    </item>
+    
+    <item>
+      <title>The GUI File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/gui/gui/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/gui/gui/</guid>
+      <description>The GUI file (identified in the config.js file as &amp;ldquo;guiConfig&amp;rdquo;) has three main sections:
+ assets: The list of assets used to build the gui, with key and file name. hud: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like autoplay, skip or save.</description>
+    </item>
+    
+    <item>
+      <title>The Setup File</title>
+      <link>http://lunafromthemoon.github.io/RenJS/setup/setup/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/setup/setup/</guid>
+      <description>The setup file (usually something like Setup.yaml) has many sections, that can be written down in any order, and you might not need them all.
+Backgrounds A simple list of all the backgrounds of the game, with key (the name called from the story text) and filename.
+backgrounds: room: assets/backgrounds/room_day.jpg room_night: assets/backgrounds/room_night.jpg room_night_light: assets/backgrounds/room_night_light.jpg school_morning: assets/backgrounds/school_corridor.jpg school_afternoon: assets/backgrounds/school_corridor_afternoon.jpg  Characters The characters have some extra properties.
+ displayName: The key will be used to reference the character in the story text, but the display name is the one that will be shown to the player, and it can contain spaces and special characters, it can also be changed during the game.</description>
+    </item>
+    
+    <item>
+      <title>MultiLanguage Quickstart</title>
+      <link>http://lunafromthemoon.github.io/RenJS/multilang/multilang/</link>
+      <pubDate>Wed, 16 May 2018 15:27:25 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/multilang/multilang/</guid>
+      <description>First, you will need the multilanguage version of the engine, that you can download from here. There are a few differences with the normal version of RenJS. First, it adds a new file to load in the index, LanguageChooser.js. This file, as its name indicates, will display the language choosing screen, and then call the bootstrap for the game. It&amp;rsquo;s a really small and simple file, and if you don&amp;rsquo;t like how the language choosing screen looks like, here is where you should change things.</description>
+    </item>
+    
+    <item>
+      <title>Story Structure</title>
+      <link>http://lunafromthemoon.github.io/RenJS/quickstart/structure-story/</link>
+      <pubDate>Wed, 16 May 2018 15:27:25 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/quickstart/structure-story/</guid>
+      <description>Now that we know where our story is located, we&amp;rsquo;ll take a look at how it&amp;rsquo;s written down. The story .yaml files are what the writer will be, well, writing, for creating a game. So, let&amp;rsquo;s recap what the story folder should contain:
+ The story script: one or more files with the text of the story. The story setup: the link between the story and the assets. For example, it will list who are the characters (the name you will be using in the script to refer to it) and how the character will look (the files with the images for this character).</description>
+    </item>
+    
+    <item>
+      <title>Cordova</title>
+      <link>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cordova/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cordova/</guid>
+      <description>For creating native mobile application we can use Cordova. Just like Electron, Cordova is a wrapper for HTML5 applications to run as native apps in mobile devices: Android, iOS and Windows Phones.
+To make things easier, grab the RenJS Quickstart with Cordova, and let&amp;rsquo;s see the main differences. The biggest one is that the game is now inside the folder www. Everything inside of it is the same, you write your story as always.</description>
+    </item>
+    
+    <item>
+      <title>Cocoon</title>
+      <link>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cocoon/</link>
+      <pubDate>Wed, 16 May 2018 14:41:12 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/mobileanddesktop/cocoon/</guid>
+      <description>The easiest way to package your game is by using Cocoon. Cocoon is a cloud service, that means you don&amp;rsquo;t really need to install or do anything on your own computer, everything will be done on their servers. You just need to get an account in the Cocoon Platform, upload your code (based on this RenJS Quickstart with Cocoon), press a button to compile, and press another to download the packaged results.</description>
+    </item>
+    
+  </channel>
+</rss>
