@@ -88,6 +88,11 @@
   </url>
   
   <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/multilang/multilang/</loc>
+    <lastmod>2018-05-16T15:27:25+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://lunafromthemoon.github.io/RenJS/quickstart/structure-story/</loc>
     <lastmod>2018-05-16T15:27:25+02:00</lastmod>
   </url>
@@ -103,7 +108,7 @@
   </url>
   
   <url>
-    <loc>http://lunafromthemoon.github.io/RenJS/engine/</loc>
+    <loc>http://lunafromthemoon.github.io/RenJS/multilang/</loc>
     <lastmod>2017-09-25T23:27:00-03:00</lastmod>
   </url>
   
@@ -118,13 +123,18 @@
   </url>
   
   <url>
-    <loc>http://lunafromthemoon.github.io/RenJS/games/</loc>
-    <lastmod>2017-09-25T23:26:49-03:00</lastmod>
+    <loc>http://lunafromthemoon.github.io/RenJS/engine/</loc>
+    <lastmod>2017-09-25T23:27:00-03:00</lastmod>
   </url>
   
   <url>
     <loc>http://lunafromthemoon.github.io/RenJS/actions/wait/</loc>
     <lastmod>2017-09-26T13:14:26-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lunafromthemoon.github.io/RenJS/games/</loc>
+    <lastmod>2017-09-25T23:26:49-03:00</lastmod>
   </url>
   
   <url>

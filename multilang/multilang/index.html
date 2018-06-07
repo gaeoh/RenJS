@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Transitions :: RenJS</title>
+    <title>MultiLanguage Quickstart :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1528360064" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/actions/showandhide/transitions/">
+  <body class="" data-url="/RenJS/multilang/multilang/">
     <nav id="sidebar" class="">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -169,7 +169,7 @@
   
     
     <li data-nav-id="/RenJS/actions/showandhide/" title="Show and Hide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -196,8 +196,8 @@
   
     
     <li data-nav-id="/RenJS/actions/showandhide/transitions/" title="Transitions" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/actions/showandhide/transitions/">
@@ -667,7 +667,7 @@
   
     
     <li data-nav-id="/RenJS/multilang/" title="I18n" class="dd-item 
-        
+        parent
         
         
         ">
@@ -691,7 +691,7 @@
  
   
     
-      <li data-nav-id="/RenJS/multilang/multilang/" title="MultiLanguage Quickstart" class="dd-item ">
+      <li data-nav-id="/RenJS/multilang/multilang/" title="MultiLanguage Quickstart" class="dd-item active">
         <a href="/RenJS/multilang/multilang/">
         <b>6.1 </b>MultiLanguage Quickstart
         
@@ -850,13 +850,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/actions/'>Actions Guide</a> > <a href='/RenJS/actions/showandhide/'>Show and Hide</a> > Transitions
-          
-         
+            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/multilang/'>I18n</a> > MultiLanguage Quickstart
           
          
           
@@ -868,21 +862,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#cut">CUT</a></li>
-<li><a href="#fade">FADE</a></li>
-<li><a href="#fusion">FUSION</a></li>
-<li><a href="#fadetoblack-fadetowhite-fadetocolor">FADETOBLACK, FADETOWHITE, FADETOCOLOR</a></li>
-<li><a href="#move">MOVE</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -894,58 +874,122 @@
         
         <div id="body-inner">
           
-            <h1>Transitions</h1>
+            <h1>MultiLanguage Quickstart</h1>
           
 
         
 
 
+<p>First, you will need the multilanguage version of the engine, that you can download from <a href="https://gitlab.com/lunafromthemoon/RenJSMultilanguage">here</a>. There are a few differences with the normal version of RenJS. First, it adds a new file to load in the index, <em>LanguageChooser.js</em>. This file, as its name indicates, will display the language choosing screen, and then call the bootstrap for the game. It&rsquo;s a really small and simple file, and if you don&rsquo;t like how the language choosing screen looks like, here is where you should change things.</p>
 
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 
-<p>The transitions are used everytime we show, hide or change an image. This affects how that will be achieved. There are a few usual transitions ready to use with the game, but you can check the file RenJS/Transitions.js to see how to create your own transition.</p>
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt; RenJS &lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;libs/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;config.js&quot;&gt;&lt;/script&gt;     
+    &lt;script type=&quot;text/javascript&quot; src=&quot;RenJS/LanguageChooser.js&quot;&gt;&lt;/script&gt;     
+    &lt;script type=&quot;text/javascript&quot; src=&quot;RenJS/RenJSBootstrap.js&quot;&gt;&lt;/script&gt;     
+  &lt;/head&gt;
+  &lt;body&gt;    
+  &lt;/body&gt;
 
-<h3 id="cut">CUT</h3>
-
-<p>The most common transition is CUT, that means the image will be simply shown (or hidden) instantly.</p>
-
-<pre><code class="language-yaml">  - show deuzi: normal
-  - show deuzi: angry WITH CUT
+&lt;/html&gt;
 </code></pre>
 
-<h3 id="fade">FADE</h3>
+<p>Next difference is in the config file:</p>
 
-<p>The FADE transition will interpolate the alpha of the image, taking some time. To show an image it will go from alpha 0 to alpha 1, in a FADE IN. To hide and image it will do the contrary, going from alpha 1 to alpha 0 in a FADE OUT. To change on image for another, it will first do a FADE IN and then FADE OUT.</p>
+<pre><code class="language-js">var globalConfig = {
+  w:800,
+  h:600,
+  mode: &quot;AUTO&quot;,
+  scaleMode: &quot;SHOW_ALL&quot;, //SHOW_ALL, EXACT_FIT
+  i18n: {
+    langs: [&quot;en&quot;,&quot;es&quot;],
+    path: &quot;assets/gui/i18n/&quot;,
+    format: &quot;.png&quot;,
+    w: 163,
+    h: 83
+  },
+  splash: { //The &quot;Loading&quot; page for your game
+    loadingScreen: &quot;assets/gui/LANG/splash.png&quot;, //splash background
+    loadingBar: {
+      fullBar: &quot;assets/gui/LANG/loadingbar.png&quot;,
+      position: {x:111,y:462}
+    }
+  },
+  fonts: &quot;assets/gui/fonts.css&quot;,
+  guiConfig: &quot;story/GUI.yaml&quot;,
+  storySetup: &quot;story/Setup.yaml&quot;,
+  //as many story text files as you want
+  storyText: [
+        &quot;story/LANG/YourStory.yaml&quot;
+    ],
+}
 
-<pre><code class="language-yaml">  - show deuzi: WITH FADE AT CENTER
 </code></pre>
 
-<h3 id="fusion">FUSION</h3>
+<p>There are a few differences here. First, there&rsquo;s a new tag called <em>i18n</em>. I18n is short for Internationalization, and it&rsquo;s where all your multi language information is kept. It has:</p>
 
-<p>If used to show or hide an image, FUSION will behave exactly like FADE, but when changing images, FUSION will do both the FADE IN and FADE OUT at the same time, and it will look aproximately like one image is fusing with the other one.</p>
+<ul>
+<li>Langs: A list of the available languages. In this case we have <em>en</em> for english and <em>es</em> for spanish.</li>
+<li>Path: Where to find the language buttons that will be shown in the language choosing screen. It&rsquo;s not a file, but a folder and should en in &ldquo;/&rdquo;.</li>
+<li>Format: The image format of the buttons, as a file extension. In this case &ldquo;.png&rdquo;.</li>
+<li>W and H: The width and height of the buttons. Each button has two states, normal and pressed, in the same file, this values help to see find where each frame lies.</li>
+</ul>
 
-<pre><code class="language-yaml">  - show room_dark_lamp_off:
-  - show room_dark_lamp_on: WITH FUSION
+<p>But this is not the only difference, we can also see some files with the path &ldquo;LANG&rdquo; in it. If you check your story folder, for example, you will not find any folder called LANG. Insted this reserved word will be replaced by the language tag chosen by the player. So, if the player chooses spanish (tag <em>es</em>), everywhere where it says <em>LANG</em> will be replaced by <em>es</em>. This means, for example, that the element <em>loadingScreen</em> will be then loaded from &ldquo;assets/gui/es/splash.png&rdquo;. Same thing with your story files.</p>
+
+<p>If you check now the story folder, you will find the setup and gui files as always, but the story file is now twice, once for spanish and once for english, in their respective folders:</p>
+
+<ul>
+<li>Setup.yaml</li>
+<li>GUI.yaml</li>
+<li>en
+
+<ul>
+<li>YourStory.yaml</li>
+</ul></li>
+<li>es
+
+<ul>
+<li>YourStory.yaml</li>
+</ul></li>
+</ul>
+
+<p>The same way you can change the loading bar for every language, you can do with every resource. For example, we need to change all of the menu&rsquo;s buttons. This buttons are defined in the GUI.yaml file, so let&rsquo;s inspect it&rsquo;s contents:</p>
+
+<pre><code class="language-yaml">assets:
+  fonts:
+    - audimat-mono
+  images:
+    mainBackground: assets/gui/menu.png
+    settingsBackground: assets/gui/LANG/settings.png
+    sliderFull: assets/gui/slider.png
+    messageBox:  assets/gui/textbox.png
+    nameBox:  assets/gui/namebox.png
+    ctc: assets/gui/ctc.png
+    languageSign: assets/gui/LANG/language-sign.png
+  spritesheets:
+    startButton: assets/gui/LANG/startbutton.png 163 83
+    loadButton: assets/gui/LANG/loadbutton.png 163 83
+    saveButton: assets/gui/LANG/savebutton.png 163 83
+    settingsButton: assets/gui/LANG/settingsbutton.png 163 83
+    returnButton: assets/gui/LANG/returnbutton.png 163 83
+    qmAutoButton: assets/gui/qmenuauto.png 47 45
+    qmSkipButton: assets/gui/qmenuskip.png 47 45
 </code></pre>
 
-<h3 id="fadetoblack-fadetowhite-fadetocolor">FADETOBLACK, FADETOWHITE, FADETOCOLOR</h3>
-
-<p>The whole screen will be covered by a color in a FADEIN, the changes to the image will be performed, and then a FADEOUT of the overlay will reveal the changes.</p>
-
-<pre><code class="language-yaml">  - hide jair: WITH FADETOBLACK
-</code></pre>
-
-<h3 id="move">MOVE</h3>
-
-<p>Another important transition is MOVE, normally used for characters, will interpolate the current position of the image to the new one. For example, to show a character entering the screen from the right first you would show it in the position OUTRIGHT (outside of the screen, to the right side), and then show it at another position, using the MOVE transition.</p>
-
-<pre><code class="language-yaml">  - show deuzi: WITH CUT AT OUTRIGHT
-  - show deuzi: WITH MOVE AT CENTER
-</code></pre>
+<p>You don&rsquo;t need to have a separate GUI file for each language, though you may have them if you want, but you need to specify where to find the assets for the different languages, using the LANG reserved word in the path of these files. As with the story folder, you will find the new language folders under assets/gui, with all the assets that need to be changed.
+GUI and story is usually the most important parts of your game to translate, but there might be other places where you need to make changes, maybe a character or object with some writing on it? Maybe a background? With this technique you should be able to make these changes without changing too much code.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -1029,7 +1073,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1045,7 +1088,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1060,7 +1102,6 @@
             
             
                 
-                    
                     
                 
                 
@@ -1080,9 +1121,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1375,6 +1413,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1382,6 +1421,58 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1415,54 +1506,6 @@
                     
 
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -1473,10 +1516,10 @@
 
 
         
-            <a class="nav nav-prev" href="/RenJS/actions/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/multilang/" title="I18n"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/actions/sayandtext/" title="Say and Text" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/engine/" title="Extending RenJS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1506,3 +1549,4 @@
 
   </body>
 </html>
+

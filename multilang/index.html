@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-    <title>Transitions :: RenJS</title>
+    <title>I18n :: RenJS</title>
     
     
     <link href="/RenJS/css/nucleus.css?1528360064" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/RenJS/actions/showandhide/transitions/">
+  <body class="" data-url="/RenJS/multilang/">
     <nav id="sidebar" class="">
 
 
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -169,7 +169,7 @@
   
     
     <li data-nav-id="/RenJS/actions/showandhide/" title="Show and Hide" class="dd-item 
-        parent
+        
         
         
         ">
@@ -196,8 +196,8 @@
   
     
     <li data-nav-id="/RenJS/actions/showandhide/transitions/" title="Transitions" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/RenJS/actions/showandhide/transitions/">
@@ -667,8 +667,8 @@
   
     
     <li data-nav-id="/RenJS/multilang/" title="I18n" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/RenJS/multilang/">
@@ -836,8 +836,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
-                  
                   <span class="links">
                     
           
@@ -846,19 +844,7 @@
             
           
           
-            
-            
-          
-          
-            
-            
-          
-          
-            <a href='/RenJS/'>RenJS</a> > <a href='/RenJS/actions/'>Actions Guide</a> > <a href='/RenJS/actions/showandhide/'>Show and Hide</a> > Transitions
-          
-         
-          
-         
+            <a href='/RenJS/'>RenJS</a> > I18n
           
          
           
@@ -866,35 +852,14 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#cut">CUT</a></li>
-<li><a href="#fade">FADE</a></li>
-<li><a href="#fusion">FUSION</a></li>
-<li><a href="#fadetoblack-fadetowhite-fadetocolor">FADETOBLACK, FADETOWHITE, FADETOCOLOR</a></li>
-<li><a href="#move">MOVE</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-    </div>
-</div>
-
-                
               </div>
             </div>
             
 
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>Transitions</h1>
           
 
         
@@ -902,51 +867,21 @@
 
 
 
-<p>The transitions are used everytime we show, hide or change an image. This affects how that will be achieved. There are a few usual transitions ready to use with the game, but you can check the file RenJS/Transitions.js to see how to create your own transition.</p>
+<h3 id="internationalization">Internationalization</h3>
 
-<h3 id="cut">CUT</h3>
+<h1 id="multi-language-games">Multi Language Games</h1>
 
-<p>The most common transition is CUT, that means the image will be simply shown (or hidden) instantly.</p>
+<p>RenJS now provides a way to make your game multilanguage. For this you will need your story script translated to every language you want to provide. You&rsquo;ll also need an extra screen: Choosing the language. Due to the way the game is loaded, the player will have to choose the language at the start of the game, before the main menu is loaded. She cannot change the language in the middle of the game, but it&rsquo;s possible to do it by reloading the game. The save and load features will still work between languages, so it&rsquo;s of no concern for you what the player chooses and when.</p>
 
-<pre><code class="language-yaml">  - show deuzi: normal
-  - show deuzi: angry WITH CUT
-</code></pre>
-
-<h3 id="fade">FADE</h3>
-
-<p>The FADE transition will interpolate the alpha of the image, taking some time. To show an image it will go from alpha 0 to alpha 1, in a FADE IN. To hide and image it will do the contrary, going from alpha 1 to alpha 0 in a FADE OUT. To change on image for another, it will first do a FADE IN and then FADE OUT.</p>
-
-<pre><code class="language-yaml">  - show deuzi: WITH FADE AT CENTER
-</code></pre>
-
-<h3 id="fusion">FUSION</h3>
-
-<p>If used to show or hide an image, FUSION will behave exactly like FADE, but when changing images, FUSION will do both the FADE IN and FADE OUT at the same time, and it will look aproximately like one image is fusing with the other one.</p>
-
-<pre><code class="language-yaml">  - show room_dark_lamp_off:
-  - show room_dark_lamp_on: WITH FUSION
-</code></pre>
-
-<h3 id="fadetoblack-fadetowhite-fadetocolor">FADETOBLACK, FADETOWHITE, FADETOCOLOR</h3>
-
-<p>The whole screen will be covered by a color in a FADEIN, the changes to the image will be performed, and then a FADEOUT of the overlay will reveal the changes.</p>
-
-<pre><code class="language-yaml">  - hide jair: WITH FADETOBLACK
-</code></pre>
-
-<h3 id="move">MOVE</h3>
-
-<p>Another important transition is MOVE, normally used for characters, will interpolate the current position of the image to the new one. For example, to show a character entering the screen from the right first you would show it in the position OUTRIGHT (outside of the screen, to the right side), and then show it at another position, using the MOVE transition.</p>
-
-<pre><code class="language-yaml">  - show deuzi: WITH CUT AT OUTRIGHT
-  - show deuzi: WITH MOVE AT CENTER
-</code></pre>
+<p>So, let&rsquo;s check what we need to do for converting our Quickstart game into a multilanguage game.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
+        
+            </div> 
         
         </div> 
         
@@ -1029,7 +964,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1045,7 +979,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1060,7 +993,6 @@
             
             
                 
-                    
                     
                 
                 
@@ -1080,9 +1012,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1375,6 +1304,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1382,6 +1312,57 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1415,54 +1396,6 @@
                     
 
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -1473,10 +1406,10 @@
 
 
         
-            <a class="nav nav-prev" href="/RenJS/actions/showandhide/" title="Show and Hide"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/RenJS/mobileanddesktop/cocoon/" title="Cocoon"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/RenJS/actions/sayandtext/" title="Say and Text" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/RenJS/multilang/multilang/" title="MultiLanguage Quickstart" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

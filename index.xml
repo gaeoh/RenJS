@@ -76,6 +76,15 @@ backgrounds: room: assets/backgrounds/room_day.jpg room_night: assets/background
     </item>
     
     <item>
+      <title>MultiLanguage Quickstart</title>
+      <link>http://lunafromthemoon.github.io/RenJS/multilang/multilang/</link>
+      <pubDate>Wed, 16 May 2018 15:27:25 +0200</pubDate>
+      
+      <guid>http://lunafromthemoon.github.io/RenJS/multilang/multilang/</guid>
+      <description>First, you will need the multilanguage version of the engine, that you can download from here. There are a few differences with the normal version of RenJS. First, it adds a new file to load in the index, LanguageChooser.js. This file, as its name indicates, will display the language choosing screen, and then call the bootstrap for the game. It&amp;rsquo;s a really small and simple file, and if you don&amp;rsquo;t like how the language choosing screen looks like, here is where you should change things.</description>
+    </item>
+    
+    <item>
       <title>Story Structure</title>
       <link>http://lunafromthemoon.github.io/RenJS/quickstart/structure-story/</link>
       <pubDate>Wed, 16 May 2018 15:27:25 +0200</pubDate>
