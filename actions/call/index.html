@@ -2,30 +2,31 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.37.1" />
     <meta name="description" content="">
 
 
-    <link rel="shortcut icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
-<link rel="icon" href="/RenJS/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="/RenJS/images/favicon.png" type="image/png">
+
     <title>Call :: RenJS</title>
+
     
-    
-    <link href="/RenJS/css/nucleus.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/font-awesome.min.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/hybrid.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/featherlight.min.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/perfect-scrollbar.min.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/auto-complete.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/theme.css?1528705110" rel="stylesheet">
-    <link href="/RenJS/css/hugo-theme.css?1528705110" rel="stylesheet">
+    <link href="/RenJS/css/nucleus.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/fontawesome-all.min.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/hybrid.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/featherlight.min.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/perfect-scrollbar.min.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/auto-complete.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/atom-one-dark-reasonable.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/theme.css?1562593902" rel="stylesheet">
+    <link href="/RenJS/css/hugo-theme.css?1562593902" rel="stylesheet">
     
 
-    <script src="/RenJS/js/jquery-2.x.min.js?1528705110"></script>
-    
-    <style type="text/css">
-      :root #header + #content > #left > #rlblock_left{ 
+    <script src="/RenJS/js/jquery-3.3.1.min.js?1562593902"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
           display:none !important;
       }
       
@@ -43,19 +44,19 @@
     </div>
     
         <div class="searchbox">
-    <label for="search-by"><i class="fa fa-search"></i></label>
-    <input data-search-input id="search-by" type="text" placeholder="Search...">
-    <span data-search-clear=""><i class="fa fa-close"></i></span>
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/RenJS/js/lunr.min.js?1528705110"></script>
-<script type="text/javascript" src="/RenJS/js/auto-complete.js?1528705110"></script>
+<script type="text/javascript" src="/RenJS/js/lunr.min.js?1562593902"></script>
+<script type="text/javascript" src="/RenJS/js/auto-complete.js?1562593902"></script>
 <script type="text/javascript">
     
-        var baseurl = '\/RenJS';
+        var baseurl = "http:\/\/lunafromthemoon.github.io\/RenJS";
     
 </script>
-<script type="text/javascript" src="/RenJS/js/search.js?1528705110"></script>
+<script type="text/javascript" src="/RenJS/js/search.js?1562593902"></script>
 
     
   </div>
@@ -811,7 +812,7 @@
 
     
     <section id="footer">
-      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
 
     </section>
   </div>
@@ -832,13 +833,15 @@
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
                         <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
-                          <i class="fa fa-bars"></i>
+                          <i class="fas fa-bars"></i>
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
                   
                   <span class="links">
+                 
+                 
                     
           
           
@@ -856,7 +859,8 @@
           
          
           
-           
+        
+                 
                   </span>
                 </div>
                 
@@ -881,29 +885,34 @@
               </div>
             </div>
             
-
+        <div id="head-tags">
+        
+        </div>
         
         <div id="body-inner">
           
-            <h1>Call</h1>
+            <h1>
+              
+              Call
+            </h1>
           
 
         
 
 
 
+
+	
 
 <p>The <em>call</em> action allows you to call your very own javascript functions.</p>
 
 <pre><code class="language-yaml">    
     - call function_name:
-        param1: value1
-        param2: value2
-        ...
-    - ...
-</code></pre>
+      param1: value1
+      param2: value2
+      ...
 
-<p>Notice the indentation of the parameters, it&rsquo;s two spaces inside the call action.</p>
+</code></pre>
 
 <p>The function must be located in the file RenJS/CustomContent.js, inside the map customContent defined there.</p>
 
@@ -941,6 +950,9 @@ The <em>RenJS.resolve()</em> function tells the automat that it can continue wit
 <h3 id="phaser">Phaser</h3>
 
 <p>As RenJS is built over <a href="https://phaser.io/">Phaser</a>, you can use any Phaser method to do whatever you want. Just be careful not to break everything!</p>
+
+
+
 
 
 <footer class=" footline" >
@@ -1474,12 +1486,15 @@ The <em>RenJS.resolve()</em> function tells the automat that it can continue wit
         
 
 
-        
-            <a class="nav nav-prev" href="/RenJS/actions/animate/" title="Animate"> <i class="fa fa-chevron-left"></i></a>
-        
-        
-            <a class="nav nav-next" href="/RenJS/actions/effectandambient/" title="Effects and Ambients" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
-        
+	 
+	 
+		
+			<a class="nav nav-prev" href="/RenJS/actions/animate/" title="Animate"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/RenJS/actions/effectandambient/" title="Effects and Ambients" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
     </div>
 
     </section>
@@ -1487,20 +1502,20 @@ The <em>RenJS.resolve()</em> function tells the automat that it can continue wit
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/RenJS/js/clipboard.min.js?1528705110"></script>
-    <script src="/RenJS/js/perfect-scrollbar.min.js?1528705110"></script>
-    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1528705110"></script>
-    <script src="/RenJS/js/jquery.sticky.js?1528705110"></script>
-    <script src="/RenJS/js/featherlight.min.js?1528705110"></script>
-    <script src="/RenJS/js/html5shiv-printshiv.min.js?1528705110"></script>
-    <script src="/RenJS/js/highlight.pack.js?1528705110"></script>
+    <script src="/RenJS/js/clipboard.min.js?1562593902"></script>
+    <script src="/RenJS/js/perfect-scrollbar.min.js?1562593902"></script>
+    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1562593902"></script>
+    <script src="/RenJS/js/jquery.sticky.js?1562593902"></script>
+    <script src="/RenJS/js/featherlight.min.js?1562593902"></script>
+    <script src="/RenJS/js/html5shiv-printshiv.min.js?1562593902"></script>
+    <script src="/RenJS/js/highlight.pack.js?1562593902"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/RenJS/js/modernizr.custom.71422.js?1528705110"></script>
-    <script src="/RenJS/js/learn.js?1528705110"></script>
-    <script src="/RenJS/js/hugo-learn.js?1528705110"></script>
+    <script src="/RenJS/js/modernizr.custom-3.6.0.js?1562593902"></script>
+    <script src="/RenJS/js/learn.js?1562593902"></script>
+    <script src="/RenJS/js/hugo-learn.js?1562593902"></script>
 
-    <link href="/RenJS/mermaid/mermaid.css?1528705110" type="text/css" rel="stylesheet" />
-    <script src="/RenJS/mermaid/mermaid.js?1528705110"></script>
+    <link href="/RenJS/mermaid/mermaid.css?1562593902" rel="stylesheet" />
+    <script src="/RenJS/mermaid/mermaid.js?1562593902"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
