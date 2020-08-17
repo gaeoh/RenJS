@@ -13,7 +13,7 @@ RenJS.effects = {
             bg.drawRect(0, 0, globalConfig.w, globalConfig.h);
             bg.endFill();
             bg.alpha = 0;
-            var style = _.clone(_.extend(config.defaultTextStyle,RenJS.gui.getChoiceTextStyle()));
+            var style = {...config.defaultTextStyle,...RenJS.gui.getChoiceTextStyle()};
             style.font = "25pt "+RenJS.gui.getFonts()[0];
             var credits = game.add.text(game.world.centerX,globalConfig.h+30,params.text[0],style);
             credits.anchor.set(0.5);
@@ -47,7 +47,7 @@ RenJS.effects = {
         return new Promise(function(resolve, reject) {
             var bg = game.add.sprite(game.world.centerX,game.world.centerY,"title");
             bg.anchor.set(0.5);
-            var style = _.clone(_.extend(config.defaultTextStyle,RenJS.gui.getChoiceTextStyle()));
+            var style = {...config.defaultTextStyle,...RenJS.gui.getChoiceTextStyle()};
             style.font = "50pt "+RenJS.gui.getFonts()[0];
             var title = game.add.text(0,-20, param.title, style);
             style.font = "25pt "+RenJS.gui.getFonts()[0];

@@ -41,7 +41,7 @@ function BackgroundManager(){
     }
 
     this.isBackground = function(actor){
-        return _.has(this.backgrounds,actor);
+        return actor in this.backgrounds;
     }
 }
 

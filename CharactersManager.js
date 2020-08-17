@@ -25,9 +25,9 @@ function CharactersManager(){
     
     this.add = function(name,displayName,speechColour,looks){
         this.characters[name] = new Character(displayName,speechColour);
-        _.each(looks,function(filename,look){
+        for (const look in looks){
             this.characters[name].addLook(look,name+"_"+look);
-        },this);
+        }
     }
 
     this.show = function(name,transition,props){        
@@ -56,30 +56,30 @@ function CharactersManager(){
     this.set = function (showing) {
         this.hideAll('CUT');
         this.showing = showing;
-        _.each(this.showing,function(ch,name) {
+        for (const name in this.showing){
+            var props = this.showing[name];
             var character = this.characters[name];
-            character.currentLook = character.looks[ch.look];
-            character.currentLook.x = ch.position.x; 
-            character.currentLook.y = ch.position.y;
-            character.currentLook.scaleX = ch.flipped ? -1 : 1;
+            character.currentLook = character.looks[props.look];
+            character.currentLook.x = props.position.x; 
+            character.currentLook.y = props.position.y;
+            character.currentLook.scaleX = props.flipped ? -1 : 1;
             character.currentLook.alpha = 1;
-        },this);
+        }
     }
 
     this.hideAll = function(transition){
         if (!transition) transition = 'FADEOUT';
         return new Promise(function(resolve,reject){
             var promises = []
-            var chars = _.keys(RenJS.chManager.showing)
-            _.each(chars,function(char){
+            for (const char in RenJS.chManager.showing){
                 promises.push(RenJS.chManager.hide(char,RenJS.transitions[transition]));
-            },RenJS.chManager)
+            }
             Promise.all(promises).then(resolve);
         });
     }
 
     this.isCharacter = function(actor){
-        return _.has(this.characters,actor);
+        return actor in this.characters;
     }
 
 }

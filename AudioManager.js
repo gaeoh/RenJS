@@ -11,21 +11,21 @@ function AudioManager(){
     }
 
     this.isMusic = function(actor){    
-        return _.has(this.musicList,actor);
+        return actor in this.musicList
     }
 
     this.isSfx = function(actor){    
-        return _.has(this.sfx,actor);
+        return actor in this.sfx
     }
 
     this.init = function(callback){
         var audioList = [];
-        _.each(RenJS.setup.music,function(filename,key){
+        Object.keys(RenJS.setup.music).forEach(key => {
             this.musicList[key] = game.add.audio(key);
             audioList.push(this.musicList[key]);
         },this);
         
-        _.each(RenJS.setup.sfx,function(filename,key){
+        Object.keys(RenJS.setup.sfx).forEach(key => {
             this.sfx[key] = game.add.audio(key);            
             audioList.push(this.sfx[key]);
         },this);

@@ -127,9 +127,9 @@ var RenJS = {
         RenJS.cgsManager.set(data.cgs);
         RenJS.logicManager.set(data.vars);
         RenJS.gui.clear();
-        var stack = _.last(data.stack);
+        var stack = data.stack[data.stack.length-1];
         var scene = stack.scene;
-        var allActions = _.clone(RenJS.story[scene]);
+        var allActions = [...RenJS.story[scene]];
         var actions = allActions.slice(stack.c);
         if(data.stack.length != 1){
             for (var i = data.stack.length-2;i>=0;i--){
@@ -144,7 +144,7 @@ var RenJS = {
                         allActions = nestedAction.choice[stack.index][stack.op];
                         break;
                     case "if":
-                        var action = _.keys(nestedAction)[0];
+                        var action = Object.keys(nestedAction)[0];
                         allActions = nestedAction[action];
 
                 }
@@ -240,7 +240,7 @@ var RenJS = {
     }
 };
 
-var config = _.clone(defaults);
+var config = {...defaults};
 
 //control variables
 RenJS.control = {

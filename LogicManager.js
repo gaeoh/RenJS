@@ -50,7 +50,7 @@ function LogicManager(){
             actions = branches.ISFALSE;
         }
         if(actions){
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
+            RenJS.storyManager.currentScene = actions.concat(RenJS.storyManager.currentScene);
             RenJS.control.execStack.unshift({c:-1,total: actions.length, action: "if"});
         }        
     }
@@ -58,20 +58,20 @@ function LogicManager(){
     this.parseVars = function(text,useQM){
         var vars = text.match(/\{(.*?)\}/g);
         if (vars) {
-            _.each(vars,function(v){
+            for (const v in vars){
                 var varName = v.substring(1,v.length-1);
                 var value = this.vars[varName]
                 if (useQM && typeof value == "string"){
                     value = '\"'+value+'\"';
                 }
                 text = text.replace(v,value);
-            },this);
+            }
         }
         return text;
     }
 
     this.evalChoice = function(choice){
-        var choiceText = _.keys(choice)[0];
+        var choiceText = Object.keys(choice)[0];
         choice.choiceId = "Choice"+guid();
         choice.choiceText = choiceText;
         var params = choiceText.split("!if");
@@ -89,13 +89,14 @@ function LogicManager(){
     }
 
     this.showVisualChoices = function(choices){
-        var ch = _.map(choices,_.clone);
-        ch = _.filter(ch,this.evalChoice);
+        // clone
+        var ch = choices.map(choice => {...choice});
+        // filter (eval choice modifies the choice adding id and clearing text)
+        ch = ch.filter(this.evalChoice,this);
         this.visualChoices = game.add.group();
         this.currentChoices = ch;
-        _. each(ch, function(choice,index){
-            
-            var key = _.keys(choice)[0];
+        for (const choice in ch){
+            var key = Object.keys(choice)[0];
             var str = key.split(" ");
             var pos = str[2].split(",");
             var position = {x:parseInt(pos[0]),y:parseInt(pos[1])};
@@ -103,8 +104,7 @@ function LogicManager(){
                 RenJS.logicManager.choose(index,key);
             },RenJS.logicManager,0,0,0,0,this.visualChoices);
             button.anchor.set(0.5);
-        },this);
-        // debugger;
+        }
     }
 
     this.getExecStackId = function() {
@@ -114,8 +114,8 @@ function LogicManager(){
     }
 
     this.showChoices = function(choices){
-        var ch = _.map(choices,_.clone);
-        ch = _.filter(ch,this.evalChoice);
+        var ch = choices.map(choice => {...choice});
+        ch = ch.filter(this.evalChoice,this);
         RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.concat(ch);    
         // Update choice log 
         var execId = RenJS.logicManager.getExecStackId();
@@ -130,12 +130,12 @@ function LogicManager(){
         this.interrupting = true;
         var s = parseInt(steps);
         if (!isNaN(s) && s>0){
-            _.each(choices,function(choice){
+            for (var choice in choices){
                 choice.remainingSteps = s+1;
                 choice.interrupt = true;
-            });
+            }
             RenJS.onInterpretActions.interruptAction = function(){
-                RenJS.logicManager.currentChoices = _.filter(RenJS.logicManager.currentChoices,function(choice){
+                RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.filter(choice => {
                     if (choice.remainingSteps) {
                         choice.remainingSteps--;
                         if (choice.remainingSteps==1){
@@ -146,7 +146,7 @@ function LogicManager(){
                         }
                     }
                     return true;
-                });
+                },this);
                 if (RenJS.logicManager.currentChoices.length == 0){
                     delete RenJS.onInterpretActions.interruptAction;
                 }
@@ -176,7 +176,7 @@ function LogicManager(){
         }
         if (chosenOption){
             var actions = RenJS.logicManager.currentChoices[index][chosenOption];
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
+            RenJS.storyManager.currentScene = actions.concat(RenJS.storyManager.currentScene);
             RenJS.control.execStack.unshift({c:-1,index:index,op:chosenOption,total:actions.length,action:"choice"});
         }
         RenJS.logicManager.currentChoices = [];

@@ -20,7 +20,7 @@ var preload = {
     //load external libraries
     game.load.script('esprima',  'libs/esprima.js');
     game.load.script('yaml',  'libs/js-yaml.min.js');
-    game.load.script('underscore',  'libs/underscore-min.js');
+    // game.load.script('underscore',  'libs/underscore-min.js');
     //load RenJS
     game.load.script('Defaults',  'RenJS/Defaults.js');
     game.load.script('RenJSBuilderMadeGUI',  'RenJS/RenJSBuilderMadeGUI.js');
@@ -52,10 +52,10 @@ var preload = {
     RenJS.setup = jsyaml.load(game.cache.getText("storySetup"));
     //load the story text
     var story = {};
-    _.each(globalConfig.storyText,function (file,index) {
+    globalConfig.storyText.forEach((file,index) => {
         var text = jsyaml.load(game.cache.getText("story"+index));
-        story = _.extend(story,text);
-    });
+        story = {...story,...text};
+    },this)
     RenJS.story = story;  
     //load and create the GUI
     var gui = jsyaml.load(game.cache.getText("guiConfig"));
@@ -67,10 +67,9 @@ var preload = {
     }
     
     //preload the fonts by adding text, else they wont be fully loaded :\
-    _.each(RenJS.gui.getFonts(),function(font){
-        // console.log("loading" + font)
+    for (const font in RenJS.gui.getFonts()){
         game.add.text(20, 20, font, {font: '42px '+font});
-    });
+    }
     //start preloading story
     game.state.add('preloadStory', preloadStory);
     game.state.start('preloadStory');
@@ -91,25 +90,26 @@ var preloadStory = {
   preload: function () {
     this.load.setPreloadSprite(this.loadingBar);
     //preload gui
-    _.each(RenJS.gui.getAssets(),function(asset){
+    for(const asset in RenJS.gui.getAssets()){
         if (asset.type == "spritesheet"){
             game.load.spritesheet(asset.key, preparePath(asset.file), asset.w, asset.h);
         } else {
             game.load[asset.type](asset.key, preparePath(asset.file));
         }
-    });
+    };
 
     //preload backgrounds
-    _.each(RenJS.setup.backgrounds,function(filename,background){
-        var str = filename.split(" ");
+    for (const backgrounds in RenJS.setup.backgrounds){
+        var str = RenJS.setup.backgrounds[background].split(" ");
         if (str.length == 1){
-            game.load.image(background, preparePath(filename));
+            game.load.image(background, preparePath(str[0]));
         } else {
             game.load.spritesheet(background, preparePath(str[0]), parseInt(str[1]),parseInt(str[2]));
         }
-    });
+    };
     //preload cgs
-    _.each(RenJS.setup.cgs,function(cgs,key){
+    for (const key in RenJS.setup.cgs){
+        var cgs = RenJS.setup.cgs[key];
         if (typeof cgs === 'string' || cgs instanceof String){
             // normal cgs
             game.load.image(key, preparePath(cgs));
@@ -118,36 +118,33 @@ var preloadStory = {
             var str = cgs.spritesheet.split(" ");            
             game.load.spritesheet(key, preparePath(str[0]), parseInt(str[1]),parseInt(str[2]));
         }
-        
-    });
+    };
     // preload background music
-    _.each(RenJS.setup.music,function(filename,music){
-        game.load.audio(music, preparePath(filename));
-    });
+    for (const music in RenJS.setup.music){
+        game.load.audio(music, preparePath(RenJS.setup.music[music]));
+    }
     //preload sfx
-    _.each(RenJS.setup.sfx,function(filename,key){
-        game.load.audio(key, preparePath(filename));
-    },this);
+    for (const sfx in RenJS.setup.sfx){
+        game.load.audio(sfx, preparePath(RenJS.setup.sfx[sfx]));
+    }
     //preload characters
-    _.each(RenJS.setup.characters,function(character,name){
-        _.each(character.looks,function(filename,look){
-            game.load.image(name+"_"+look, preparePath(filename));
-        });
-    });
+    for (const name in RenJS.setup.characters){
+        var char = RenJS.setup.characters[name];
+        for (const look in char.looks){
+            game.load.image(name+"_"+look, preparePath(char.looks[look]));
+        }
+    }
     if (RenJS.setup.extra){
-        _.each(RenJS.setup.extra,function(assets,type){
-            if (type=="spritesheets"){
-                _.each(assets,function(file,key){
-                    var str = file.split(" ");
-                    game.load.spritesheet(key, preparePath(str[0]), parseInt(str[1]),parseInt(str[2]));
-                });
-            } else {
-                _.each(assets,function(file,key){
-                    // console.log("loading "+key+ " "+file+" of type "+type);
-                    game.load[type](key, preparePath(file));
-                });
+        for (const type in RenJS.setup.extra){
+            for (const asset in RenJS.setup.extra[type]){
+                if (type == 'spritesheets') {
+                    var str = RenJS.setup.extra[type][asset].split(" ");
+                    game.load.spritesheet(asset, preparePath(str[0]), parseInt(str[1]),parseInt(str[2]));
+                } else {
+                    game.load[type](asset, preparePath(RenJS.setup.extra[type][asset]));
+                }
             }
-        });
+        }
     }
   },
 
@@ -169,11 +166,7 @@ var init = {
   },
 
   render: function() {
-    // if (RenJS.gui && RenJS.gui.hud && RenJS.gui.hud.area){
-    //     _.each(RenJS.gui.hud.area,function(area){
-    //         game.debug.rectangle(area);
-    //     });
-    // }
+
   }
 }
 

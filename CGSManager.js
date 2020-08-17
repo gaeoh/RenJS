@@ -5,9 +5,9 @@ function CGSManager(){
     this.set = function (current) {
         this.hideAll('CUT');
         this.current = current;
-        _.each(this.current, function (props,name) {
-           this.show(name,RenJS.transitions.CUT,props)
-        },this);
+        for (const cg in this.current) {
+          this.show(cg,RenJS.transitions.CUT,this.current[cg])
+        }
     }
 
     this.show = function(name,transition,props){
@@ -23,16 +23,19 @@ function CGSManager(){
         }    
         if (RenJS.setup.cgs[name].animations){
             console.log("Adding animation to "+name)
-            _.each(RenJS.setup.cgs[name].animations,function(anim,key){
-                var str = anim.split(" ");
-                var frames = _.range(parseInt(str[0]),parseInt(str[1]))
+            // for (const [key, anim] of Object.entries(RenJS.setup.cgs[name].animations)) {
+            for (const key in RenJS.setup.cgs[name].animations) {
+                var str = RenJS.setup.cgs[name].animations[key].split(" ");
+                var r = [parseInt(str[0]),parseInt(str[1])]
+                // range of animation
+                var frames = [...Array(r[1]-r[0]).keys()].map(i => i + r[0])
                 frameRate = 24;
                 if (str.length>2){
                     frameRate = parseInt(str[2])
                 }
                 console.log(frameRate)
                 this.cgs[name].animations.add(key,frames,frameRate)
-            },this);
+            }
         }
         this.current[name] = {name:name, position: position, zoom:props.zoom,angle: props.angle};
         return transition(null,this.cgs[name],position);
@@ -59,7 +62,7 @@ function CGSManager(){
                 tweenables.height = this.cgs[name].originalScale.height*toAnimate.zoom;
                 tweenables.width = this.cgs[name].originalScale.width*toAnimate.zoom;
             }
-            this.current[name] = _.union(this.current[name],toAnimate);
+            this.current[name] = {...this.current[name],...toAnimate};
             var resolveFunction = resolve
             if (toAnimate.spritesheet){
                 if (toAnimate.spritesheet == "stop"){
@@ -109,16 +112,15 @@ function CGSManager(){
         if (!transition) transition = 'FADEOUT'
         return new Promise(function(resolve,reject){
             var promises = []
-            var cgs = _.keys(RenJS.cgsManager.cgs)
-            _.each(cgs,function(cg){
-                promises.push(RenJS.cgsManager.hide(cg,RenJS.transitions[transition]));
-            },RenJS.cgsManager)
+            for (const cg in RenJS.cgsManager.cgs) {
+              promises.push(RenJS.cgsManager.hide(cg,RenJS.transitions[transition]));
+            }
             Promise.all(promises).then(resolve);
         });
     }
 
     this.isCGS = function(actor){    
-        return _.has(this.cgs,actor);
+        return actor in this.cgs;
     }
 }
 

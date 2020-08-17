@@ -29,11 +29,11 @@ RenJS.ambient = {
     },
     CLEAR: function(){
         if (RenJS.ambient.maxLifespan){
-            _.each(RenJS.ambient.emitters,function(emitter){
+            for (const emitter in RenJS.ambient.emitters){
                 emitter.on = false;
-            });            
+            }            
             setTimeout(function() {
-                _.invoke(RenJS.ambient.emitters,"destroy");
+                RenJS.ambient.emitters.forEach( emitter => emitter.destroy());
                 RenJS.ambient.emitters = [];
             }, RenJS.ambient.maxLifespan*2);
             RenJS.ambient.maxLifespan = 0;
@@ -42,9 +42,7 @@ RenJS.ambient = {
             RenJS.ambient.animation.stop(false,true);
             RenJS.ambient.animation.spriteParent.destroy();
         }
-        _.each(RenJS.ambient.clearFunctions,function(clearFunction){
-                clearFunction();
-        });
+        RenJS.ambient.clearFunctions.forEach(func => func())
         RenJS.ambient.clearFunctions = [];
         RenJS.audioManager.stop("bgs","FADE");
     },   

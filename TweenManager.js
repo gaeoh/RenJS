@@ -28,7 +28,7 @@ function TweenManager(){
         var tm = RenJS.tweenManager;
         tm.current = [];
         var lastTween = null;
-        _.each(tweens,function(tw){
+        tweens.forEach(tw => {
             var t = tw.time ? tw.time : time/tweens.length;
             var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,t,false,tw.delay);
             if (lastTween){
@@ -45,7 +45,7 @@ function TweenManager(){
     this.parallel = function(tweens,time){
         var tm = RenJS.tweenManager;
         tm.current = [];
-        _.each(tweens,function(tw){
+        tweens.forEach(tw => {
             var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,time,false,tw.delay);
             tween.start();
         },tm);
@@ -60,11 +60,11 @@ function TweenManager(){
         }
         var tweens = RenJS.tweenManager.current;
         RenJS.tweenManager.current = [];
-        _.each(tweens,function(tween){
+        tweens.forEach(tween => {
             tween.stop(false);
-            _.each(tween.tweenables,function (value,property) {
-                tween.target[property] = value;
-            });
+            for (const property in tween.tweenables){
+                tween.target[property] = tween.tweenables[property];
+            }
             if (tween.callbackOnComplete){
                 tween.callbackOnComplete();
             }            
