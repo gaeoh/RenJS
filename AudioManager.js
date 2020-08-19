@@ -24,7 +24,6 @@ function AudioManager(){
             this.musicList[key] = game.add.audio(key);
             audioList.push(this.musicList[key]);
         },this);
-        
         Object.keys(RenJS.setup.sfx).forEach(key => {
             this.sfx[key] = game.add.audio(key);            
             audioList.push(this.sfx[key]);

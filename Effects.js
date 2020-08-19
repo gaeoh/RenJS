@@ -68,9 +68,10 @@ RenJS.effects = {
             ],config.fadetime*2);     
         }); 
     },
-    FLASHIMAGE: function(image){
+    FLASHIMAGE: function(imageId,time){
         return new Promise(function(resolve, reject) {   
-            var image = game.add.sprite(game.world.centerX,game.world.centerY,image);
+            var image = game.add.sprite(game.world.centerX,game.world.centerY,imageId);
+
             image.anchor.set(0.5);
             setTimeout(function() {
                 var tween = game.add.tween(image);
@@ -80,7 +81,7 @@ RenJS.effects = {
                     resolve();            
                 }, this);            
                 tween.start();            
-            }, RenJS.control.fadetime/3);
+            }, time ? time : RenJS.control.fadetime/2);
 
         }); 
     },
@@ -99,14 +100,13 @@ RenJS.effects = {
     THUNDER: function(){
         game.camera.shake(0.01, 200);
         RenJS.audioManager.playSFX("thunderSFX");
-        return RenJS.effects.FLASHIMAGE("thunder");
+        return RenJS.effects.FLASHIMAGE("thunder",RenJS.control.fadetime);
     },
     ATTACK: function() {        
         game.camera.shake(0.01, 200);
         return RenJS.effects.FLASHIMAGE("attack");
     },
     MULTIATTACK: function() {
-        RenJS.audioManager.playSFX("magical");
         game.camera.shake(0.01, 600);
         return RenJS.effects.FLASHIMAGE("multiattack");
     },

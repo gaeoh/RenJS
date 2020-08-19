@@ -57,10 +57,13 @@ function LogicManager(){
 
     this.parseVars = function(text,useQM){
         var vars = text.match(/\{(.*?)\}/g);
+        console.log(vars)
         if (vars) {
-            for (const v in vars){
+            for (const v of vars){
                 var varName = v.substring(1,v.length-1);
+                console.log(varName)
                 var value = this.vars[varName]
+                console.log(varName)
                 if (useQM && typeof value == "string"){
                     value = '\"'+value+'\"';
                 }
@@ -94,22 +97,35 @@ function LogicManager(){
         // filter (eval choice modifies the choice adding id and clearing text)
         this.currentChoices = ch.filter(this.evalChoice,this);
         this.visualChoices = game.add.group();
-        for (const choice of this.currentChoices){
-            var key = Object.keys(choice)[0];
+        var execId = RenJS.logicManager.getExecStackId();
+        for (var i = 0; i < this.currentChoices.length; i++) {
+            var key = Object.keys(this.currentChoices[i])[0];
             var str = key.split(" ");
             var pos = str[2].split(",");
             var position = {x:parseInt(pos[0]),y:parseInt(pos[1])};
-            var button = game.add.button(position.x,position.y,str[0],function(){
-                RenJS.logicManager.choose(index,key);
-            },RenJS.logicManager,0,0,0,0,this.visualChoices);
-            button.anchor.set(0.5);
+            this.createVisualChoice(str[0],position,i,key,execId);
         }
+    }
+
+    this.createVisualChoice = function(image,position,index,key,execId) {
+        var button = game.add.button(position.x,position.y,image,function(){
+            RenJS.logicManager.choose(index,key,execId);
+        },RenJS.logicManager,0,0,0,0,this.visualChoices);
+        if (RenJS.gui.getChosenOptionColor && RenJS.logicManager.choicesLog[execId].indexOf(key) != -1){
+            button.tint = RenJS.gui.getChosenOptionColor();
+            // previously chosen choice
+        }
+        button.anchor.set(0.5);
     }
 
     this.getExecStackId = function() {
         var cAction = RenJS.control.execStack[RenJS.control.execStack.length-1].c;
         var cScene = RenJS.control.execStack[RenJS.control.execStack.length-1].scene;
-        return "Scene:"+cScene+"|Action:"+cAction;
+        var execId = "Scene:"+cScene+"|Action:"+cAction
+        if (!RenJS.logicManager.choicesLog[execId]){
+            RenJS.logicManager.choicesLog[execId]=[];
+        }
+        return execId;
     }
 
     this.showChoices = function(choices){
@@ -118,9 +134,6 @@ function LogicManager(){
         RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.concat(ch);    
         // Update choice log 
         var execId = RenJS.logicManager.getExecStackId();
-        if (!RenJS.logicManager.choicesLog[execId]){
-            RenJS.logicManager.choicesLog[execId]=[];
-        }
         // END Update choice log
         RenJS.gui.showChoices(RenJS.logicManager.currentChoices,execId); 
     }
@@ -152,9 +165,6 @@ function LogicManager(){
             }    
         }
         var execId = RenJS.logicManager.getExecStackId();
-        if (!RenJS.logicManager.choicesLog[execId]){
-            RenJS.logicManager.choicesLog[execId]=[];
-        }
         this.showChoices(choices,execId);
         RenJS.control.execStack[0].interrupting = RenJS.control.execStack[0].c;
     }

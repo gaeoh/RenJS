@@ -2,7 +2,7 @@ function TextManager(){
 
     this.show = function(text,title,colour){
         return new Promise(function(resolve, reject) {
-            var t = RenJS.logicManager.parseVars(text);
+            var t = RenJS.logicManager.parseVars(text.toString());
             RenJS.gui.showText(t,title,colour,function(){
                 console.log("Waiting for click")
                 RenJS.waitForClick(function(){

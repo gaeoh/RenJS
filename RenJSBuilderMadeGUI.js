@@ -120,6 +120,13 @@ function RenJSBuilderMadeGUI(meta){
         },this);
     }
 
+    this.getChosenOptionColor = function() {
+        function colorToSigned24Bit(s) {
+            return (parseInt(s.substr(1), 16) << 8) / 256;
+        }
+        return colorToSigned24Bit(this.gui.config.hud.choice['chosen-color']);
+    }
+
     this.createChoiceBox = function(choice, pos,index,choiceConfig,execId) {
       var separation = index*(parseInt(choiceConfig.height)+parseInt(choiceConfig.separation));
       var chBox = game.add.button(pos[0], pos[1]+separation, choiceConfig.id,function(){
@@ -147,10 +154,7 @@ function RenJSBuilderMadeGUI(meta){
       var text = game.add.text(0,0, choice.choiceText, textStyle);
       setTextPosition(chBox,text, choiceConfig);
       if (globalConfig.logChoices && RenJS.logicManager.choicesLog[execId].indexOf(choice.choiceText) != -1){
-        function colorToSigned24Bit(s) {
-            return (parseInt(s.substr(1), 16) << 8) / 256;
-        }
-        chBox.tint = colorToSigned24Bit(this.gui.config.hud.choice['chosen-color']);
+        chBox.tint = this.getChosenOptionColor();
       }
       return chBox;
     }
@@ -198,6 +202,7 @@ function RenJSBuilderMadeGUI(meta){
         } else {
             this.nameBox.visible = false; 
         }
+
         if (RenJS.control.skipping || config.settings.textSpeed < 10){
             this.messageBox.message.text = text;
             this.messageBox.visible = true;
@@ -236,6 +241,11 @@ function RenJSBuilderMadeGUI(meta){
 
     this.hideText = function(){
         this.messageBox.visible = false;
+        this.messageBox.message.text = "";
+        if (this.ctc){
+            this.ctc.visible = false;
+        }
+
     }
 
     // private methods

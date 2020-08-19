@@ -85,7 +85,7 @@ RenJS.ambient = {
         });
         RenJS.ambient.emitters[0].start(false, 6000, 20);
         RenJS.ambient.emitters[1].start(false, 5000, 40);
-        RenJS.ambient.maxLifespan = 6000;
+        RenJS.ambient.maxLifespan = 1600;
     },
     BADTRIP: function(){
         RenJS.ambient.drugsFlag = 2;
@@ -211,7 +211,7 @@ RenJS.ambient = {
         RenJS.ambient.emitters[0].start(false, 6000, 20);
         RenJS.ambient.emitters[1].start(false, 5000, 40);
         RenJS.ambient.emitters[2].start(false, 4000, 1000);
-        RenJS.ambient.maxLifespan = 6000;
+        RenJS.ambient.maxLifespan = 1600;
     }
 
 }

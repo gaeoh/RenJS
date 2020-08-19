@@ -133,7 +133,7 @@ function StoryManager(){
                         return RenJS.chManager.hideAll(action.transition).then(RenJS.resolve);
                     } 
                     if (actor == "ALL"){
-                        var promises = [RenJS.bgManager.hide(),RenJS.chManager.hideAll(action.transition),RenJS.cgsManager.hideAll()];
+                        var promises = [RenJS.bgManager.hide(),RenJS.chManager.hideAll(),RenJS.cgsManager.hideAll()];
                         return Promise.all(promises).then(RenJS.resolve);
                     }
                     var transitioning = action.manager.hide(actor,action.transition);
