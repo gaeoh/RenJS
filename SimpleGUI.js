@@ -54,7 +54,7 @@ function SimpleGUI(meta){
         };
         // this.hud.group.alpha = 0;
         this.hud.area = [];
-        for (const area in this.elements.hud.area){
+        for (const area of this.elements.hud.area){
             var a = area.split(" ");
             // debugger;
             var x = parseInt(a[0]);

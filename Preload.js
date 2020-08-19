@@ -67,7 +67,7 @@ var preload = {
     }
     
     //preload the fonts by adding text, else they wont be fully loaded :\
-    for (const font in RenJS.gui.getFonts()){
+    for (const font of RenJS.gui.getFonts()){
         game.add.text(20, 20, font, {font: '42px '+font});
     }
     //start preloading story
@@ -90,7 +90,7 @@ var preloadStory = {
   preload: function () {
     this.load.setPreloadSprite(this.loadingBar);
     //preload gui
-    for(const asset in RenJS.gui.getAssets()){
+    for(const asset of RenJS.gui.getAssets()){
         if (asset.type == "spritesheet"){
             game.load.spritesheet(asset.key, preparePath(asset.file), asset.w, asset.h);
         } else {
@@ -99,7 +99,7 @@ var preloadStory = {
     };
 
     //preload backgrounds
-    for (const backgrounds in RenJS.setup.backgrounds){
+    for (const background in RenJS.setup.backgrounds){
         var str = RenJS.setup.backgrounds[background].split(" ");
         if (str.length == 1){
             game.load.image(background, preparePath(str[0]));

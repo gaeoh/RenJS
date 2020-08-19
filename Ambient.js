@@ -29,9 +29,7 @@ RenJS.ambient = {
     },
     CLEAR: function(){
         if (RenJS.ambient.maxLifespan){
-            for (const emitter in RenJS.ambient.emitters){
-                emitter.on = false;
-            }            
+            RenJS.ambient.emitters.forEach( emitter => emitter.on = false);
             setTimeout(function() {
                 RenJS.ambient.emitters.forEach( emitter => emitter.destroy());
                 RenJS.ambient.emitters = [];

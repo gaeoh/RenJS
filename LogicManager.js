@@ -92,10 +92,9 @@ function LogicManager(){
         // clone
         var ch = choices.map(choice => {...choice});
         // filter (eval choice modifies the choice adding id and clearing text)
-        ch = ch.filter(this.evalChoice,this);
+        this.currentChoices = ch.filter(this.evalChoice,this);
         this.visualChoices = game.add.group();
-        this.currentChoices = ch;
-        for (const choice in ch){
+        for (const choice of this.currentChoices){
             var key = Object.keys(choice)[0];
             var str = key.split(" ");
             var pos = str[2].split(",");
@@ -130,10 +129,10 @@ function LogicManager(){
         this.interrupting = true;
         var s = parseInt(steps);
         if (!isNaN(s) && s>0){
-            for (var choice in choices){
+            choices.forEach(choice => {
                 choice.remainingSteps = s+1;
                 choice.interrupt = true;
-            }
+            })
             RenJS.onInterpretActions.interruptAction = function(){
                 RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.filter(choice => {
                     if (choice.remainingSteps) {

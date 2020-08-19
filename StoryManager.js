@@ -17,8 +17,8 @@ function StoryManager(){
         //load characters
         this.behindCharactersSprites = game.add.group();
         this.characterSprites = game.add.group();
-        for (const character in RenJS.setup.characters){
-            var char = RenJS.setup.characters[name];
+        for (const name in RenJS.setup.characters){
+            var character = RenJS.setup.characters[name];
             var displayName = character.displayName ? character.displayName : name;
             RenJS.chManager.add(name,displayName,character.speechColour,character.looks);
         }
@@ -221,12 +221,10 @@ function StoryManager(){
                 resolve();
             } else {
                 var action = RenJS.storyManager.currentScene.shift();
-                for (const additionalAction in RenJS.onInterpretActions){
-                    //does extra stuff on every step
-                    //like updating the execution stack
-                    //or counting the interruption steps
-                    additionalAction(action);
-                };
+                //does extra stuff on every step
+                //like updating the execution stack
+                //or counting the interruption steps
+                RenJS.onInterpretActions.forEach( additionalAction => additionalAction(action))
                 console.log("About to do");
                 console.log(action);
                 RenJS.storyManager.interpretAction(action).then(function(){
