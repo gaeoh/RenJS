@@ -5,14 +5,15 @@ function RenJSBuilderMadeGUI(meta){
 
     this.getAssets = function(){
         function toAssetList(list,type,path){
-            return Object.keys(list).map(key => {
-                return {
+            return Object.keys(list).map(key => (
+                {
                     key:key,
                     file:path+list[key].fileName,
                     type:type,
                     w:list[key].w,
-                    h:list[key].h}
-            });
+                    h:list[key].h
+                }
+            ));
         }
         var imgs = toAssetList(this.gui.assets.images,"image",this.gui.assetsPath);
         var audio = toAssetList(this.gui.assets.audio,"audio",this.gui.assetsPath);

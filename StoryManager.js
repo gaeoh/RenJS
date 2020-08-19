@@ -224,7 +224,9 @@ function StoryManager(){
                 //does extra stuff on every step
                 //like updating the execution stack
                 //or counting the interruption steps
-                RenJS.onInterpretActions.forEach( additionalAction => additionalAction(action))
+                for (const action in RenJS.onInterpretActions){
+                    RenJS.onInterpretActions[action]();
+                }
                 console.log("About to do");
                 console.log(action);
                 RenJS.storyManager.interpretAction(action).then(function(){

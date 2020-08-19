@@ -30,7 +30,7 @@ function BackgroundManager(){
         this.current = name ? this.backgrounds[name] : null;
         // console.log("showing bg "+name);
         // debugger;
-        if (this.current.animated){
+        if (this.current && this.current.animated){
             this.current.animations.play("run",null,true);
         }
         return transition(oldBg,this.current,{x:game.world.centerX,y:game.world.centerY},1,RenJS.storyManager.backgroundSprites);        

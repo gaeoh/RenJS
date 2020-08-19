@@ -90,7 +90,7 @@ function LogicManager(){
 
     this.showVisualChoices = function(choices){
         // clone
-        var ch = choices.map(choice => {...choice});
+        var ch = choices.map(choice => ({...choice}));
         // filter (eval choice modifies the choice adding id and clearing text)
         this.currentChoices = ch.filter(this.evalChoice,this);
         this.visualChoices = game.add.group();
@@ -113,7 +113,7 @@ function LogicManager(){
     }
 
     this.showChoices = function(choices){
-        var ch = choices.map(choice => {...choice});
+        var ch = choices.map(choice => ({...choice}));
         ch = ch.filter(this.evalChoice,this);
         RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.concat(ch);    
         // Update choice log 

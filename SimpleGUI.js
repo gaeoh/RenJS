@@ -3,14 +3,14 @@ function SimpleGUI(meta){
 
     this.getAssets = function(){
         var imgs = Object.entries(this.elements.assets.images).map(([key, asset]) => (
-            {key:key, file:asset, type: "image"};
+            {key:key, file:asset, type: "image"}
         ));
         var spritesheets = Object.entries(this.elements.assets.spritesheets).map(([key, asset]) => {
             var e = asset.split(" ");
             return {key:key,file:e[0],w:parseInt(e[1]),h:parseInt(e[2]), type: "spritesheet"};
         });
         list = Object.entries(this.elements.assets.audio).map(([key, asset]) => (
-            return {key:key, file:asset, type: "audio"};
+            {key:key, file:asset, type: "audio"}
         ));
         return [...imgs,...spritesheets,...audio];
     }
@@ -45,7 +45,7 @@ function SimpleGUI(meta){
     
 
     this.getTextStyle = function(textStyle){
-        return {...config.defaultTextStyle,...textStyle)};
+        return {...config.defaultTextStyle,...textStyle};
     }
 
     this.initHUD = function(){

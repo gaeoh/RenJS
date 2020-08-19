@@ -3,7 +3,7 @@ function CGSManager(){
     this.current = {};
 
     this.set = function (current) {
-        this.hideAll('CUT');
+        this.hideAll(RenJS.transitions.CUT);
         this.current = current;
         for (const cg in this.current) {
           this.show(cg,RenJS.transitions.CUT,this.current[cg])
@@ -109,11 +109,11 @@ function CGSManager(){
     }
 
     this.hideAll = function(transition){
-        if (!transition) transition = 'FADEOUT'
+        if (!transition) transition = RenJS.transitions.FADEOUT
         return new Promise(function(resolve,reject){
             var promises = []
             for (const cg in RenJS.cgsManager.cgs) {
-              promises.push(RenJS.cgsManager.hide(cg,RenJS.transitions[transition]));
+              promises.push(RenJS.cgsManager.hide(cg,transition));
             }
             Promise.all(promises).then(resolve);
         });

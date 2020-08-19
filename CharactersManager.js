@@ -54,7 +54,7 @@ function CharactersManager(){
     }
 
     this.set = function (showing) {
-        this.hideAll('CUT');
+        this.hideAll(RenJS.transitions.CUT);
         this.showing = showing;
         for (const name in this.showing){
             var props = this.showing[name];
@@ -68,18 +68,18 @@ function CharactersManager(){
     }
 
     this.hideAll = function(transition){
-        if (!transition) transition = 'FADEOUT';
+        if (!transition) transition = RenJS.transitions.FADEOUT;
         return new Promise(function(resolve,reject){
             var promises = []
             for (const char in RenJS.chManager.showing){
-                promises.push(RenJS.chManager.hide(char,RenJS.transitions[transition]));
+                promises.push(RenJS.chManager.hide(char,transition));
             }
             Promise.all(promises).then(resolve);
         });
     }
 
     this.isCharacter = function(actor){
-        return actor in this.characters;
+        return actor in this.characters || actor == "CHARS" || actor == "ALL";
     }
 
 }
