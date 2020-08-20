@@ -20,14 +20,19 @@ function AudioManager(){
 
     this.init = function(callback){
         var audioList = [];
-        Object.keys(RenJS.setup.music).forEach(key => {
-            this.musicList[key] = game.add.audio(key);
-            audioList.push(this.musicList[key]);
-        },this);
-        Object.keys(RenJS.setup.sfx).forEach(key => {
-            this.sfx[key] = game.add.audio(key);            
-            audioList.push(this.sfx[key]);
-        },this);
+        if (RenJS.setup.music){
+            Object.keys(RenJS.setup.music).forEach(key => {
+                this.musicList[key] = game.add.audio(key);
+                audioList.push(this.musicList[key]);
+            },this);
+        }
+        if (RenJS.setup.sfx){
+            Object.keys(RenJS.setup.sfx).forEach(key => {
+                this.sfx[key] = game.add.audio(key);            
+                audioList.push(this.sfx[key]);
+            },this);
+        }
+        
         game.sound.setDecodedCallback(audioList, function(){
             this.audioLoaded = true;
             callback();
