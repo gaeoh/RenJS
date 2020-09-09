@@ -1,4 +1,4 @@
-import {Tween} from 'phaser-ce'
+import {Tween} from 'phaser'
 export default class RJSTween extends Tween {
 
 	tweenables?: {}

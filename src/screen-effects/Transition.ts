@@ -1,6 +1,6 @@
 import RJSScreenEffectInterface from './RJSScreenEffect';
 import {TweenManagerInterface} from '../managers/TweenManager';
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import RJS from '../core/RJS';
 
 
@@ -58,7 +58,7 @@ export default class Transition implements RJSScreenEffectInterface {
                 {sprite: to, tweenables: {alpha: 1}}
             ], this.game.defaultValues.fadetime);
         })
-        
+
     }
 
     async FADEOUT(from): Promise<void> {

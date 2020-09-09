@@ -1,6 +1,4 @@
-import 'pixi'
-import 'p2'
-import Phaser, {Game, Graphics} from 'phaser-ce';
+import Phaser, {Game} from 'phaser';
 import RJSControl from './RJSControl';
 import BackgroundManager from '../managers/BackgroundManager';
 import CharacterManager from '../managers/CharacterManager';
@@ -19,6 +17,7 @@ import {defaults, DefaultsInterface} from './Defaults';
 import Boot from '../states/Boot';
 import LanguageChooser from '../states/LanguageChooser';
 import Loader from '../states/Loader';
+import Graphics = Phaser.GameObjects.Graphics;
 
 export default class RJS extends Game {
 
@@ -66,12 +65,13 @@ export default class RJS extends Game {
     }
 
     launch (): void {
-        this.preserveDrawingBuffer = true;
-        this.state.add('loader', Loader)
-        this.state.start('loader')
-        this.state.add('bootstrap', Boot)
+
+        // this.preserveDrawingBuffer = true;
+        this.scene.add('loader', Loader)
+        this.scene.start('loader')
+        this.scene.add('bootstrap', Boot)
         if (this.config.i18n){
-            this.state.add('chooseLang', LanguageChooser);
+            this.scene.add('chooseLang', LanguageChooser);
         }
     }
 

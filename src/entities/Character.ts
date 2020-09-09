@@ -1,4 +1,4 @@
-import {Sprite} from 'phaser-ce';
+import {Sprite} from 'phaser';
 
 export interface CharacterInterface {
     name: string;

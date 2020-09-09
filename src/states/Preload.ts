@@ -6,15 +6,17 @@ import PreloadStory from './PreloadStory';
 import RJSGUIByBuilder from '../gui/RJSGUIByBuilder';
 import RJSSimpleGUI from '../gui/RJSSimpleGUI';
 import RJS from '../core/RJS';
+// import Sprite = Phaser.GameObjects.Sprite;
+import RJSSprite from '../components/RJSSprite';
 
 // TODO: LOAD RENJS OWN SPLASH SCREEN
 
 class Preload extends RJSState {
-    splash: Phaser.Sprite
-    loadingBar: Phaser.Sprite
+    splash: RJSSprite
+    loadingBar: RJSSprite
 
     constructor() {
-        super();
+        super({key: 'preload'});
     }
 
     init(): void {
@@ -25,12 +27,14 @@ class Preload extends RJSState {
     }
 
     preload (): void {
-        this.load.setPreloadSprite(this.loadingBar);
+        // don't know how to load this
+        // this.load.setPreloadSprite(this.loadingBar);
+        // this.load.(this.loadingBar)
         loadStyle(preparePath(this.game.config.fonts, this.game));
-        this.game.load.text('guiConfig', preparePath(this.game.config.guiConfig, this.game));
-        this.game.load.text('storySetup', preparePath(this.game.config.storySetup, this.game));
+        this.load.text('guiConfig', preparePath(this.game.config.guiConfig, this.game));
+        this.load.text('storySetup', preparePath(this.game.config.storySetup, this.game));
         for (let i = this.game.config.storyText.length - 1; i >= 0; i--) {
-            this.game.load.text('story'+i, preparePath(this.game.config.storyText[i], this.game));
+            this.load.text('story'+i, preparePath(this.game.config.storyText[i], this.game));
         }
     }
 
@@ -60,9 +64,10 @@ class Preload extends RJSState {
             game.add.text(20, 20, font, {font: '42px ' + font});
         }
         // start preloading story
-        game.state.add('preloadStory', PreloadStory);
-        game.state.start('preloadStory');
-        game.add.sprite()
+        game.scene.add('preloadStory', PreloadStory);
+        game.scene.start('preloadStory');
+
+        // game.add.sprite()
     }
 }
 

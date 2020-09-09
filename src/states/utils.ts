@@ -1,5 +1,5 @@
 import RJS from '../core/RJS';
-import {Sprite} from 'phaser-ce';
+import {Sprite} from 'phaser';
 import RJSSprite from '../components/RJSSprite';
 
 export function initSplash (game: RJS): Sprite {

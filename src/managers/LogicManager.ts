@@ -1,4 +1,4 @@
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import RJS from '../core/RJS';
 import RJSManagerInterface from './RJSManager';
 

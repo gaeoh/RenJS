@@ -1,6 +1,4 @@
-import {Sprite} from 'phaser-ce';
-
-
+import Sprite = Phaser.GameObjects.Sprite;
 
 export default class RJSSprite extends Sprite {
     background?: Sprite
@@ -9,9 +7,9 @@ export default class RJSSprite extends Sprite {
         text?: any;
         fill?: any;
     }
-    constructor(game: Phaser.Game, x: number, y: number,) {
-        super(game, x, y);
-    }
+    // constructor(scene, x, y, texture?, frame?) {
+    //     super(game, x, y);
+    // }
 
     destroy(): void {
     	if (this.background){

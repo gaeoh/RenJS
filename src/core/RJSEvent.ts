@@ -1,2 +1,2 @@
-import {Signal} from 'phaser-ce'
+import {Signal} from 'phaser'
 export default class RJSEvent extends Signal {}

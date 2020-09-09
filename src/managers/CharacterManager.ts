@@ -2,7 +2,7 @@ import {RJSSpriteManagerInterface} from './RJSManager';
 import Transition from '../screen-effects/Transition';
 import Character from '../entities/Character';
 import RJS from '../core/RJS';
-import {Sprite} from 'phaser-ce';
+import {Sprite} from 'phaser';
 
 export interface CharacterManagerInterface extends RJSSpriteManagerInterface {
     characters: object;

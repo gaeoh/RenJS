@@ -1,4 +1,4 @@
-import {Tween} from 'phaser-ce';
+import {Tween} from 'phaser';
 import RJS from '../core/RJS';
 import RJSTween from '../core/RJSTween';
 import RJSManagerInterface from './RJSManager';
@@ -9,7 +9,7 @@ export interface TweenManagerInterface extends RJSManagerInterface {
     skip(): any;
     unskippable: boolean;
     current: RJSTween[];
-    
+
 
 }
 

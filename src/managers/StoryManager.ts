@@ -1,5 +1,5 @@
 import RJSManager from './RJSManager';
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import RJS from '../core/RJS';
 import RJSManagerInterface from './RJSManager';
 import StoryActionFactory from '../core/actions/StoryActionFactory'

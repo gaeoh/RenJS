@@ -1,5 +1,5 @@
 import {RJSGUI} from './RJSGUI';
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import RJS from '../core/RJS';
 import {GUIAssets} from './Assets';
 import RJSSlider from '../components/RJSSlider';
@@ -440,11 +440,11 @@ export default class RJSGUIByBuilder implements RJSGUIByBuilderInterface<Group, 
         sliderFull.inputEnabled = true;
         // sliderFull.mask.width = 50
 
-        
+
         sliderFull.events.onInputDown.add((sprite,pointer) => {
             const val = (pointer.x-sprite.x);
             // sprite.mask.width = val;
-            
+
 
             const newVal = (val/sprite.width)*(sprite.limits[1] - sprite.limits[0])+sprite.limits[0];
             sprite.mask.destroy();

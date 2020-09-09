@@ -1,4 +1,4 @@
-import {Sprite} from 'phaser-ce';
+import {Sprite} from 'phaser';
 
 export default class RJSSlider extends Sprite {
     limits?: any

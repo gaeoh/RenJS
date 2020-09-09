@@ -3,7 +3,7 @@ import Transition from '../screen-effects/Transition';
 import {StoryManagerInterface} from './StoryManager';
 import {range} from '../utils/array';
 import {TweenManagerInterface} from './TweenManager';
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import RJS from '../core/RJS';
 import {RJSSpriteManagerInterface} from './RJSManager';
 
@@ -134,7 +134,7 @@ export default class CGSManager implements CGSManagerInterface {
 
             this.tweenManager.tween(this.cgs[name], tweenables, resolveFunction, time, true);
         })
-        
+
     }
 
     async hide (name, transitionName): Promise<void> {

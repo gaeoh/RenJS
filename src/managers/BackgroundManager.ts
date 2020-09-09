@@ -1,5 +1,5 @@
 import {RJSSpriteManagerInterface} from './RJSManager';
-import {Group} from 'phaser-ce';
+import {Group} from 'phaser';
 import Transition from '../screen-effects/Transition';
 import RJS from '../core/RJS';
 

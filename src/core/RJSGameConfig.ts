@@ -1,5 +1,4 @@
-import {IGameConfig} from 'phaser-ce';
-
+import Config = Phaser.Core.Config;
 // eslint-disable-next-line @typescript-eslint/class-name-casing
 export interface i18nInterface {
     langs: string[];
@@ -10,7 +9,7 @@ export interface i18nInterface {
     current?: string;
 }
 
-export interface RJSGameConfig extends IGameConfig {
+export interface RJSGameConfig extends Config {
     name: string;
     w: number;
     h: number;
