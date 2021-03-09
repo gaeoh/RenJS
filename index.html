@@ -1,1421 +1,285 @@
 <!DOCTYPE html>
-<html lang="en" class="js csstransforms3d">
-  <head>
+<html lang="en"> 
+<head>
+    <title>RenJS</title>
+    
+    <!-- Meta -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.37.1" />
-    <meta name="description" content="">
-
-
-    <link rel="icon" href="/RenJS/images/favicon.png" type="image/png">
-
-    <title>RenJS :: RenJS</title>
-
+    <meta name="description" content="RenJS">
+    <meta name="author" content="lunafromthemoon">    
+    <link rel="shortcut icon" href="favicon.ico"> 
     
-    <link href="/RenJS/css/nucleus.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/fontawesome-all.min.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/hybrid.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/featherlight.min.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/perfect-scrollbar.min.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/auto-complete.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/atom-one-dark-reasonable.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/theme.css?1562662144" rel="stylesheet">
-    <link href="/RenJS/css/hugo-theme.css?1562662144" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
 
-    <script src="/RenJS/js/jquery-3.3.1.min.js?1562662144"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-sea-green.min.css">
 
-    <style>
-      :root #header + #content > #left > #rlblock_left{
-          display:none !important;
-      }
-      
-    </style>
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+</head> 
+
+<body>    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="assets/images/renjs-logo.svg" alt="logo"></a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+						<li class="list-inline-item"><a href="https://github.com/lunafromthemoon/RenJS-V2"><i class="fab fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://twitter.com/lunafromthem00n"><i class="fab fa-twitter fa-fw"></i></a></li>
+		                <li class="list-inline-item"><a href="https://discord.gg/NmJYNKtn"><i class="fab fa-discord"></i></a></li>
+		                <li class="list-inline-item"><a href="https://lunafromthemoon.itch.io/renjs"><i class="fab fa-itch-io"></i></a></li>
+		            </ul><!--//social-list-->
+		            <a href="#downloads" class="btn btn-primary d-none d-lg-flex">Download</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
     
-  </head>
-  <body class="" data-url="/RenJS/">
-    <nav id="sidebar" class="">
+   
 
+    <section id="about" class="about section">
+    	<div class="splide mb-5" id="about-gallery">
+				<div class="splide__track">
+					<ul class="splide__list">
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<img class="title m-5" src="assets/images/renjs-title.svg">
+					            <p class="intro">An open source, multiplatform, Visual Novel creator <span class="text-blue">made for writers!</span></p>
+					        	
+							</div>
+							<div class="splide" id="games-gallery">
+								<div class="splide__track">
+									<ul class="splide__list">
+										<li class="splide__slide p-splide__child">
+											<a href="assets/images/games/tutorial.png" data-toggle="lightbox" data-title="The Tutorial">
+								                <img src="assets/images/games/tutorial.png" class="gallery-img img-fluid shadow rounded">
+								            </a>
+										</li>
+										<li class="splide__slide">
+											<a href="assets/images/games/maupin.png" data-toggle="lightbox" data-title="La Maupin to the Rescue!">
+					                			<img src="assets/images/games/maupin.png" class="gallery-img img-fluid shadow rounded">
+					            			</a>
+										</li>
+										<li class="splide__slide"><a href="assets/images/games/sad.png" data-toggle="lightbox" data-title="The Fall and Rise of Sadcock-upon-Avon">
+							                <img src="assets/images/games/sad.png" class="gallery-img img-fluid shadow rounded">
+							            </a></li>
+										<li class="splide__slide"><a href="assets/images/games/spike.png" data-toggle="lightbox" data-title="Spiked Heart">
+					                <img src="assets/images/games/spike.png" class="gallery-img img-fluid shadow rounded">
+					            </a></li>
+										<li class="splide__slide"><a href="assets/images/games/imaginaria.png" data-toggle="lightbox" data-title="Imaginaria">
+					                <img src="assets/images/games/imaginaria.png" class="gallery-img img-fluid shadow rounded">
+					            </a></li>
+										<li class="splide__slide"><a href="assets/images/games/hb.png" data-toggle="lightbox" data-title="HeartBeats">
+					                <img src="assets/images/games/hb.png" class="gallery-img img-fluid shadow rounded">
+					            </a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<h1 class="sub-title"><i class="fas fa-pen-alt"></i> <strong>Designed for Writers</strong></h1>
+					            <p class="sub-text">Create your games by writing a script akin to a screenplay, without the need to do any programming.</p>
+					            <img class="img-fluid img-gallery" src="assets/images/codeexample.png">
+				        	</div>
+							
+						</li>
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<h1 class="sub-title"><i class="fas fa-palette"></i> <strong>Easy to Customise</strong></h1>
+					            <p class="sub-text">The <strong>RenJS GUI Builder</strong> tool allows you to visually create impressive and unique GUIs, in a few simple steps.</p>
+					            <img class="img-fluid img-gallery" src="assets/images/guibuilder.png">
+				        	</div>
+						</li>
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<h1 class="sub-title"><i class="fas fa-code"></i> <strong>Easy to Extend</strong></h1>
+					            <p class="sub-text">Add new game mechanics like hidden object, RPG features, and much more, with the <strong>Plugin System</strong>.</p>
+					            <img class="img-fluid img-gallery" src="assets/images/plugin-example.png">
+				        	</div>
+						</li>
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<h1 class="sub-title"><i class="fas fa-mobile-alt"></i> <strong>Multiplatform</strong></h1>
+					            <p class="sub-text">Export and package your games as Desktop and Mobile apps, with all the power from <strong>Electron</strong> and <strong>Cordova</strong>!</p>
+					            <img class="img-fluid img-gallery" src="assets/images/multiplatform-mockup.png">
+				        	</div>
+						</li>
+						<li class="splide__slide">
+							<div class="text-center promo">
+				        		<h1 class="sub-title"><i class="fas fa-rocket"></i> <strong>Phaser</strong></h1>
+					            <p class="sub-text">RenJS is powered by <strong>PhaserJS</strong>, a powerful 2D video game engine for HTML5. Thanks to it, a whole suite of tools to create special effects and most complex behavious is readily available.</p>
+					            <img class="img-fluid img-gallery" src="https://phaser.io/images/img.png">
+				        	</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+        
+    </section><!--//about-->
 
+    <section id="downloads" class="cta-section py-5 theme-bg-dark position-relative">
+	    <div class="theme-bg-shapes-right"></div>
+	    <div class="theme-bg-shapes-left"></div>
+	    <div class="container">
+		   <div class="docs-overview py-5">
+	    		<h1 class="title text-center text-white mb-5">Get Started!</h1>
+			    <div class="row justify-content-center">
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								        <i class="fas fa-chalkboard-teacher"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">The Tutorial</span>
+							    </h5>
+							    <div class="card-text">
+								    If this is your first time here and want to see what RenJS is all about, The Tutorial game will show you all about it. Play it to have a first look at how a RenJS game looks like, and learn the basics of the script languaje at the same time.
+								    
+							    </div>
+							    <p class="text-center mt-auto">
+			                        <a class="btn btn-cta-primary" href="/examples/tutorial.html" target="_blank">Play it online</a>
+			                    </p>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								        <i class="fas fa-compress-arrows-alt"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">The Quickstart</span>
+							    </h5>
+							    <div class="card-text">
+								    The Quickstart is a minimal game all set up for you to start writting. If you're new and want to explore and try RenJS, this is the first step (after playing the Tutorial!).
+							    	
+							    </div>
+							    <p class="text-center mt-auto">
+			                        <a class="btn btn-cta-primary" href="/downloads/RenJSQuickstart.zip" target="_blank">Download it</a>
+			                    </p>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								        <i class="fas fa-box fa-fw"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Latest RenJS Library</span>
+							    </h5>
+							    <div class="card-text mb-3">
+								    If you already have RenJS up and running and want to keep up to date, download the latest version,, or import it directly from the cdn.
+								</div>
+								<div class="input-group mt-auto">
+				                  <input type="text" id="cdn-link" class="form-control" aria-label="cdn-link" aria-describedby="basic-addon2" readonly="" value="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js">
+				                  <div class="input-group-append">
+				                    <button onclick="copyLink()" class="btn btn-outline-primary btn-addon" type="button" data-toggle="tooltip" data-placement="top" title="Copy URL"><i class="fas fa-link"></i></button>
+				                    <button onclick="copyTag()" class="btn btn-outline-primary btn-addon" type="button" data-toggle="tooltip" data-placement="top" title="Copy Script Tag"><i class="fas fa-code"></i></i></button>
+				                  </div>
+				                </div>
+								<p class="text-center mt-3">
+			                        <a class="btn btn-cta-primary" href="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js" target="_blank">Download it</a>
+			                    </p>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								        <i class="fas fa-palette"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">RenJS GUI Builder</span>
+							    </h5>
+							    <div class="card-text mb-3">
+								    The GUI Builder is a desktop app to create Graphical User Interfaces for RenJS visually.		
+								</div>
+								<div class="form-group mt-auto">
+		                            <select class="custom-select" style="border-color: #F3969A;">
+		                              <option value="linux">Linux</option>
+		                              <option value="win">Windows</option>
+		                              <option value="mac">Mac</option>
+		                            </select>
+		                        </div>	  
+		                        <p class="text-center mt-3">
+			                        <a class="btn btn-cta-primary" href="/tutorial" target="_blank">Download it</a>
+			                    </p>  
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								       <i class="far fa-images"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Examples Gallery</span>
+							    </h5>
+							    <div class="card-text">
+								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.		    
+								</div>
+								<p class="text-center mt-auto">
+			                        <a class="btn btn-cta-primary" href="/examples-gallery.html">Check the gallery</a>
+			                    </p> 
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body d-flex flex-column">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder mr-2">
+								        <i class="fab fa-readme"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">The Docs</span>
+							    </h5>
+							    <div class="card-text">
+								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								</div>
+								<p class="text-center mt-auto">
+			                        <a class="btn btn-cta-primary" href="/docs-page.html">Check the docs</a>
+			                    </p> 
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+			    </div><!--//row-->
+		    </div><!--//container-->
+	    </div>
+    </section><!--//cta-section-->
 
-  <div id="header-wrapper">
-    <div id="header">
-      <a id="logo" href="/RenJS">RenJS</a>
-    </div>
+               
     
-        <div class="searchbox">
-    <label for="search-by"><i class="fas fa-search"></i></label>
-    <input data-search-input id="search-by" type="search" placeholder="Search...">
-    <span data-search-clear=""><i class="fas fa-times"></i></span>
-</div>
-
-<script type="text/javascript" src="/RenJS/js/lunr.min.js?1562662144"></script>
-<script type="text/javascript" src="/RenJS/js/auto-complete.js?1562662144"></script>
-<script type="text/javascript">
-    
-        var baseurl = "http:\/\/lunafromthemoon.github.io\/RenJS";
-    
-</script>
-<script type="text/javascript" src="/RenJS/js/search.js?1562662144"></script>
-
-    
-  </div>
-
-    <div class="highlightable">
-    <ul class="topics">
-
-        
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/quickstart/" title="Quickstart" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/quickstart/">
-          <b>1. </b>Quickstart
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/quickstart/structure/" title="File Structure" class="dd-item ">
-        <a href="/RenJS/quickstart/structure/">
-        <b>1.1 </b>File Structure
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/quickstart/structure-story/" title="Story Structure" class="dd-item ">
-        <a href="/RenJS/quickstart/structure-story/">
-        <b>1.2 </b>Story Structure
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/" title="Actions Guide" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/">
-          <b>2. </b>Actions Guide
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/showandhide/" title="Show and Hide" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/showandhide/">
-          <b>2.1 </b>Show and Hide
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/showandhide/transitions/" title="Transitions" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/showandhide/transitions/">
-          <b>2.1.1 </b>Transitions
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/sayandtext/" title="Say and Text" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/sayandtext/">
-          <b>2.2 </b>Say and Text
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/playandstop/" title="Play and Stop" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/playandstop/">
-          <b>2.3 </b>Play and Stop
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/choiceandinterrupt/" title="Choice and Interrupt" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/choiceandinterrupt/">
-          <b>2.4 </b>Choice and Interrupt
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/var/" title="Variables" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/var/">
-          <b>2.5 </b>Variables
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/if/" title="If" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/if/">
-          <b>2.6 </b>If
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/scene/" title="Scene" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/scene/">
-          <b>2.7 </b>Scene
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/wait/" title="Wait time or click" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/wait/">
-          <b>2.8 </b>Wait time or click
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/animate/" title="Animate" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/animate/">
-          <b>2.9 </b>Animate
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/call/" title="Call" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/call/">
-          <b>2.10 </b>Call
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/actions/effectandambient/" title="Effects and Ambients" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/actions/effectandambient/">
-          <b>2.11 </b>Effects and Ambients
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/setup/" title="Setup" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/setup/">
-          <b>3. </b>Setup
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/setup/setup/" title="The Setup File" class="dd-item ">
-        <a href="/RenJS/setup/setup/">
-        <b>3.1 </b>The Setup File
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/gui/" title="GUI" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/gui/">
-          <b>4. </b>GUI
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/gui/gui/" title="The GUI File" class="dd-item ">
-        <a href="/RenJS/gui/gui/">
-        <b>4.1 </b>The GUI File
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/mobileanddesktop/" title="Mobile and Desktop" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/mobileanddesktop/">
-          <b>5. </b>Mobile and Desktop
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/mobileanddesktop/electron/" title="Electron" class="dd-item ">
-        <a href="/RenJS/mobileanddesktop/electron/">
-        <b>5.1 </b>Electron
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/mobileanddesktop/cordova/" title="Cordova" class="dd-item ">
-        <a href="/RenJS/mobileanddesktop/cordova/">
-        <b>5.2 </b>Cordova
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/mobileanddesktop/cocoon/" title="Cocoon" class="dd-item ">
-        <a href="/RenJS/mobileanddesktop/cocoon/">
-        <b>5.3 </b>Cocoon
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/multilang/" title="I18n" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/multilang/">
-          <b>6. </b>I18n
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/multilang/multilang/" title="MultiLanguage Quickstart" class="dd-item ">
-        <a href="/RenJS/multilang/multilang/">
-        <b>6.1 </b>MultiLanguage Quickstart
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/engine/" title="Extending RenJS" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/engine/">
-          <b>7. </b>Extending RenJS
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-          
-        
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/engine/transitions/" title="Adding New Transitions" class="dd-item ">
-        <a href="/RenJS/engine/transitions/">
-        <b>6.1 </b>Adding New Transitions
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/RenJS/engine/docs/" title="Engine documentation" class="dd-item ">
-        <a href="/RenJS/engine/docs/">
-        <b>6.4 </b>Engine documentation
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/RenJS/games/" title="Games" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/RenJS/games/">
-          <b>8. </b>Games
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-         
-    </ul>
-
-    
-    
-
-    
-    <section id="footer">
-      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
-
-    </section>
-  </div>
-</nav>
-
-
-
-
-
-        <section id="body">
-        <div id="overlay"></div>
-        <div class="padding highlightable">
-              
-        <div id="head-tags">
-        
-        </div>
-        
-          <div id="chapter">
-        
-        <div id="body-inner">
-          
-
-        
-
-
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
-
- 
-
-
-<h3 id="welcome">Welcome</h3>
-
-<h1 id="what-is-renjs">What is RenJS</h1>
-
-<p>RenJS is a Visual Novel engine, meaning a library to make a game of the visual novel genre that can run in a web browser. Inspired by RenPy, it lets you create VNs by writing something like a screenplay, easily and without needing to know how to program. On the other hand, RenJS is powered by PhaserJS, a powerful 2D video game engine for Javascript. If you&rsquo;re a programmer, extending RenJS to add other kinds of game mechanics like hidden object, RPG features, etc, should be very easy.</p>
-
-<p>If you haven&rsquo;t played yet the <a href="https://lunafromthemoon.itch.io/renjs">RenJS tutorial</a>, it&rsquo;s a great demonstration of what you can achieve with RenJS, and how to achieve it easily.</p>
-
-<p>If you already played it and you&rsquo;re ready to start your own game, head up to the <a href="quickstart">Quickstart</a>.</p>
-
-<p>If you&rsquo;re a writer and need help with the syntax, you can find how every available script action works and see examples in the <a href="actions">Actions Guide</a>.</p>
-
-<p>If you&rsquo;re a designer and need to ajust how the game looks, check the <a href="gui">GUI</a> section to understand how you can achieve your prefered look and feel.</p>
-
-<p>If you&rsquo;re a programmer and want to extend or understand how RenJS works, the <a href="engine">Engine</a> section shows how the whole thing works.</p>
-	
-  
-        
-            </div> 
-        
-        </div> 
-        
-
-      </div>
-
-    <div id="navigation">
-        
-        
-        
-        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-        
-        
-
-
-	 
-	 
-		
-		
-			<a class="nav nav-next" href="/RenJS/quickstart/" title="Quickstart" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
-		
-	
-    </div>
-
-    </section>
-    
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="/RenJS/js/clipboard.min.js?1562662144"></script>
-    <script src="/RenJS/js/perfect-scrollbar.min.js?1562662144"></script>
-    <script src="/RenJS/js/perfect-scrollbar.jquery.min.js?1562662144"></script>
-    <script src="/RenJS/js/jquery.sticky.js?1562662144"></script>
-    <script src="/RenJS/js/featherlight.min.js?1562662144"></script>
-    <script src="/RenJS/js/html5shiv-printshiv.min.js?1562662144"></script>
-    <script src="/RenJS/js/highlight.pack.js?1562662144"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/RenJS/js/modernizr.custom-3.6.0.js?1562662144"></script>
-    <script src="/RenJS/js/learn.js?1562662144"></script>
-    <script src="/RenJS/js/hugo-learn.js?1562662144"></script>
-
-    <link href="/RenJS/mermaid/mermaid.css?1562662144" rel="stylesheet" />
-    <script src="/RenJS/mermaid/mermaid.js?1562662144"></script>
-    <script>
-        mermaid.initialize({ startOnLoad: true });
-    </script>
-    
-
-  </body>
-</html>
+    <footer class="footer">
+	    <div class="footer-bottom text-center py-3">
+            <p>Ren<strong>JS</strong> created by <strong><i class="fas fa-rocket"></i></strong> <a href="https://twitter.com/lunafromthem00n">lunafromthemoon</a> <strong><i class="far fa-moon"></i></strong></p>
+	    </div>
+    </footer>
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.4.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script> 
+    <script src="assets/js/index.js"></script>  
+
+</body>
+</html> 
 
