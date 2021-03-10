@@ -6,7 +6,7 @@ const RenJSConfig =  {
   'scaleMode': Phaser.ScaleManager.SHOW_ALL,
   parent: "renjs-canvas",
   'loadingScreen': {
-    'background': 'assets/gui/loaderloaderbackground.png',
+    'background': 'assets/gui/quickstartbg.png',
     'loadingBar': {
       'asset': 'assets/gui/loaderloading-bar.png',
       'position': {

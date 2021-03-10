@@ -6,7 +6,7 @@ const globalConfig =  {
   'scaleMode': Phaser.ScaleManager.SHOW_ALL,
   parent: "renjs-canvas",
   'loadingScreen': {
-    'background': 'assets/gui/loaderloaderbackground.png',
+    'background': 'assets/gui/quickstartbg.png',
     'loadingBar': {
       'asset': 'assets/gui/LANG/loaderloading-bar.png',
       'position': {
@@ -28,7 +28,7 @@ const globalConfig =  {
     'i18n/LANG/Story.yaml'
   ],
   i18n: {
-    background: 'assets/gui/loaderloaderbackground.png',
+    background: 'assets/gui/quickstartbg.png',
     langs: {
       "en": {
         'asset': 'assets/gui/i18n/en.png',
