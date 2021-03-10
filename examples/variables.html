@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>RenJS - The Tutorial Game</title>
+	    <title>RenJS Examples - Variables</title>
 	    <!-- Meta -->
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	        	<meta name="title" content="RenJS">
+	    <link rel="shortcut icon" href="../favicon.ico"> 
+
+    	<meta name="title" content="RenJS">
 	    <meta name="description" content="A Visual Novel creator made for writers!">
 	    <meta name="author" content="lunafromthemoon">    
 	    <link rel="shortcut icon" href="../favicon.ico"> 
@@ -23,9 +25,8 @@
 		<meta property="twitter:url" content="https://renjs.fr/">
 		<meta property="twitter:title" content="RenJS">
 		<meta property="twitter:description" content="A Visual Novel creator made for writers!">
-		<meta property="twitter:image" content="assets/thumbnail.png">   
-	    <link rel="shortcut icon" href="../favicon.ico"> 
-	    
+		<meta property="twitter:image" content="assets/thumbnail.png">
+		
 	    <!-- Google Font -->
 	    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 	    
@@ -66,7 +67,7 @@
 		<section id="downloads" class="cta-section py-5 theme-bg-dark position-relative">
 			<div class="text-center">
 	   			<img src="../assets/images/renjs-title-white.svg" class="m-3 w-25">
-	   			<h1 class="title text-center text-white mb-5">The Tutorial</h1>
+	   			<h1 class="title text-center text-white mb-5">Variables</h1>
 	   		</div>
 			<div id="renjs-canvas"></div>
 		    <div class="container">
@@ -74,36 +75,92 @@
 		    		
 		    		  <section class="accordion">
 					    <section class="accordion-tabs">
-					      <button class="accordion-tab accordion-active" style="background-color: #fff" data-actab-group="0" data-actab-id="0"><i class="fas fa-heart"></i> ReadMe</button>
+					      <button class="accordion-tab accordion-active" data-actab-group="0" data-actab-id="0"><i class="fas fa-pen-alt"></i> Story.yaml</button>
+					      <button class="accordion-tab" data-actab-group="0" data-actab-id="1"><i class="fas fa-toolbox"></i> Setup.yaml</button>
 					    </section>
-					    <section class="accordion-content line-numbers" >
-					      <article class="accordion-item accordion-active" style="background-color: #fff" data-actab-group="0" data-actab-id="0">
-					      	<h4 class="accordion-item__label modal-title">What is RenJS?</h4>
-					      	<div class="accordion-item__container" >
-	    						<!-- <h2></h2> -->
-	    						<p>RenJS is a new videogame engine for making Visual Novels that run directly in the web browser. Designed from the pespective of a writer, and powered by PhaserJS, it's made so that it's easy to use and easy to extend.</p>
-	    						<p>In this Tutorial Game, made with RenJS itself, you can learn the basics to start writing your own game. Grab the <a href="../downloads/RenJS_Quickstart_V2.zip">Quickstart</a> and the <a href="../downloads/TutorialAssetsPack.zip">Tutorial Assets Pack</a> and follow along the classes to create your first Visual Novel!</p>
-	    						<h4 class="modal-title">How do I run it locally?</h4>
-	    						<p>So, you've donwloaded the Quickstart, but how do you make it run? For that, you'll need a local webserver. There are many ways of setting this up, but a quick and easy solution is to use a code editor that comes with one included. My favourite? <a href="http://brackets.io/">Brackets</a>!</p>
-	    						<p>After downloading and installing brackets, you'll be able to open the Quickstart project with it (in Files/Open Folder). Once the project is loaded, and you can see all of the Quickstart files</p>
-	    						<div class="text-center">
-							    <figure class="figure docs-figure py-3 text-center">
-								    <img class="figure-img img-fluid shadow rounded" src="../assets/images/brackets-folder.png" alt="">
-									    <figcaption class="figure-caption mt-3">Brackets should display a tree of the files in the Quickstart project.</figcaption>
-									</figure>
-								</div>
-	    						
-	    						<p>With brackets you can edit any of the files in the project, and can also start the web server. To run the game simply press the lightning bolt button on the right side of the window.</p>
-							</div>
-							<div class="title text-center cta-container cta-container-pink">
-					            <div class="speech-bubble">                    
-					                <p class="intro text-white">Still have questions? Don't forget to check <a href="../docs-page.html">The Docs</a> for a complete documentation of RenJS. You can also join our Discord community and ask away!</p>
-					                <div class="icon-holder  text-center text-white"><a href="https://discord.gg/NmJYNKtn"><i class="fab fa-discord"></i></a></div>
-					            </div>
-					        	<a class="btn btn-cta-primary" href="https://discord.gg/NmJYNKtn">Join Us!</a>
-					        </div><!--//cta-container-->
-					      </article>
+					    <section class="accordion-content line-numbers">
+					      <article class="accordion-item accordion-active" data-actab-group="0" data-actab-id="0">
+					      	<h4 class="accordion-item__label"></h4>
+					      	<div class="accordion-item__container">
+	    						<pre><code class="language-yaml">
+start:
+  - show school:
+  - text: Choose a number.
+  - choice:
+    - 1:
+      - var firstNumber: 1
+    - 3:
+      - var firstNumber: 3
+    - 7:
+      - var firstNumber: 7
+  - text: You chose {firstNumber}.
+  - text: Add 1 to the number.
+  - var firstNumber: "{firstNumber} + 1"
+  - text: The result is {firstNumber}.
+  - text: Choose another number.
+  - choice:
+    - 2:
+      - var secondNumber: 2
+    - 5:
+      - var secondNumber: 5
+    - 13:
+      - var secondNumber: 13
+  - if ({firstNumber}>{secondNumber}):
+    - text: "The first number ({firstNumber}) is bigger than the second one ({secondNumber})."
+  - else:
+    - text: "The second number ({firstNumber}) is bigger than the first one ({secondNumber})."
+  - var multi: "{firstNumber}*{secondNumber}"
+  - text: "{firstNumber} times {secondNumber} is {multi}."
+  - scene: choseAnimals
 
+choseAnimals:
+  - text: Do you like cats?
+  - choice:
+    - Yes:
+      - var likesCats: true
+    - No:
+      - var likesCats: false
+  - text: Do you like dogs?
+  - choice:
+    - Yes:
+      - var likesDogs: true
+    - No:
+      - var likesDogs: false
+  - text: Let's see...
+  - var likesAnimals: "{likesCats} || {likesDogs}"
+  - var likesAllAnimals: "{likesCats} && {likesDogs}"
+  - if ({likesAllAnimals}):
+    - text: It seems you like all animals.
+  - else:
+    - if ({likesCats} || {likesDogs}):
+      - text: You like either cats or dogs, but not both.
+    - else:
+      - text: You don't like cats nor dogs.
+      - text: Do you like any other animal?
+      - choice:
+        - Rabbits:
+          - var preferedAnimal: "rabbits"
+        - Seals:
+          - var preferedAnimal: "seals"
+        - Horses:
+          - var preferedAnimal: "horses"
+      - text: So, you like {preferedAnimal}...
+      - if ({preferedAnimal}=="seals"):
+        - text: Seals are the best.
+  - endgame:
+
+									</code></pre>
+							</div>
+					      </article>
+					      <article class="accordion-item" data-actab-group="0" data-actab-id="1">
+					      	<h4 class="accordion-item__label"></h4>
+					      	<div class="accordion-item__container">
+	    						<pre><code class="language-yaml">
+backgrounds:
+  school: assets/backgrounds/school_corridor.jpg
+								</code></pre>
+							</div>
+					      </article>
 					    </section>
 					  </section>
 		    	</div>
@@ -122,6 +179,6 @@
 	<script src="../assets/js/prism.js"></script> 
 	<script type="text/javascript" src="../assets/js/tabs.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js"></script>
-	<script src="tutorial/boot.js"></script>
+	<script src="variables/boot.js"></script>
 
 </html>
