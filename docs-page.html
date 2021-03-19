@@ -61,7 +61,7 @@
 					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
 						<li class="list-inline-item"><a href="https://github.com/lunafromthemoon/RenJS-V2"><i class="fab fa-github fa-fw"></i></a></li>
 			            <li class="list-inline-item"><a href="https://twitter.com/lunafromthem00n"><i class="fab fa-twitter fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="https://discord.gg/NmJYNKtn"><i class="fab fa-discord"></i></a></li>
+		                <li class="list-inline-item"><a href="https://discord.gg/uSMpYFnHZN"><i class="fab fa-discord"></i></a></li>
 		                <li class="list-inline-item"><a href="https://lunafromthemoon.itch.io/renjs"><i class="fab fa-itch-io"></i></a></li>
 		            </ul><!--//social-list-->
 		            <a href="/downloads" class="btn btn-primary d-none d-lg-flex">Download</a>
@@ -184,12 +184,12 @@
 				    <section class="docs-section" id="tutorial-section">
 						<h2 class="section-heading">The Tutorial</h2>
 						<p>If this is your very first encounter with RenJS, you should play the Tutorial. This tutorial is a game made with RenJS itself, that showcases the most important features of RenJS. </p>
-						<a href="#" class="btn btn-primary">Play the Tutorial</a>
+						<a href="examples/tutorial.html" target="_blank" class="btn btn-primary">Play the Tutorial</a>
 					</section>
 					<section class="docs-section" id="quickstart-section">
 						<h2 class="section-heading">The Quickstart</h2>
 						<p>If you want to go straight to writing, the Quickstart is a minimal game with a few resources already set and configured, for you to try and test.</p>
-						<a href="#" class="btn btn-primary">Download the Quickstart</a>
+						<a href="downloads/RenJS_Quickstart_V2.zip" target="_blank" class="btn btn-primary">Download the Quickstart</a>
 					</section>
 					<section class="docs-section" id="elements-section">
 						<h2 class="section-heading">RenJS Glosary</h2>
@@ -1179,6 +1179,23 @@ SCENE2:
       - text: Pi Pi Ri Pi Ripi Pi Ri
       - liz says: You chose the light blue phone.
 						</code></pre>
+						<h3>Show Message along with Choices</h3>
+						<p>If you want to show a message along with the choices you can use the first line inside the <strong>choice action</strong> for this purpose.</p>
+						<pre><code class="language-yaml">
+  - show deuzi: happy
+  - choice:
+    - deuzi says: Choose a partner!
+    - Deuzilene:
+      - text: You chose Deuzilene!
+    - Liz:
+      - text: You chose Liz!
+ 					</code></pre>
+ 						<div class="text-center">
+						    <figure class="figure docs-figure py-3 text-center">
+							    <img class="figure-img img-fluid shadow rounded" src="assets/images/choicewithtext.png" alt="">
+							    <figcaption class="figure-caption mt-3">Say action along with choices.</figcaption>
+							</figure>
+						</div>
 						<h3>Conditional Options</h3>
 						<p>Sometimes you need to show an option only if a condition is met. In these cases, the <strong>conditional option</strong> can be used for either choices, visual choices or interrupts. If the condition is not satisfied, that option will not be shown.</p>
 						<p>To make an option conditional you need to add an <strong>if</strong> like structure, followed by a condition, exactly like the ones used in the <a href="#if-action">if action</a>.</p>
@@ -1760,9 +1777,9 @@ RenJSGame.launch()
 	    		<div class="title text-center cta-container cta-container-pink">
 		            <div class="speech-bubble">                    
 		                <p class="intro text-white">Can't find what you're looking for? Join us in Discord and tell us what's missing!</p>
-		                <div class="icon-holder  text-center text-white"><a href="https://discord.gg/NmJYNKtn"><i class="fab fa-discord"></i></a></div>
+		                <div class="icon-holder  text-center text-white"><a href="https://discord.gg/uSMpYFnHZN"><i class="fab fa-discord"></i></a></div>
 		            </div>
-		        	<a class="btn btn-cta-primary" href="https://discord.gg/NmJYNKtn">Join Us!</a>
+		        	<a class="btn btn-cta-primary" href="https://discord.gg/uSMpYFnHZN">Join Us!</a>
 		        </div><!--//cta-container-->
 			    
 			    <footer class="footer">

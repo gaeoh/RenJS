@@ -23,6 +23,10 @@
 	max-height: 40px;
 }
 
+h3 {
+	margin-top: 25px;
+}
+
 .cta-section {
 	background: url(../images/pattern.png);
 }

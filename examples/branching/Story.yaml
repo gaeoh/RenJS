@@ -5,8 +5,8 @@ start:
   - show deuzi: normalC AT 300,600 CONTINUE
   - show jair: normalC AT LEFT CONTINUE FLIP
   - show marco: normalC CONTINUE AT RIGHT
-  - marco says: So, who's your first pick?
   - choice:
+    - marco says: So, who's your first pick?
     - Liz:
       - var partner1: Liz
       - liz says happyC: See you later then!
