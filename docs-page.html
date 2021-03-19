@@ -1112,19 +1112,22 @@ SCENE2:
 					<section class="docs-section" id="play-stop-actions">
 						<h2 class="section-heading">Play and Stop</h2>
 						<p>These actions allow you to <strong>play</strong> and <strong>stop</strong> sounds. Sounds can be of two types, background music and sound effects. Each one should be defined in the right section in the <a href="audio-setup-section">setup</a>.</p>
-						<p>Background music, or <strong>bgm</strong> will play looped by default. If you do a <strong>play bgm</strong> action and another <strong>bgm</strong> is already playing, the first one will be stopped before starting the new one.</p>
+						<p>You can play only one background music, or <strong>bgm</strong> at a time. If you do a <strong>play bgm</strong> action and another <strong>bgm</strong> is already playing, the first one will be stopped before starting the new one.</p>
+						<p>Background music can be played looped whole with the <strong>LOOPED</strong> parameter. You can also loop a bgm from a specific time with the <strong>LOOPED FROM time</strong> parameter. In this case, the music will start as usual, and when it reaches the end, it will restart but from the specified time (in seconds).</p>
 						<p>Sound effects, or <strong>sfx</strong> will only play once, and you can play as many as you want on top of each other.</p>
 						<p>To stop the <strong>bgm</strong> you don't need the id of the music currently playing, but simply use the <strong>bgm</strong> tag.</p>
 						<p>You can use the transitions <strong>CUT</strong> and <strong>FADE</strong> for both play and stop.</p>
 						<pre><code class="language-yaml">
-	# start the music with fade in
+	# play a bgm once with fade in
 	- play morningBGM: WITH FADE
 	# play a sfx with tag ringtoneSFX
 	- play ringtoneSFX:
-	# change the music to schoolBGM
-	- play schoolBGM: 
+	# change the music to schoolBGM looping the whole bgm
+	- play schoolBGM: LOOPED
 	# stop the background music
 	- stop bgm:
+	# play another bgm looping from the 2.5 seconds mark
+	- play storeBGM: LOOPED FROM 2.5
 						</code></pre>
 					</section><!--//section-->
 
