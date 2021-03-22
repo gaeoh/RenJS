@@ -17,14 +17,14 @@
 	<meta property="og:url" content="https://renjs.fr/">
 	<meta property="og:title" content="RenJS">
 	<meta property="og:description" content="A Visual Novel creator made for writers!">
-	<meta property="og:image" content="assets/thumbnail.png">
+	<meta property="og:image" content="assets/images/thumbnail.png">
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://renjs.fr/">
 	<meta property="twitter:title" content="RenJS">
 	<meta property="twitter:description" content="A Visual Novel creator made for writers!">
-	<meta property="twitter:image" content="assets/thumbnail.png">
+	<meta property="twitter:image" content="assets/images/thumbnail.png">
     
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -226,14 +226,15 @@
 								    The GUI Builder is a desktop app to create Graphical User Interfaces for RenJS visually, by dragging and dropping the components.		
 								</div>
 								<div class="form-group mt-auto">
-		                            <select class="custom-select" style="border-color: #F3969A;">
+		                            <select class="custom-select" id="gui-builder-version" style="border-color: #F3969A;">
 		                              <option value="linux">Linux</option>
-		                              <option value="win">Windows</option>
-		                              <option value="mac">Mac</option>
+		                              <option value="win32">Windows x64</option>
+		                              <option value="win64">Windows ia32</option>
+		                              <!-- <option value="mac">Mac</option> -->
 		                            </select>
 		                        </div>	  
 		                        <p class="text-center mt-3">
-			                        <a class="btn btn-cta-primary" href="tutorial" target="_blank">Download it</a>
+			                        <a class="btn btn-cta-primary" id="download-gui-builder" href="downloads/RenJSGUIBuilder-linux-x64.zip" target="_blank">Download it</a>
 			                    </p>  
 						    </div><!--//card-body-->
 					    </div><!--//card-->

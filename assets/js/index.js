@@ -12,6 +12,8 @@ window.copyTag = function copy() {
   document.execCommand("copy");
 }
 
+
+
 $(document).ready(function() {
 	new Splide( '#about-gallery', {drag   : false,type   : 'loop',autoplay: true, interval: 10000} ).mount();
 
@@ -35,6 +37,16 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).ekkoLightbox();
     }); 
+
+  $('#gui-builder-version').on('change',()=>{
+    const version = $('#gui-builder-version').val();
+    const files = {
+      linux: "downloads/RenJSGUIBuilder-linux-x64.zip",
+      win32: "downloads/RenJSGUIBuilder-win32-ia32.zip",
+      win64: "downloads/RenJSGUIBuilder-win32-x64.zip",
+    }
+    $("#download-gui-builder").attr("href", files[version]);
+  })
 });
 
 
