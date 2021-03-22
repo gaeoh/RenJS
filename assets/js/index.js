@@ -41,9 +41,9 @@ $(document).ready(function() {
   $('#gui-builder-version').on('change',()=>{
     const version = $('#gui-builder-version').val();
     const files = {
-      linux: "downloads/RenJSGUIBuilder-linux-x64.zip",
-      win32: "downloads/RenJSGUIBuilder-win32-ia32.zip",
-      win64: "downloads/RenJSGUIBuilder-win32-x64.zip",
+      linux: "https://siasky.net/CACO8AGOne6PYS02vJ-a65hf4ZLUnD5Cg0C88Dagm4-O-A",
+      win32: "https://siasky.net/AACWUivLjWVhEPJwjhyLW9WjBV4zIVUnbakreOsDIDK6fw",
+      win64: "https://siasky.net/AABGYMq9EJ1ftfPsC6skhd4RFlcJBJJGk_YALbFxr9EnPw",
     }
     $("#download-gui-builder").attr("href", files[version]);
   })
