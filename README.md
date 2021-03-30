@@ -1,4 +1,10 @@
-# RenJS Core
+<p align="center">
+<img src="http://renjs.net/assets/images/renjs-title.svg" />
+</p>
+
+<p align="center">A visual novel toolkit.</p>
+
+---
 
 RenJS is a videogame library for making Visual Novels that run directly in the web browser. Powered by PhaserJS, it's easy to use and easy to extend.
 
