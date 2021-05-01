@@ -55,13 +55,15 @@ class PointAndClickTransition extends RenJS.Plugin {
 
 	onStart() {
 		this.config = this.game.setup.pointAndClick;
-		if(!this.game.managers.logic.vars.pointAndClick){
-			this.game.managers.logic.vars.pointAndClick = {removed:{},added:{}}
-		}
-		this.infoPaC = this.game.managers.logic.vars.pointAndClick;
+		// create new point and click added and removed data
+		this.infoPaC = {removed:{},added:{}}
+		this.game.managers.logic.vars.pointAndClick = this.infoPaC;
 	}
 
-	onLoad() { this.onStart();}
+	onLoad(slot,data) { 
+		// load point and click data from saved variables
+		this.infoPaC = data.vars.pointAndClick;
+	}
 
 	onCall(from, to, position, scaleX) {
 		// Transitioning from one background to another

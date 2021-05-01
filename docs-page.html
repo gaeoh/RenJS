@@ -98,6 +98,7 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#config-transitions">Default Transitions</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#config-timers">Timers</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#config-logs">Logs</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#config-punctuation">Punctuation Wait</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#config-lazy-loading">Lazy Loading</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#gui-section"><span class="theme-icon-holder mr-2"><i class="fas fa-palette"></i></span>GUI</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#gui-menus">Menus</a></li>
@@ -317,6 +318,7 @@
 						<ul>
 						    <li><strong class="mr-1">Display Name:</strong> The display name is the name that will be shown in the name box when the character speaks. If this property is omited, the key name will be used as the display name, but contrary to the key name, the display name can have whitespaces and special characters such as accents and dashes.</li>
 						    <li><strong class="mr-1">Speech Colour:</strong> A color associated with this character, that will be used for the text color when displaying the name.</li>
+						    <li><strong class="mr-1">Voice:</strong> A short sfx that will be played when the character is speaking. This audio file has to be declared under the <strong>sfx</strong> section, and referenced here by <strong>tag name</strong>.</li>
 						    <li><strong class="mr-1">Looks:</strong> A list of images representing a state of the character. As with all key names, the look identifiers have to be unique for the character (but re used for a different character), and can't have whitespaces or dashes.</li>
 						</ul>
 						<pre><code class="language-yaml">
@@ -324,6 +326,7 @@ characters:
   deuzi:
     displayName: Deuzilene
     speechColour: "#ca90cf"
+    voice: voiceHigh
     looks:
       normal_school: assets/characters/Char3NormalSchool.png
       happy_school: assets/characters/Char3HappySchool.png
@@ -334,6 +337,7 @@ characters:
   liz:
     displayName: Liz
     speechColour: "#d5e6e7"
+    voice: voiceMedium
     looks:
       normal_school: assets/characters/Char2NormalSchool.png
       happy_school: assets/characters/Char2HappySchool.png
@@ -521,6 +525,20 @@ transitions:
 	logChoices: true
 	# If logText is true, all executed say and text actions will be kept in a log that can be checked
 	logText: true
+						</code></pre>
+					</section><!--//section-->
+					<section class="docs-section" id="config-punctuation">
+						<h2 class="section-heading">Punctuation Wait</h2>
+						<p>The message box shows the message text by adding characters one by one. The time between each character is uniform, and defined by the <strong>speedText user preference</strong>. For dramatic effect, sometimes we want to wait extra time when certain characters are encountered, usually punctuation marks such as dots, commas, ellipsis, etc. To configure this feature, we need to set two properties:</p>
+						<ul>
+						    <li><strong class="mr-1">Punctuation Marks:</strong> A list of all the punctuation marks that will have an extra wait time.</li>
+						    <li><strong class="mr-1">Punctuation Wait:</strong> How much, relative to the normal text speed, will be waited until the next character appears after a punctuation mark. For example, a <strong>punctuationWait</strong> equal to five means that when a <strong>punctuation mark</strong> is added to the message box, it will wait 5x times what it waits to add a new character.</li>
+						</ul>
+						<pre><code class="language-yaml">
+punctuationMarks: [".",",","!","?","-"]
+# when a punctuation mark is shown, X extra puntuation wait times will be spent after adding the next character
+# the total amount of wait will be this value multiplied the text speed
+punctuationWait: 5
 						</code></pre>
 					</section><!--//section-->
 					<section class="docs-section" id="config-lazy-loading">
@@ -1769,7 +1787,7 @@ RenJSGame.launch()
 						<h2 class="section-heading">Cordova</h2>
 						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
 					</section>
-
+ 
 			    </article> -->
 
 	    		<div class="title text-center cta-container cta-container-pink">

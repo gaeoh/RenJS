@@ -3,7 +3,7 @@ const RenJSConfig =  {
   'w': 800,
   'h': 600,
   'renderer': Phaser.AUTO, // become renderer
-  'scaleMode': Phaser.ScaleManager.SHOW_ALL,
+  'scaleMode': Phaser.ScaleManager.NO_SCALE,
   parent: "renjs-canvas",
   'loadingScreen': {
     'background': 'assets/gui/quickstartbg.png',

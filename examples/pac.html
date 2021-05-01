@@ -259,13 +259,15 @@ class PointAndClickTransition extends RenJS.Plugin {
 
 	onStart() {
 		this.config = this.game.setup.pointAndClick;
-		if(!this.game.managers.logic.vars.pointAndClick){
-			this.game.managers.logic.vars.pointAndClick = {removed:{},added:{}}
-		}
-		this.infoPaC = this.game.managers.logic.vars.pointAndClick;
+		// create new point and click added and removed data
+		this.infoPaC = {removed:{},added:{}}
+		this.game.managers.logic.vars.pointAndClick = this.infoPaC;
 	}
 
-	onLoad() { this.onStart();}
+	onLoad(slot,data) { 
+		// load point and click data from saved variables
+		this.infoPaC = data.vars.pointAndClick;
+	}
 
 	onCall(from, to, position, scaleX) {
 		// Transitioning from one background to another
@@ -333,6 +335,7 @@ function createObject(game,room,obj, transition){
 RenJSGame.addPlugin('pointAndClick',PointAndClick)
 RenJSGame.addPlugin('PaCTransition',PointAndClickTransition)
 
+
 								</code></pre>
 							</div>
 					      </article>
@@ -342,7 +345,7 @@ RenJSGame.addPlugin('PaCTransition',PointAndClickTransition)
 		    </div>
 		    <p class="text-center mt-3">
                 <a class="btn btn-cta-light" href="../examples-gallery.html"><i class="fas fa-arrow-left"></i> Return to the Gallery</a>
-                <a class="btn btn-cta-light" href="/tutorial" target="_blank"><i class="fab fa-github fa-fw"></i> Download from Github</a>
+                <a class="btn btn-cta-light" href="https://github.com/lunafromthemoon/RenJS/tree/gh-pages/examples" target="_blank"><i class="fab fa-github fa-fw"></i> Download from Github</a>
             </p>  
 		</section>
 		<footer class="footer">

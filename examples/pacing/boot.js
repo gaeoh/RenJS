@@ -22,9 +22,9 @@ const RenJSConfig =  {
   'fonts': 'assets/gui/fonts.css',
   'guiConfig': 'GUI.yaml',
   storyConfig: 'Config.yaml',
-  storySetup: 'branching/Setup.yaml',
+  storySetup: 'pacing/Setup.yaml',
   'storyText': [
-    'branching/Story.yaml'
+    'pacing/Story.yaml'
   ],
   'logChoices': true,
 }

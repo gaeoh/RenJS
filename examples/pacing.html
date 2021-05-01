@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>RenJS Examples - I18N</title>
+	    <title>RenJS Examples - Pacing, Voices and Text Styles</title>
 	    <!-- Meta -->
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,7 @@
     <meta property="twitter:url" content="https://renjs.fr/">
     <meta property="twitter:title" content="RenJS">
     <meta property="twitter:description" content="A Visual Novel creator made for writers!">
-    <meta property="twitter:image" content="assets/images/thumbnail.png">   
+    <meta property="twitter:image" content="assets/images/thumbnail.png">  
 	    <link rel="shortcut icon" href="../favicon.ico"> 
 	    
 	    <!-- Google Font -->
@@ -31,9 +31,7 @@
 	    
 	    <!-- FontAwesome JS-->
 	    <script defer src="../assets/fontawesome/js/all.min.js"></script>
-
 	     <link rel="stylesheet" href="../assets/css/prism.css" />
-	     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/atelier-cave-light.min.css"> -->
 
 	    <!-- Theme CSS -->  
 	    <link id="theme-style" rel="stylesheet" href="../assets/css/tabs.css">
@@ -68,7 +66,7 @@
 		<section id="downloads" class="cta-section py-5 theme-bg-dark position-relative">
 			<div class="text-center">
 	   			<img src="../assets/images/renjs-title-white.svg" class="m-3 w-25">
-	   			<h1 class="title text-center text-white mb-5">Internationalization</h1>
+	   			<h1 class="title text-center text-white mb-5">Pacing, Voices and Text Styles</h1>
 	   		</div>
 			<div id="renjs-canvas"></div>
 		    <div class="container">
@@ -76,9 +74,9 @@
 		    		
 		    		  <section class="accordion">
 					    <section class="accordion-tabs">
-					      <button class="accordion-tab accordion-active" data-actab-group="0" data-actab-id="0"><i class="fas fa-pen-alt"></i> ES_Story.yaml</button>
-					      <button class="accordion-tab" data-actab-group="0" data-actab-id="1"><i class="fas fa-pen-alt"></i> EN_Story.yaml</button>
-					      <button class="accordion-tab" data-actab-group="0" data-actab-id="2"><i class="fas fa-code"></i> Boot.js</button>
+					      <button class="accordion-tab accordion-active" data-actab-group="0" data-actab-id="0"><i class="fas fa-pen-alt"></i> Story.yaml</button>
+					      <button class="accordion-tab" data-actab-group="0" data-actab-id="1"><i class="fas fa-toolbox"></i> Setup.yaml</button>
+					      <button class="accordion-tab" data-actab-group="0" data-actab-id="2"><i class="fas fa-toolbox"></i> Config.yaml</button>
 					    </section>
 					    <section class="accordion-content line-numbers">
 					      <article class="accordion-item accordion-active" data-actab-group="0" data-actab-id="0">
@@ -86,47 +84,21 @@
 					      	<div class="accordion-item__container">
 	    						<pre><code class="language-yaml">
 start:
-  - play morningBGM:
-  - show room: WITH FADE CONTINUE
-  - show deuzi: happy AT CENTER WITH FADE
-  - deuzi says: ¡Hola, bienvenide a la (bold)Guía de inicio rápido!(end)
-  - wait: 300
-  - deuzi says normal: ¿Estás liste para crear tu propia novela visual?
-  - choice:
-    - "¡Si!":
-      - deuzi says happy: ¡Muy bien, adelante!
-    - "¡Todavía no!":
-      - deuzi says: Estaré aquí cuando quieras empezar.
-  - deuzi says normal: Si es tu primera vez aquí, no olvides jugar (bold)el Tutorial(end), donde mis amigos y yo te enseñaremos los elementos básicos de RenJS.
-  - deuzi says happy: Y si ya tienes algo de experiencia, ya puedes comenzar a escribir tu historia.
-  - scene: endGame
-
-endGame:
-  - deuzi says normal: Fin del Quickstart!
-  - hide ALL:
-  - effect ROLLINGCREDITS:
-    endGame: true
-    text:
-      - RenJS.V2 creado por
-      - lunafromthemoon
-      - null
-      - En colaboración con
-      - RockDaFox
-      - null
-      - Con el poder de PhaserJS
-      - null
-      - Gracias por jugar
-      - La guía de inicio rápido
-      - null
-      - fondos y cgs por
-      - konett
-      - null
-      - personajes por
-      - Shida
-      - null
-      - música por
-      - Evan Schaeffer
-
+  - play storeBGM:
+  - show store: CONTINUE
+  - show liz: AT RIGHT CONTINUE
+  - show deuzi: AT CENTER CONTINUE
+  - show jair: AT LEFT CONTINUE FLIP
+  - deuzi says happy: Hello! Do you like my new (color:#f593e6)voice(end)? I've always wanted to be a singer, you know.
+  - jair says: Eh, I think... I think... It sounds really good.
+  - liz says angry: What? Who are you and what did you do with Jair?
+  - jair says angry: I just think it's pleasant to the ears, that's all. What, are you (italic)jealous(end)?
+  - deuzi says: (bold)Hey!(end) No need to fight about such things, I think we all sound great.
+  - show jair: happy WITH CUT
+  - liz says normal: I don't want to fight, but don't you find weird Jair has something (italic)nice(end) to say for the first time, like, ever?
+  - deuzi says: Yes, it's weird, but I'm sure he'll find something nasty to say sooner or later.
+  - jair says angry: Tsk, that's what I get for being honest.
+  - endgame:
 									</code></pre>
 							</div>
 					      </article>
@@ -134,116 +106,106 @@ endGame:
 					      	<h4 class="accordion-item__label"></h4>
 					      	<div class="accordion-item__container">
 	    						<pre><code class="language-yaml">
-start:
-  - play morningBGM:
-  - show room: WITH FADE CONTINUE
-  - show deuzi: happy AT CENTER WITH FADE
-  - deuzi says: Hello, welcome to (bold)the Quickstart!(end)
-  - wait: 300
-  - deuzi says normal: Are you ready to create great visual novels?
-  - choice:
-    - "Yes!":
-      - deuzi says happy: That's great! Go ahead!
-    - "Not yet!":
-      - deuzi says: Well, I'll be here when you're ready!
-  - deuzi says normal: If you're new, don't forget to play (bold)the Tutorial(end) game, where me and my friends will show you around the basic features of RenJS.
-  - deuzi says happy: And if you already have some experience, you can go ahead and start writing!
-  - scene: endGame
+backgrounds:
+  store: assets/backgrounds/store.jpg
 
-endGame:
-  - deuzi says normal: Quickstart over!
-  - hide ALL:
-  - effect ROLLINGCREDITS:
-    endGame: true
-    text:
-      - RenJS.V2 created by
-      - lunafromthemoon
-      - null
-      - In collaboration with
-      - RockDaFox
-      - null
-      - Inspired by Ren'Py
-      - Powered by PhaserJS
-      - null
-      - null
-      - Thanks for playing
-      - The Quickstart Game
-      - null
-      - background art and cgs by
-      - konett
-      - null
-      - characters by
-      - Shida
-      - null
-      - music by
-      - Evan Schaeffer
+characters:
+  deuzi:
+    displayName: Deuzilene
+    speechColour: "#ca90cf"
+    voice: voiceHigh
+    looks:
+      normal: assets/characters/Char3Normal.png
+      happy: assets/characters/Char3Happy.png
+      angry: assets/characters/Char3Angry.png
+  liz:
+    displayName: Liz
+    speechColour: "#d5e6e7"
+    voice: voiceMedium
+    looks:
+      normal: assets/characters/Char2Normal.png
+      happy: assets/characters/Char2Happy.png
+      angry: assets/characters/Char2Angry.png
+  jair:
+    displayName: Jair
+    speechColour: "#6a2b2b"
+    voice: voiceLow
+    looks:
+      normal: assets/characters/Char4Normal.png
+      happy: assets/characters/Char4Happy.png
+      angry: assets/characters/Char4Angry.png
+
+music:
+  storeBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3
+sfx:
+  voiceLow: assets/voices/lowvoice.wav
+  voiceHigh: assets/voices/highvoice.wav
+  voiceMedium: assets/voices/mediumvoice.wav
 								</code></pre>
 							</div>
 					      </article>
-					      <article class="accordion-item" data-actab-group="0" data-actab-id="2">
+  					      <article class="accordion-item" data-actab-group="0" data-actab-id="2">
 					      	<h4 class="accordion-item__label"></h4>
 					      	<div class="accordion-item__container">
-	    						<pre><code class="language-js">
-const globalConfig =  {
-  'name': 'Quickstart',
-  'w': 800,
-  'h': 600,
-  'renderer': Phaser.AUTO, // become renderer
-  'scaleMode': Phaser.ScaleManager.NO_SCALE,
-  parent: "renjs-canvas",
-  'loadingScreen': {
-    'background': 'assets/gui/quickstartbg.png',
-    'loadingBar': {
-      'asset': 'assets/gui/LANG/loaderloading-bar.png',
-      'position': {
-        'x': 109,
-        'y': 458
-      },
-      'size': {
-        'w': 578,
-        'h': 82
-      }
-    }
-  },
-  'logChoices': true,
-  'fonts': 'assets/gui/fonts.css',
-  'guiConfig': 'i18n/LANG/GUI.yaml',
-  'storyConfig': 'Config.yaml',
-  storySetup: 'i18n/Setup.yaml',
-  'storyText': [
-    'i18n/LANG/Story.yaml'
-  ],
-  i18n: {
-    background: 'assets/gui/quickstartbg.png',
-    langs: {
-      "en": {
-        'asset': 'assets/gui/i18n/en.png',
-        'position': {
-          'x': 200,
-          'y': 458
-        },
-        'size': {
-          'w': 163,
-          'h': 83
-        }
-      },
-      "es":{
-        'asset': 'assets/gui/i18n/es.png',
-        'position': {
-          'x': 450,
-          'y': 458
-        },
-        'size': {
-          'w': 163,
-          'h': 83
-        }
-      }}
-  },
-}
+	    						<pre><code class="language-yaml">
+positions:
+  OUTLEFT: #Outside of the screen, left side
+    x: -133
+    y: 600 #The y should be at the bottom of the screen
+  LEFT: 
+    x: 133
+    y: 600
+  DEFAULT:
+    x: 400
+    y: 600
+  CENTER: 
+    x: 400
+    y: 600
+  RIGHT: 
+    x: 666
+    y: 600
+  OUTRIGHT: #Outside of the screen, right side
+    x: 933
+    y: 600
 
-const RenJSGame = new RenJS.game(globalConfig)
-RenJSGame.launch()
-								</code></pre>
+transitions:
+  defaults: # Default transition when showing/hiding
+    characters: FADE
+    backgrounds: FADE
+    cgs: FADE
+    music: FADE
+  say: CUT #How to change character expression in say action
+  # Transition to use when showing/hiding choices
+  visualChoices: FADE
+  textChoices: CUT
+  menus: FADE
+  # transitions can be skipped by the player by tapping
+  skippable: false
+
+# Fade transition time, in miliseconds
+fadetime : 750
+# Time in each action that waits (e.g. text and say) when skipping
+skiptime: 50
+# Time in each action that waits (e.g. text and say) when auto playing
+autotime: 150
+# If logChoices is true, previously chosen choices will be shown in a different color
+logChoices: true
+# Default waiting time for timeouts if not specified
+timeout: 5000
+
+punctuationMarks: [".",",","!","?","-"]
+# when a punctuation mark is shown, X extra puntuation wait times will be spent after adding the next character
+# the total amount of wait will be this value multiplied the text speed
+punctuationWait: 5
+
+# initial user preferences
+userPreferences:
+  textSpeed: 80
+  autoSpeed: 150
+  bgmv: 0.5
+  sfxv: 0.1
+  muted: false
+									</code></pre>
 							</div>
 					      </article>
 					    </section>
@@ -264,6 +226,6 @@ RenJSGame.launch()
 	<script src="../assets/js/prism.js"></script> 
 	<script type="text/javascript" src="../assets/js/tabs.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js"></script>
-	<script src="i18n/boot.js"></script>
+	<script src="pacing/boot.js"></script>
 
 </html>
