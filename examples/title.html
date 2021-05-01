@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>RenJS - The Tutorial Game</title>
+	    <title>RenJS Examples - Title Card Plugin</title>
 	    <!-- Meta -->
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,7 @@
 		<meta property="twitter:url" content="https://renjs.fr/">
 		<meta property="twitter:title" content="RenJS">
 		<meta property="twitter:description" content="A Visual Novel creator made for writers!">
-		<meta property="twitter:image" content="assets/images/thumbnail.png">   
+		<meta property="twitter:image" content="assets/images/thumbnail.png"> 
 	    <link rel="shortcut icon" href="../favicon.ico"> 
 	    
 	    <!-- Google Font -->
@@ -66,7 +66,7 @@
 		<section id="downloads" class="cta-section py-5 theme-bg-dark position-relative">
 			<div class="text-center">
 	   			<img src="../assets/images/renjs-title-white.svg" class="m-3 w-25">
-	   			<h1 class="title text-center text-white mb-5">The Tutorial</h1>
+	   			<h1 class="title text-center text-white mb-5">Title Card Plugin</h1>
 	   		</div>
 			<div id="renjs-canvas"></div>
 		    <div class="container">
@@ -74,36 +74,104 @@
 		    		
 		    		  <section class="accordion">
 					    <section class="accordion-tabs">
-					      <button class="accordion-tab accordion-active" style="background-color: #fff" data-actab-group="0" data-actab-id="0"><i class="fas fa-heart"></i> ReadMe</button>
+					      <button class="accordion-tab accordion-active" data-actab-group="0" data-actab-id="0"><i class="fas fa-pen-alt"></i> Story.yaml</button>
+					      <button class="accordion-tab" data-actab-group="0" data-actab-id="1"><i class="fas fa-toolbox"></i> Setup.yaml</button>
+					      <button class="accordion-tab" data-actab-group="0" data-actab-id="2"><i class="fas fa-cog"></i> ShowTitle.js</button>
 					    </section>
-					    <section class="accordion-content line-numbers" >
-					      <article class="accordion-item accordion-active" style="background-color: #fff" data-actab-group="0" data-actab-id="0">
-					      	<h4 class="accordion-item__label modal-title">What is RenJS?</h4>
-					      	<div class="accordion-item__container" >
-	    						<!-- <h2></h2> -->
-	    						<p>RenJS is a new videogame engine for making Visual Novels that run directly in the web browser. Designed from the pespective of a writer, and powered by PhaserJS, it's made so that it's easy to use and easy to extend.</p>
-	    						<p>In this Tutorial Game, made with RenJS itself, you can learn the basics to start writing your own game. Grab the <a href="../downloads/RenJS_Quickstart_V2.zip">Quickstart</a> and the <a href="../downloads/TutorialAssetsPack.zip">Tutorial Assets Pack</a> and follow along the classes to create your first Visual Novel!</p>
-	    						<h4 class="modal-title">How do I run it locally?</h4>
-	    						<p>So, you've donwloaded the Quickstart, but how do you make it run? For that, you'll need a local webserver. There are many ways of setting this up, but a quick and easy solution is to use a code editor that comes with one included. My favourite? <a href="http://brackets.io/">Brackets</a>!</p>
-	    						<p>After downloading and installing brackets, you'll be able to open the Quickstart project with it (in Files/Open Folder). Once the project is loaded, and you can see all of the Quickstart files</p>
-	    						<div class="text-center">
-							    <figure class="figure docs-figure py-3 text-center">
-								    <img class="figure-img img-fluid shadow rounded" src="../assets/images/brackets-folder.png" alt="">
-									    <figcaption class="figure-caption mt-3">Brackets should display a tree of the files in the Quickstart project.</figcaption>
-									</figure>
-								</div>
-	    						
-	    						<p>With brackets you can edit any of the files in the project, and can also start the web server. To run the game simply press the lightning bolt button on the right side of the window.</p>
+					    <section class="accordion-content line-numbers">
+					      <article class="accordion-item accordion-active" data-actab-group="0" data-actab-id="0">
+					      	<h4 class="accordion-item__label"></h4>
+					      	<div class="accordion-item__container">
+	    						<pre><code class="language-yaml">
+start:
+  - show store: CONTINUE
+  - show marco: 
+  - marco says: Let's see, next we have...
+  - call SHOWTITLE:
+    title: Act III
+    subtitle: Fighting under the Rain
+  - marco says worry: What? That's not right.
+  - show jair: happy AT RIGHT
+  - jair says: That's right, get ready!
+  - marco says normal: Wait, I think there's a better way to solve this.
+  - show jair: normal WITH CUT
+  - call SHOWTITLE:
+    title: Act IV
+    subtitle: No More Rain nor Fights
+  - marco says happy: Much better.
+  - jair says angry: What? That makes no sense. I'm outta here.
+  - hide jair:
+  - marco says: Bye bye!
+  - endgame:
+									</code></pre>
 							</div>
-							<div class="title text-center cta-container cta-container-pink">
-					            <div class="speech-bubble">                    
-					                <p class="intro text-white">Still have questions? Don't forget to check <a href="../docs-page.html">The Docs</a> for a complete documentation of RenJS. You can also join our Discord community and ask away!</p>
-					                <div class="icon-holder  text-center text-white"><a href="https://discord.gg/uSMpYFnHZN"><i class="fab fa-discord"></i></a></div>
-					            </div>
-					        	<a class="btn btn-cta-primary" href="https://discord.gg/uSMpYFnHZN">Join Us!</a>
-					        </div><!--//cta-container-->
 					      </article>
+					      <article class="accordion-item" data-actab-group="0" data-actab-id="1">
+					      	<h4 class="accordion-item__label"></h4>
+					      	<div class="accordion-item__container">
+	    						<pre><code class="language-yaml">
+backgrounds:
+  store: assets/backgrounds/store.jpg
 
+characters:
+  marco:
+    displayName: Marco
+    speechColour: "#123022"
+    looks:
+      normal: assets/characters/Char1NormalSchool.png
+      happy: assets/characters/Char1HappySchool.png
+      angry: assets/characters/Char1AngrySchool.png
+      worry: assets/characters/Char1WorrySchool.png
+  jair:
+    displayName: Jair
+    speechColour: "#6a2b2b"
+    looks:
+      normal: assets/characters/Char4NormalSchool.png
+      happy: assets/characters/Char4HappySchool.png
+      angry: assets/characters/Char4AngrySchool.png
+
+extra:
+  image:
+    title: assets/lessons/titles.png
+								</code></pre>
+							</div>
+					      </article>
+					      <article class="accordion-item" data-actab-group="0" data-actab-id="2">
+					      	<h4 class="accordion-item__label"></h4>
+					      	<div class="accordion-item__container">
+	    						<pre><code class="language-js">
+class ShowTitle extends RenJS.Plugin {
+
+	onCall(params) {
+        // load 'title' background in extra section of setup!!!
+		const bg = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'title');
+        bg.alpha = 0;
+        bg.anchor.set(0.5);
+        const style = {...this.game.gui.getTextStyle('choice')};
+        style.font = '50pt ' + this.game.gui.fonts[0];
+        const title = this.game.add.text(0, -20, params.title, style);
+        style.font = '25pt ' + this.game.gui.fonts[0];
+        const subtitle = this.game.add.text(0, 40, params.subtitle, style);
+        subtitle.anchor.set(0.5);
+        title.anchor.set(0.5);
+        bg.addChild(title);
+        bg.addChild(subtitle);
+        this.game.managers.tween.chain([
+            {sprite: bg, tweenables: {alpha: 1}},
+            {
+                sprite: bg, tweenables: {alpha: 0}, callback: () => {
+                    bg.destroy();
+                    this.game.resolveAction();
+                }, delay: this.game.storyConfig.fadetime * 2
+            }
+        ], true, this.game.storyConfig.fadetime * 2);
+	}
+}
+
+RenJSGame.addPlugin('SHOWTITLE',ShowTitle);
+								</code></pre>
+							</div>
+					      </article>
 					    </section>
 					  </section>
 		    	</div>
@@ -122,7 +190,7 @@
 	<script src="../assets/js/prism.js"></script> 
 	<script type="text/javascript" src="../assets/js/tabs.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js"></script>
-	<script src="tutorial/boot.js"></script>
-	<script src="tutorial/Plugin.js"></script>
+	<script src="title/boot.js"></script>
+	<script src="plugins/ShowTitle.js"></script>
 
 </html>
