@@ -41,9 +41,9 @@ $(document).ready(function() {
   $('#gui-builder-version').on('change',()=>{
     const version = $('#gui-builder-version').val();
     const files = {
-      linux: "https://siasky.net/CACO8AGOne6PYS02vJ-a65hf4ZLUnD5Cg0C88Dagm4-O-A",
-      win32: "https://siasky.net/AACWUivLjWVhEPJwjhyLW9WjBV4zIVUnbakreOsDIDK6fw",
-      win64: "https://siasky.net/AABGYMq9EJ1ftfPsC6skhd4RFlcJBJJGk_YALbFxr9EnPw",
+      linux: "https://siasky.net/AACIhuB8XwriSWhNGrKWALde1LTV_tsPpm1J883fOkFtbA",
+      win32: "https://siasky.net/AABUZS5oywILpfDTjYel3wPdNgSMCTiaDITTo6e-0q_exA",
+      win64: "https://siasky.net/AADZtrzcBY6vplyPecsaf57-520pvAdGt_USv5cR87SoVg",
     }
     $("#download-gui-builder").attr("href", files[version]);
   })

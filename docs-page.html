@@ -1131,6 +1131,7 @@ SCENE2:
 						<p>These actions allow you to <strong>play</strong> and <strong>stop</strong> sounds. Sounds can be of two types, background music and sound effects. Each one should be defined in the right section in the <a href="audio-setup-section">setup</a>.</p>
 						<p>You can play only one background music, or <strong>bgm</strong> at a time. If you do a <strong>play bgm</strong> action and another <strong>bgm</strong> is already playing, the first one will be stopped before starting the new one.</p>
 						<p>Background music can be played looped whole with the <strong>LOOPED</strong> parameter. You can also loop a bgm from a specific time with the <strong>LOOPED FROM time</strong> parameter. In this case, the music will start as usual, and when it reaches the end, it will restart but from the specified time (in seconds).</p>
+						<p>When executing a play action, if the <strong>bgm</strong> already playing and the new <strong>bgm</strong> are the same, nothing will happen, unless you add the <strong>FORCE</strong> parameter, in which case, it will restart the sound.</p>
 						<p>Sound effects, or <strong>sfx</strong> will only play once, and you can play as many as you want on top of each other.</p>
 						<p>To stop the <strong>bgm</strong> you don't need the id of the music currently playing, but simply use the <strong>bgm</strong> tag.</p>
 						<p>You can use the transitions <strong>CUT</strong> and <strong>FADE</strong> for both play and stop.</p>
@@ -1145,6 +1146,9 @@ SCENE2:
 	- stop bgm:
 	# play another bgm looping from the 2.5 seconds mark
 	- play storeBGM: LOOPED FROM 2.5
+	...
+	## restart later the storeBGM bgm from the start, with parameter FORCE
+	- play storeBGM: LOOPED FROM 2.5 FORCE
 						</code></pre>
 					</section><!--//section-->
 
