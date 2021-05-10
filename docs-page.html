@@ -1807,7 +1807,26 @@ RenJSGame.launch()
 							<li><strong>Adjust Window Size</strong>: The window size of the application will adjust to your game, so you need to set up the same values from the RenJSConfig object in <strong>boot.js</strong> in the Electron wrapper. More specifically, you need to change the lines 9 and 10 in the <strong>main.js</strong> file of the Electron project with the width and height of your project.</li>
 							<li><strong>Change the icon</strong>: If you want you can change the <strong>icon.png</strong> file for another image that will be used as an icon for the application, to show in the task bars.</li>
 						</ol>
-						 
+						<p>Once the project is ready, you need to test and package. For doing this, you will need to have installed a few tools in your computer: <a href="https://www.npmjs.com/get-npm">npm</a> and <a href="https://www.npmjs.com/package/electron-packager">Electron Packager</a></p>
+						<p>Then you're almost ready. First, test that your game is working properly as a desktop app.</p>
+						<pre><code class="language-bash">
+# install the project dependencies
+npm install
+# test your game
+npm start
+						</code></pre>
+						<p>If your game works as expected, then you're ready to package it. You need to do this for any platform that you want to target. With the following scripts you can generate an executable project.</p>
+						<pre><code class="language-bash">
+# For linux
+npm run package-linux
+# For mac
+npm run package-mac
+# For windows
+npm run package-win-64
+npm run package-win-32
+						</code></pre>
+						<p>After the script is run, you'll find the packaged app in the <strong>release-builds</strong> directory. You'll notice these apps are considerably larger than your game, usually. This is because the package includes a whole web browser that will be used to execute the game in, so that there's never problems with compatibility or any need to install anything else.</p>
+						<p>Make sure you can execute the packaged apps, by opening the executable files (.exe in windows, scripts in linux), and you'll be ready to distribute it!</p>
 					</section>
 
 					<!-- <section class="docs-section" id="cordova-section">
