@@ -51,10 +51,10 @@ $(document).ready(function() {
   $('#desktop-packager-version').on('change',()=>{
     const version = $('#desktop-packager-version').val();
     const files = {
-      linux32: "https://siasky.net/EAD9Yg_cTJk1BeOFvE7as28f75_0hh4VWHddnbomL_YL6A",
-      linux64: "https://siasky.net/EACIy7Env3On5wkDEwQAEBgh3LBuzhS19j6tKa3gt7gquQ",
-      win32: "https://siasky.net/EACFiyBakg0ZYfJ6-VNTNbcmFni3nL-I0flWAPYp21NK2Q",
-      win64: "https://siasky.net/EABFXnX-CK5d6CpPJ56yeQRP9qwpHdpSqCOG-gUIuJ83Iw",
+      linux32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/0.1/RenJSDesktopPackager-linux-ia32.zip",
+      linux64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/0.1/RenJSDesktopPackager-linux-x64.zip",
+      win32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/0.1/RenJSDesktopPackager-win32-ia32.zip",
+      win64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/0.1/RenJSDesktopPackager-win32-x64.zip",
     }
     $("#download-desktop-packager").attr("href", files[version]);
   })
