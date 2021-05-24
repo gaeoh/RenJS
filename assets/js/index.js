@@ -47,6 +47,17 @@ $(document).ready(function() {
     }
     $("#download-gui-builder").attr("href", files[version]);
   })
+
+  $('#desktop-packager-version').on('change',()=>{
+    const version = $('#desktop-packager-version').val();
+    const files = {
+      linux32: "https://siasky.net/EAD9Yg_cTJk1BeOFvE7as28f75_0hh4VWHddnbomL_YL6A",
+      linux64: "https://siasky.net/EACIy7Env3On5wkDEwQAEBgh3LBuzhS19j6tKa3gt7gquQ",
+      win32: "https://siasky.net/EACFiyBakg0ZYfJ6-VNTNbcmFni3nL-I0flWAPYp21NK2Q",
+      win64: "https://siasky.net/EABFXnX-CK5d6CpPJ56yeQRP9qwpHdpSqCOG-gUIuJ83Iw",
+    }
+    $("#download-desktop-packager").attr("href", files[version]);
+  })
 });
 
 

@@ -1782,41 +1782,53 @@ RenJSGame.launch()
 						</section>
 				    </header>
 				     <section class="docs-section" id="electron-section">
-						<h2 class="section-heading">Electron</h2>
-						<p>One way to port the game to a native desktop application easily is by using Electron. Electron is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS.</p>
-						<p>Electron works by creating a native window browser for the target platform (<strong>Linux</strong>, <strong>Windows</strong> and <strong>MacOS</strong>) and loading a web page in it. This page will be the one used to show the game. In essence, the game code will be exactly the same, we only add Electron as a wrapper over it.</p>
-						<p>The first step to package your game is making sure everything in your game is loading locally. If you're loading any external resource, make sure to download it and link it properly. In particular, make sure the <strong>renjs.js</strong> file is linked in the <strong>index.html</strong> is loaded locally and not from the <strong>CDN</strong>.</p>
-						<pre><code class="language-html">
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title> RenJS - Quickstart</title>
-		<script src="renjs.js"></script>
-		<script src="boot.js"></script>
-	</head>
-	<body style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px;margin-right: 0px;">
-	</body>
-
-</html>
-						</code></pre>
-						<p>Your <strong>index.html</strong> should look more or less like this, including any other Plugin you added to your game.</p>
-						<p>Once your game runs completely locally, we need to wrap it with the Electron app. To make things easier, you can grab the <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstartElectron">RenJSQuickstart With Electron</a> project. This project does exactly what you want to do, but with the RenJS Quickstart game.</p>
+						<h2 class="section-heading">Desktop</h2>
+						<p>One way to port the game to a desktop application easily is by using Electron. Electron is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS.</p>
+						<p>Electron works by creating a window browser for the target platform (<strong>Linux</strong>, <strong>Windows</strong> and <strong>MacOS</strong>) and loading a web page in it. This page will be the one used to show the game. In essence, the game code will be exactly the same, we only add Electron as a wrapper over it.</p>
+						<p>The first step to package your game is making sure everything in your game is loading locally. If you're loading any external resource, make sure to download it and link it properly. In particular, make sure the <strong>renjs.js</strong> file linked in the <strong>index.html</strong> is loaded locally and not from the <strong>CDN</strong>.</p>
+						<p>Once your game is ready for packaging, there are two easy ways to continue:</p>
+						<ul>
+							<li><strong>RenJS Desktop Packager</strong>: A desktop app for packaging your games for Linux and Windows in a few simple steps.</li>
+							<li><strong>Electron Packager</strong>: A CLI tool to package your games for Linux, Windows and Mac, and tailor it to your needs. </li>
+						</ul>
+						<h3>RenJS Desktop Packager</h3>
+						<p>
+							This portable app allows you to package games without the need to install anything or doing anything weird. Just select your game directory, choose and icon and add a few more specifications and that's it. It only supports Windows and Linux (for now!), and doesn't let you configure any more properties than the ones already mentioned, but it's the easiest method if you're not very computer savvy.
+						</p>
+						<div class="text-center">
+						    <figure class="figure docs-figure py-3 text-center">
+							    <img class="figure-img img-fluid shadow rounded" src="assets/images/desktop-packager.png" alt="">
+							    <figcaption class="figure-caption mt-3">The RenJS Desktop Packager App.</figcaption>
+							</figure>
+						</div>
+						<p>On the upper side of the App you can setup the <strong>Workspace</strong> directory. This directory will be where the packaged apps you create will be stored, and, as such, you need to have writing rights for this directory. You can change the workspace with the <italic>Change</italic> button, and open it in your default file explorer with <italic>Explore</italic>.</p>
+						<p>The frame under the Workspace configuration is where to fill in your game information:</p>
+						<ul>
+							<li><strong>Name</strong>: The name of your game, to be used in the Application Executable file.</li>
+							<li><strong>Game Directory</strong>: The directory that contains your game. The directory should contain at least one file called <strong>index.html</strong> that will be loaded inside the window.</li>
+							<li><strong>Window Size</strong>: The size (in pixels) of the window that will contain the game. If the size is bigger than the game, the game will usually be centered (depending on the index.html configuration). If the size is smaller than the game, scrolling bars will appear so the game can be seen in its entirety. Normally, you'll want the window size to be the same as the game size.</li>
+							<li><strong>Start in fullscreen</strong>: If the game should start in fullscreen. Fullscreen can be toggled with F11.</li>
+							<li><strong>Icon image</strong>: Select a png image to be used as the icon in the windows/linux app bars, and in the .exe file. If no icon is selected, the default RenJS icon will be used.</li>
+							<li><strong>Platforms</strong>: The platforms to target in the packaging. Normally, Windows (x64) and Linux (x64). You can also select 32 bits versions of both platforms, if you want to target older computers.</li>
+						</ul>
+						<p>When you have everything setup, you can package the game by pressing the button at the bottom. After some processing the packages will be ready and you can open the workspace directory to find them. Try and open all the packages to make sure they work properly before distributing them.</p>
+						<h3>Electron Packager</h3>
+						<p>This CLI tool packages Electron apps into desktop applications for Windows, Linux and Mac. The first thing to do then is to convert your game into an Electron app, that is, wrapping the game with a few more files Electron needs to create the window where the game will run. To make things easier, you can grab the <a href="https://gitlab.com/lunafromthemoon/RenJSQuickstartElectron">RenJSQuickstart With Electron</a> project. This project does exactly what you want to do, but with the RenJS Quickstart game.</p>
 						<p>Almost all you need to do for your game to run under this project is:</p>
 						<ol>
 							<li><strong>Replace the Quickstart files</strong>: replace the contents of the <strong>RenJSGame</strong> directory with your game.</li>
 							<li><strong>Adjust Window Size</strong>: The window size of the application will adjust to your game, so you need to set up the same values from the RenJSConfig object in <strong>boot.js</strong> in the Electron wrapper. More specifically, you need to change the lines 9 and 10 in the <strong>main.js</strong> file of the Electron project with the width and height of your project.</li>
-							<li><strong>Change the icon</strong>: If you want you can change the <strong>icon.png</strong> file for another image that will be used as an icon for the application, to show in the task bars.</li>
+							<li><strong>Change the icon</strong>: If you want you can change the <strong>icon.png</strong> file for another image that will be used as an icon for the application, to show in the task bars. For window you will need to add an icon.ico file, and for Mac .icns file.</li>
 						</ol>
-						<p>Once the project is ready, you need to test and package. For doing this, you will need to have installed a few tools in your computer: <a href="https://www.npmjs.com/get-npm">npm</a> and <a href="https://www.npmjs.com/package/electron-packager">Electron Packager</a></p>
-						<p>Then you're almost ready. First, test that your game is working properly as a desktop app.</p>
+						<p>Once the project is ready, you need to test and package. For doing this, you will need to install a few tools: <a href="https://www.npmjs.com/get-npm">npm</a> and <a href="https://www.npmjs.com/package/electron-packager">Electron Packager</a>, as CLI tools</p>
+						<p>Then you're almost ready. First, test that your game is working properly as a desktop app. Open a terminal and write:</p>
 						<pre><code class="language-bash">
 # install the project dependencies
 npm install
 # test your game
 npm start
 						</code></pre>
-						<p>If your game works as expected, then you're ready to package it. You need to do this for any platform that you want to target. With the following scripts you can generate an executable project.</p>
+						<p>The last command should open the game in a window just as you want it to. If it works as expected, then you're ready to package it. You need to do this for any platform that you want to target. The Quickstart project comes with a few handy scripts to package the game to the most common platforms:</p>
 						<pre><code class="language-bash">
 # For linux
 npm run package-linux
@@ -1830,10 +1842,10 @@ npm run package-win-32
 						<p>Make sure you can execute the packaged apps, by opening the executable files (.exe in windows, scripts in linux), and you'll be ready to distribute it!</p>
 					</section>
 
-					<!-- <section class="docs-section" id="cordova-section">
-						<h2 class="section-heading">Cordova</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section> -->
+					<section class="docs-section" id="cordova-section">
+						<h2 class="section-heading">Mobile</h2>
+						<p>Comming soon!</p>
+					</section>
  
 			    </article>
 
