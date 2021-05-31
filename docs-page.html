@@ -128,7 +128,7 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#transition-plugin-section">Plugin as Transition</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#renjs-internals">RenJS Internals</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#mobile-desktop-section"><span class="theme-icon-holder mr-2"><i class="fas fa-tablet-alt"></i></span>Mobile and Desktop</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#electron-section">Electron</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#electron-section">Desktop</a></li>
 				    <!-- <li class="nav-item"><a class="nav-link scrollto" href="#cordova-section">Cordova</a></li> -->
 				    
 			    </ul>
@@ -1704,13 +1704,13 @@ RenJSGame.launch()
 							<li><strong>Position</strong>: An object with properties <strong>x</strong> and <strong>y</strong> where the <strong>To</strong> element should appear.</li>
 							<li><strong>ScaleX</strong>: A number with the scale in the x axis for the <strong>To</strong> element. This number is usually either 1 or -1, and represents the sprite as <strong>flipped</strong> or not.</li>
 						</ul>
-						<p>Something to take into account is that if you're using the transition to show elements for the first time, or to hide them, th</p>
+						<p>Make sure to check if the <strong>from</strong> and <strong>to</strong> elements are not null before using them, and also that at the end of the transition, the <strong>from</strong> element is hidden (alpha=0) and that the <strong>to</strong> element is showing (alpha=1).</p>
 					</section><!--//section-->
 					
 					<section class="docs-section" id="renjs-internals">
 						<h2 class="section-heading">RenJS Internals</h2>
 						<p>We said that when creating a Plugin, the <i>this.game</i> property will contain a reference to the RenJS game, and that you can take advantage of this to do whatever you want with it. But this means little if you don't know what's inside a RenJS game itself.</p>
-						<p>While you shouldn't care too much about how RenJS does things, knowing where to find some key elements will make the programming of your Plugins much more easy.</p>
+						<p>While you shouldn't care too much about how RenJS does things, knowing where to find some key elements will make the programming of your Plugins much easier.</p>
 						<h3>The Managers</h3>
 						<p>The different parts of the story are all taken care by different managers, and you can access them with the property <i>this.game.managers</i>. Knowing what each manager does and what information they keep is key to understand how RenJS works. Let's see what managers there are:</p>
 						<ul>
