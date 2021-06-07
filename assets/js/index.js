@@ -41,9 +41,10 @@ $(document).ready(function() {
   $('#gui-builder-version').on('change',()=>{
     const version = $('#gui-builder-version').val();
     const files = {
-      linux: "https://siasky.net/AACIhuB8XwriSWhNGrKWALde1LTV_tsPpm1J883fOkFtbA",
-      win32: "https://siasky.net/AABUZS5oywILpfDTjYel3wPdNgSMCTiaDITTo6e-0q_exA",
-      win64: "https://siasky.net/AADZtrzcBY6vplyPecsaf57-520pvAdGt_USv5cR87SoVg",
+      linux32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-linux-ia32.zip",
+      linux64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-linux-x64.zip",
+      win32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-win32-ia32.zip",
+      win64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-win32-x64.zip",
     }
     $("#download-gui-builder").attr("href", files[version]);
   })
