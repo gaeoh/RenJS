@@ -353,7 +353,11 @@ function restoreWorkspace(){
   const compressed = localStorage.getItem('RenJSOnlineThingy');
   if (!compressed) return;
   const stringEditor = LZString.decompress(compressed);
+  if (!stringEditor){
+    return;
+  }
   editor = JSON.parse(stringEditor);
+
   codeEditor.setValue(editor.story);
   $('#game-name-input').val(editor.name);
   // add assets to assets lists
