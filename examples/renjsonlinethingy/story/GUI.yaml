@@ -1,0 +1,125 @@
+name: flick3
+resolution:
+  - 512
+  - 384
+assetCounter: 9
+config:
+  loader:
+    inactive: false
+    loading-bar:
+      id: asset2
+      height: '22'
+      width: '498'
+      'y': 190.14410480349343
+      x: 8.048321048321043
+      assetType: spritesheets
+  main:
+    inactive: false
+    buttons:
+      - id: asset7
+        sfx: none
+        slot: '0'
+        binding: start
+        height: '28'
+        width: '132'
+        'y': 168.69868995633186
+        x: 199.43488943488944
+        assetType: spritesheets
+    labels:
+      - x: 228.33906633906636
+        'y': 172.471615720524
+        size: '20'
+        text: START
+        font: munro
+        color: '#FFFFFF'
+  settings: {}
+  hud:
+    inactive: false
+    message-box:
+      id: asset3
+      text-width: '480'
+      offset-y: '5'
+      offset-x: '13'
+      align: left
+      color: '#FFFFFF'
+      font: munro
+      size: 20
+      sfx: none
+      'y': 5
+      x: 5
+      assetType: images
+    ctc:
+      id: asset4
+      height: '10'
+      width: '10'
+      'y': 75
+      x: 475
+      assetType: spritesheets
+    name-box:
+      id: asset5
+      offset-y: '3'
+      offset-x: '11'
+      align: left
+      color: '#FFFFFF'
+      font: munro
+      size: '20'
+      'y': 100
+      x: 5
+      isTextCentered: false
+      assetType: images
+    choice:
+      id: asset9
+      offset-y: '2'
+      offset-x: '32'
+      align: left
+      chosen-color: ''
+      color: '#FFFFFF'
+      font: munro
+      size: '20'
+      separation: '0'
+      height: '28'
+      width: '500'
+      sfx: none
+      'y': 8.5589519650655
+      x: 12.49959049959051
+      isTextCentered: false
+      isBoxCentered: false
+      assetType: spritesheets
+      sample: 2
+  saveload: {}
+assets:
+  images:
+    asset3:
+      name: asset3
+      fileName: hudasset3.png
+    asset5:
+      name: asset5
+      fileName: hudasset5.png
+  spritesheets:
+    asset2:
+      name: asset2
+      fileName: loaderasset2.png
+      w: 498
+      h: 22
+    asset4:
+      name: asset4
+      fileName: hudasset4.png
+      w: 10
+      h: 10
+    asset7:
+      name: asset7
+      fileName: mainasset7.png
+      w: 132
+      h: 28
+    asset9:
+      name: asset9
+      fileName: hudasset9.png
+      w: 500
+      h: 28
+  fonts:
+    munro:
+      fileName: generalmunro.ttf
+      name: munro
+  audio: {}
+madeWithRenJSBuilder: true
+assetsPath: assets/gui/
