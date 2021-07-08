@@ -6,11 +6,11 @@ function refreshTree(){
       icon: "fas fa-pencil-alt",
       selectable: false,
       nodes: [
-        { 
-          text: "  New",
-          icon: "fas fa-plus",
-          window: "newAssetWindow"
-        }
+        // { 
+        //   text: "  New",
+        //   icon: "fas fa-plus",
+        //   window: "newAssetWindow"
+        // }
       ]
     },
     {
@@ -186,24 +186,24 @@ function createAssetToolbox(){
       // cleanup window
       $('#asset-input').val("");
       $('#img-preview').attr('src', "");
-      $('#uploaded-asset').hide();
+      // $('#uploaded-asset').hide();
     }
   });
 
   let lastUpload = null;
 
-  $('#asset-input').on('change',function(e){
-    if (e.target.files && e.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(){
-        lastUpload = reader.result;
-        $('#img-preview').attr('src', reader.result);
-        $('#asset-tag').val(e.target.files[0].name.replace(/\.[^/.]+$/, ""))
-        $('#uploaded-asset').show();
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  });
+  // $('#asset-input').on('change',function(e){
+  //   if (e.target.files && e.target.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function(){
+  //       lastUpload = reader.result;
+  //       $('#img-preview').attr('src', reader.result);
+  //       $('#asset-tag').val(e.target.files[0].name.replace(/\.[^/.]+$/, ""))
+  //       $('#uploaded-asset').show();
+  //     };
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  // });
 
   $("#save-asset-btn").click(function(){
     $('#asset-tag').removeClass("is-invalid");
@@ -217,6 +217,23 @@ function createAssetToolbox(){
     win.close();
     refreshTree();
   });
+
+  window.addEventListener("message",  (event) => {
+    console.log(event.data)
+    if (event.data.port){
+      // requesting guys
+      event.data.port.postMessage({ requestGuys: true });
+      event.data.port.onmessage = async (e)=>{
+        // console.log("qwerw")
+        // console.log(e.data.dataURI);
+        lastUpload=await resizedataURL(e.data.dataURI, 256, 256) ;
+        $('#asset-tag').val("");
+        $('#img-preview').attr('src', lastUpload);
+        win.open()
+      }
+    } 
+  });
+ 
   
   return win;
 }
@@ -425,6 +442,7 @@ $(document).ready(function () {
 
     if ($(this).hasClass("btn-secondary")){
       // codeEditor.setValue(RenJSGame.tools.jsyaml.dump(RenJSGame.story));
+      $("#flickguy-container").hide();
       $("#code-container").show();
       codeEditor.refresh();
       codeEditor.focus();
@@ -437,10 +455,19 @@ $(document).ready(function () {
     toggleBtn("assets-btn",false);
   })
 
-  $("#gui-btn").click(function(){
-    toggleBtn("gui-btn",true);
+  $("#assets-btn").click(function(){
+
+    if ($(this).hasClass("btn-secondary")){
+      $("#code-container").hide();
+      $("#flickguy-container").show();
+    } else {
+      $("#flickguy-container").hide();
+    }
+
+
+    toggleBtn("gui-btn",false);
     toggleBtn("story-btn",false);
-    toggleBtn("assets-btn",false);
+    toggleBtn("assets-btn",true);
   })
 
   function toggleBtn(btn,show){
@@ -468,8 +495,57 @@ $(document).ready(function () {
     backgrounds: {}
   }
 
+ 
+
   refreshTree();
 
   restoreWorkspace();
 
 });
+
+
+// function resizedataURL(datas, wantedWidth, wantedHeight)
+// {
+//   return new Promise(resolve=>{
+//     // We create an image to receive the Data URI
+//     var img = document.createElement('img');
+
+//     // When the event "onload" is triggered we can resize the image.
+//     img.onload = function()
+//         {        
+//             // We create a canvas and get its context.
+//             var canvas = document.createElement('canvas');
+//             var ctx = canvas.getContext('2d');
+
+//             // We set the dimensions at the wanted size.
+//             canvas.width = wantedWidth;
+//             canvas.height = wantedHeight;
+
+//             // We resize the image with the canvas method drawImage();
+//             ctx.drawImage(this, 0, 0, wantedWidth, wantedHeight);
+
+//             resolve(canvas.toDataURL());
+//         };
+
+//     // We put the Data URI in the image's src attribute
+//     img.src = datas;
+//   })
+    
+// }
+
+function resizedataURL(base64Str, width = 256, height = 256) {
+  return new Promise((resolve) => {
+    let img = new Image()
+    img.src = base64Str
+    img.onload = () => {
+      let canvas = document.createElement('canvas')
+      canvas.style['image-rendering'] = 'pixelated';
+      canvas.width = width
+      canvas.height = height
+      let ctx = canvas.getContext('2d')
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, 0, 0, width, height)
+      resolve(canvas.toDataURL())
+    }
+  })
+}
