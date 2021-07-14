@@ -49,12 +49,15 @@ function launchGame(){
         if (editor.characters[character].asset!='none'){
           this.game.load.image(character+"_normal", editor.assets[editor.characters[character].asset].img);
         }
-        
       }
       const bgConfig = {};
       for (let bg in editor.backgrounds){
         this.game.load.image(bg, editor.assets[editor.backgrounds[bg].asset].img);
         bgConfig[bg] = "";
+      }
+
+      for (let cgs in editor.cgs){
+        this.game.load.image(cgs, editor.assets[editor.cgs[cgs].asset].img);
       }
 
       this.game.load.onLoadComplete.addOnce(()=>{
@@ -70,22 +73,4 @@ function launchGame(){
 
   RenJSGame.addPlugin('LoadStoryText',LoadStoryText)
 }
-
-
-
-
-
-
-
-
-// $('button[data-bs-toggle="pill"]').on('shown.bs.tab', function (e) {
-//   console.log(e.target)
-//   if (e.target.id.includes('test')){
-//     RenJSGame.story = RenJSGame.tools.jsyaml.load(codeEditor.getValue());
-//     RenJSGame.input.enabled = true;
-//   } else {
-//     RenJSGame.input.enabled = false;
-//     RenJSGame.endGame()
-//   }
-// })
 

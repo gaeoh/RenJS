@@ -70,6 +70,9 @@
 	                            <li class="nav-item active">
 	                            	<button id="save-btn" class="btn btn-primary me-sm-2" type="button"><i class="fas fa-save"></i> Save</button>
 	                            </li>
+	                            <li class="nav-item active">
+	                            	<button id="export-btn" class="btn btn-primary me-sm-2" type="button"><i class="fas fa-download"></i> Export</button>
+	                            </li>
 	                        </ul>
 	                        <form class="d-flex">
 	                        	<button id="playtest-btn" class="btn btn-primary me-sm-2" type="button"><i class="fas fa-play"></i> Playtest</button>
@@ -83,10 +86,40 @@
 	            
 	            <div id="workspace" style="height: 100%">
 	            	<div id="code-container"></div>
-	            	<div id="flickguy-container" style="display:none; height: 100%;" class="embed-responsive">
-		            	<iframe class="embed-responsive-item" width="100%" height="100%" 
-							src='https://kool.tools/flickguy/'>
-						</iframe>
+	            	<div id="flickguy-container" style="display:none; height: 100%;">
+	            		<div class="row" style="height:100%">
+	            			
+	            			<div class="col-lg-9" style="height:100%">
+	            				<iframe class="embed-responsive-item" width="100%" height="100%" 
+									src='https://kool.tools/flickguy/'>
+								</iframe>
+	            			</div>
+	            			<div class="col-lg-3">
+	            				<div class="card text-white bg-primary mb-3">
+								  <div class="card-header">Upload Asset</div>
+								  <div class="card-body">
+								  	<div class="input-group mb-3">
+									  <input type="file" class="form-control" id="asset-input">
+									</div>
+									<img class="card-img-top mb-2" id="img-preview" src="">
+								  <div class="form-group d-grid mb-2">
+										<div class="btn-group" role="group" aria-label="Basic example">
+										  <button type="button" class="btn btn-secondary" id="save-asset-btn">Add Asset</button>
+										  <!-- <button type="button" class="btn btn-secondary">Remove</button> -->
+										</div>
+								    </div>
+								  </div>
+								  
+								</div>
+								<div class="card text-white bg-primary mb-3">
+								  <div class="card-header">Flickguy</div>
+								  <div class="card-body">
+								    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  </div>
+								</div>
+	            			</div>
+	            		</div>
+		            	
 					</div>
 	            </div>
 	        </div>
@@ -124,19 +157,6 @@
 		    </div>
 		</div>
 
-		<div id="asset-toolbox" style="display: none;">
-			<div class="form-group mb-2">
-		      <!-- <label for="char-tag" class="form-label">Tag:</label> -->
-	          <input type="text" class="form-control" id="asset-tag" placeholder="Tag" data-bs-toggle="tooltip" data-bs-placement="top" title="Tag to use in script, no whitespaces or funny characters.">
-		    </div>
-		    <img class="card-img-top mb-2" id="img-preview" src="">
-			<div class="form-group d-grid mb-2">
-				<div class="btn-group" role="group" aria-label="Basic example">
-				  <button type="button" class="btn btn-secondary" id="save-asset-btn">Add Asset</button>
-				  <!-- <button type="button" class="btn btn-secondary">Remove</button> -->
-				</div>
-		    </div>
-		</div>
 
 		<div id="character-toolbox" style="max-width: 512px;display: none;">
 		    <div class="form-group mb-2">
@@ -234,6 +254,28 @@
 		    </div>
 		</div>
 
+		<!-- CGS -->
+
+		<div id="cg-toolbox" style="max-width: 512px;display: none;">
+		    <div class="form-group mb-2">
+	          <input type="text" class="form-control" id="cg-tag" placeholder="Tag" data-bs-toggle="tooltip" data-bs-placement="top" title="Tag to use in script, no whitespaces or funny characters.">
+		    </div>
+		    <div class="form-group mb-2">
+		      <select class="form-select asset-select" id="cg-asset-select">
+		      </select>
+		    </div>
+
+		    <div class="form-group mb-2">
+		    	<img src="" class="img-fluid" id="cg-preview" style="width: 100%;">
+		    </div>
+		    <div class="form-group d-grid mb-2">
+				<div class="btn-group" role="group" aria-label="Basic example">
+				  <button type="button" class="btn btn-secondary" id="save-cg-btn">Save</button>
+				</div>
+		    </div>
+		</div>
+
+
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
@@ -258,6 +300,12 @@
 	    
 		<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lunafromthemoon/RenJS-V2@master/dist/renjs.min.js"></script> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha512-qoCTmFwBtCPvFhA+WAqatSOrghwpDhFHxwAGh+cppWonXbHA09nG1z5zi4/NGnp8dUhXiVrzA6EnKgJA+fyrpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js" integrity="sha512-uVSVjE7zYsGz4ag0HEzfugJ78oHCI1KhdkivjQro8ABL/PRiEO4ROwvrolYAcZnky0Fl/baWKYilQfWvESliRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" integrity="sha512-CSBhVREyzHAjAFfBlIBakjoRUKp5h7VSweP0InR/pAJyptH7peuhCsqAI/snV+TwZmXZqoUklpXp6R6wMnYf5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js" integrity="sha512-3WaCYjK/lQuL0dVIRt1thLXr84Z/4Yppka6u40yEJT1QulYm9pCxguF6r8V84ndP5K03koI9hV1+zo/bUbgMtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
 		<script type="text/javascript" src="renjs.js"></script>
 
 		

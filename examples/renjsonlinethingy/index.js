@@ -37,19 +37,18 @@ function refreshTree(){
         }
       ]
     },
-    // {
-    //   text: "  CGs",
-    //   icon: "fas fa-star",
-    //   selectable: false,
-    //   nodes: [
-    //     {
-    //       text: "Child 1",
-    //     },
-    //     {
-    //       text: "Child 2"
-    //     }
-    //   ]
-    // },
+    {
+      text: "  CGs",
+      icon: "fas fa-star",
+      selectable: false,
+      nodes: [
+        { 
+          text: "  New",
+          icon: "fas fa-plus",
+          window: "newCGSWindow"
+        }
+      ]
+    },
     // {
     //   text: "  Music & Audio",
     //   icon: "fas fa-music"
@@ -117,11 +116,22 @@ let previewContentFactory = {
     return preview;
   },
 
+  cgs: (name)=>{
+    const preview = $("#background-preview").clone().prop('id', "");
+    preview.find(".bg-preview").attr('src', editor.assets[editor.cgs[name].asset].img);
+    preview.find('.asset-select').on('change',function(e){
+      const asset = $(this).val();
+      preview.find(".bg-preview").attr('src', editor.assets[asset].img);
+    });
+    return preview;
+  },
+
 }
 
 let elementProperties = {
   characters: {displayName:'char-name',speechColour:"char-color",asset:'asset-select'},
-  backgrounds: {asset:'asset-select'}
+  backgrounds: {asset:'asset-select'},
+  cgs: {asset:'asset-select'},
 }
 
 function createWindow(data){
@@ -192,30 +202,21 @@ function createAssetToolbox(){
 
   let lastUpload = null;
 
-  // $('#asset-input').on('change',function(e){
-  //   if (e.target.files && e.target.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function(){
-  //       lastUpload = reader.result;
-  //       $('#img-preview').attr('src', reader.result);
-  //       $('#asset-tag').val(e.target.files[0].name.replace(/\.[^/.]+$/, ""))
-  //       $('#uploaded-asset').show();
-  //     };
-  //     reader.readAsDataURL(e.target.files[0]);
-  //   }
-  // });
+  $('#asset-input').on('change',function(e){
+    if (e.target.files && e.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(){
+        lastUpload = reader.result;
+        $('#img-preview').attr('src', reader.result);
+        // $('#asset-tag').val(e.target.files[0].name.replace(/\.[^/.]+$/, ""))
+        // $('#uploaded-asset').show();
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
 
   $("#save-asset-btn").click(function(){
-    $('#asset-tag').removeClass("is-invalid");
-    const name = $('#asset-tag').val();
-    if (editor.assets[name] || name.includes(" ")){
-      $('#asset-tag').addClass("is-invalid");
-      return;
-    }
-    editor.assets[name] = {name:name, img:lastUpload};
-    $('.asset-select').append(`<option class="asset-${name}">${name}</option>`)
-    win.close();
-    refreshTree();
+    addAsset(lastUpload);
   });
 
   window.addEventListener("message",  (event) => {
@@ -224,18 +225,38 @@ function createAssetToolbox(){
       // requesting guys
       event.data.port.postMessage({ requestGuys: true });
       event.data.port.onmessage = async (e)=>{
-        // console.log("qwerw")
-        // console.log(e.data.dataURI);
-        lastUpload=await resizedataURL(e.data.dataURI, 256, 256) ;
-        $('#asset-tag').val("");
-        $('#img-preview').attr('src', lastUpload);
-        win.open()
+        
+        const img = await resizedataURL(e.data.dataURI, 256, 256) ;
+        addAsset(img);
       }
     } 
   });
  
   
   return win;
+}
+
+function addAsset(img){
+    new jBox('Notice', {
+      target: '#workspace',
+      appendTo: '#workspace',
+      content: 'New asset added!',
+      color: 'blue',
+      autoClose: 1000,
+      attributes: {
+        x: 'center',
+        y: 'top'
+      },
+      position: {
+        x: 150,
+        y: 150
+      },
+      animation: 'tada'
+    })
+    const name = "asset_"+Date.now().toString().substr(8,5);
+    editor.assets[name] = {name, img};
+    $('.asset-select').append(`<option class="asset-${name}">${name}</option>`)
+    refreshTree();
 }
 
 function createCharacterToolbox(){
@@ -341,6 +362,51 @@ function createBackgroundToolbox(){
   return win;
 }
 
+function createCGToolbox(){
+
+  $('#cg-asset-select').on('change',function(e){
+    const asset = $(this).val();
+    $('#cg-preview').attr('src', editor.assets[asset].img);
+  });
+
+
+  const win = new jBox('Modal', {
+    appendTo: '#workspace',
+    target: '#workspace',
+    closeButton: 'title',
+    width: 'auto',
+    title: "New CG",
+    overlay: false,
+    position: {x: 'left', y: 'top'},
+    content: $("#cg-toolbox"),
+    draggable: 'title',
+    repositionOnOpen: false,
+    repositionOnContent: false,
+    responsiveWidth: true,
+    responsiveHeight: true,
+    onClose: function(){
+      // cleanup window
+      $('#cg-tag').val("");
+      $('#cg-asset-select').val("");
+      $('#cg-preview').attr('src', "");
+    }
+  });
+
+  $("#save-bg-btn").click(function(){
+    $('#cg-tag').removeClass("is-invalid");
+    const name = $('#cg-tag').val();
+    if (editor.backgrounds[name] || name.includes(" ") || name==""){
+      $('#cg-tag').addClass("is-invalid");
+      return;
+    }
+    editor.cgs[name] = {name: name, asset: $('#cg-asset-select').val()};
+    win.close();
+    refreshTree();
+  });
+
+  return win;
+}
+
 
 function saveWorkspace(){
   $('#save-btn').html('<i class="fas fa-save"></i> Saving!');
@@ -398,6 +464,104 @@ function saveToLocalstorage(name,content){
   localStorage.setItem('RenJSOnlineThingy', content);
 }
 
+function getMimeType(base64){
+  return base64.match(/[^:/]\w+(?=;|,)/)[0];
+}
+
+
+async function readTemplate(file){
+  return new Promise(resolve=>{
+    $.ajax({
+      url: file,
+      type: 'get',
+      dataType: 'text',
+      async: false,
+      success: function(html) {
+        resolve(html);
+      }
+    });
+  });
+}
+
+async function loadZip(file,folder){
+  return new Promise(resolve=>{
+         // loading a zip file
+    JSZipUtils.getBinaryContent(file, function (err, data) {
+       if(err) {
+          throw err; // or handle the error
+       }
+       folder.loadAsync(data).then(resolve)
+       // resolve(data)
+       // var zip = new JSZip(data);
+    });
+  })
+ 
+}
+
+function saveAsset(assetId,folder){
+  const assetName = assetId+"."+getMimeType(editor.assets[assetId].img);
+  const rawData = editor.assets[assetId].img.replace(/^data:image\/(png|jpg);base64,/, "")
+  folder.file(assetName,rawData,{base64:true});
+  return assetName;
+}
+
+async function exportRenJSGame(){
+  saveWorkspace()
+
+  const zip = new JSZip();
+  zip.file("index.html", await readTemplate('templates/index.html'));
+  zip.file("boot.js", await readTemplate('templates/boot.js'));
+
+  const assetsFolder = zip.folder("assets");
+
+  await loadZip("templates/gui.zip",assetsFolder)
+
+  const characterFolder = assetsFolder.folder("characters");
+
+  const setupObject = {characters:{},backgrounds:{},cgs:{}}
+
+  for (let character in editor.characters){
+    setupObject.characters[character] = {
+      displayName: editor.characters[character].displayName,
+      speechColour: editor.characters[character].speechColour
+    }
+    if (editor.characters[character].asset!='none'){
+      const assetName = saveAsset(editor.characters[character].asset,characterFolder)
+      setupObject.characters[character].looks = {normal: "assets/characters/"+assetName}
+    }
+  }
+
+  const backgroundFolder = assetsFolder.folder("backgrounds");
+
+  for (let bg in editor.backgrounds){
+    const assetName = saveAsset(editor.backgrounds[bg].asset,backgroundFolder)
+    setupObject.backgrounds[bg] = "assets/backgrounds/"+assetName;
+  }
+
+  const cgsFolder = assetsFolder.folder("cgs");
+
+  for (let cgs in editor.cgs){
+    const assetName = saveAsset(editor.cgs[cgs].asset,cgsFolder)
+    setupObject.cgs[cgs] = "assets/cgs/"+assetName;
+  }
+
+
+
+  var storyFolder = zip.folder("story");
+
+  storyFolder.file('Story.yaml',codeEditor.getValue());
+  storyFolder.file('Setup.yaml',jsyaml.dump(setupObject));
+
+  storyFolder.file('Config.yaml',await readTemplate('story/Config.yaml'));
+  storyFolder.file('GUI.yaml',await readTemplate('story/GUI.yaml'));
+
+  zip.generateAsync({type:"blob"})
+  .then(function (blob) {
+      saveAs(blob, editor.name+".zip");
+  });
+
+}
+
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
@@ -422,6 +586,10 @@ $(document).ready(function () {
 
     $('#save-btn').on('click', function () {
         saveWorkspace();
+    });
+
+    $('#export-btn').on('click', function () {
+        exportRenJSGame();
     });
 
     document.onkeydown = function(e) {
@@ -487,15 +655,15 @@ $(document).ready(function () {
     newAssetWindow: createAssetToolbox(),
     newCharacterWindow: createCharacterToolbox(),
     newBackgroundWindow: createBackgroundToolbox(),
+    newCGSWindow: createCGToolbox(),
   }
 
   editor = {
     assets: {},
     characters: {},
-    backgrounds: {}
+    backgrounds: {},
+    cgs: {}
   }
-
- 
 
   refreshTree();
 
@@ -503,35 +671,6 @@ $(document).ready(function () {
 
 });
 
-
-// function resizedataURL(datas, wantedWidth, wantedHeight)
-// {
-//   return new Promise(resolve=>{
-//     // We create an image to receive the Data URI
-//     var img = document.createElement('img');
-
-//     // When the event "onload" is triggered we can resize the image.
-//     img.onload = function()
-//         {        
-//             // We create a canvas and get its context.
-//             var canvas = document.createElement('canvas');
-//             var ctx = canvas.getContext('2d');
-
-//             // We set the dimensions at the wanted size.
-//             canvas.width = wantedWidth;
-//             canvas.height = wantedHeight;
-
-//             // We resize the image with the canvas method drawImage();
-//             ctx.drawImage(this, 0, 0, wantedWidth, wantedHeight);
-
-//             resolve(canvas.toDataURL());
-//         };
-
-//     // We put the Data URI in the image's src attribute
-//     img.src = datas;
-//   })
-    
-// }
 
 function resizedataURL(base64Str, width = 256, height = 256) {
   return new Promise((resolve) => {
