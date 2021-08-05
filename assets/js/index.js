@@ -41,10 +41,10 @@ $(document).ready(function() {
   $('#gui-builder-version').on('change',()=>{
     const version = $('#gui-builder-version').val();
     const files = {
-      linux32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-linux-ia32.zip",
-      linux64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-linux-x64.zip",
-      win32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-win32-ia32.zip",
-      win64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.1/RenJSGUIBuilder-win32-x64.zip",
+      linux32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.2/RenJSGUIBuilder-linux-ia32_050821.tar.xz",
+      linux64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.2/RenJSGUIBuilder-linux-x64_050821.tar.xz",
+      win32: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.2/RenJSGUIBuilder-win32-ia32_050821.tar.xz",
+      win64: "https://github.com/lunafromthemoon/RenJS-V2/releases/download/gui-builder-0.2/RenJSGUIBuilder-win32-x64_050821.tar.xz",
     }
     $("#download-gui-builder").attr("href", files[version]);
   })
