@@ -42,16 +42,17 @@ autotime: 150
 logChoices: true
 # Default waiting time for timeouts if not specified
 timeout: 5000
-
-punctuationMarks: [".",",","!","?","-"]
+# punctuation can add extra time when showing text in the message box, per special character
+punctuationMarks: [".",",","!","?",":","-"]
 # when a punctuation mark is shown, X extra puntuation wait times will be spent after adding the next character
 # the total amount of wait will be this value multiplied the text speed
 punctuationWait: 5
 
-# initial user preferences
+precomputeBreakLines: true
+
 userPreferences:
-  textSpeed: 80
+  textSpeed: 60
   autoSpeed: 150
-  bgmv: 0.5
-  sfxv: 0.1
+  bgmv: 0.8
+  sfxv: 0.5
   muted: false
