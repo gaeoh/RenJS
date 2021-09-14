@@ -284,6 +284,7 @@
 						    <li><strong class="mr-1">Background Color:</strong> By changing the background color you ensure all <strong>FADETOBLACK</strong> transitions, including those between the menus and game, will be to this background color, instead of pure black.</li>
 						    <li><strong class="mr-1">Parent:</strong> You can start the game inside a particular html5 element, identified as the parent with this option. You need to add the element with the particular id to the <strong>index.html</strong> file.</li>
 						    <li><strong class="mr-1">Renderer and Scale Mode:</strong> These two parameters are related to the <a href="https://phaser.io/docs/2.6.2/Phaser.Game.html">Phaser</a> game creation.</li>
+						    <li><strong class="mr-1">Debug Mode:</strong> The debug mode lets you see a log of each action as its executed, and how it was parsed in the browser console (open with F12). This is useful in general when you're developping, and it allows you to find bugs in the story text very easily.</li>
 						    <li><strong class="mr-1">Loading Screen:</strong> The loading screen for the game, that will be shown while downloading the resources and setting up the game. It can have a <i>background</i> and a <i>loading bar</i> that will fill up, from left to right, as the game is loaded. The loading bar is a spritesheet with one (full bar) or two frames (empty and full bar), and it will be placed at the x and y pixel location indicated in this configuration. </li>
 						    <li><strong class="mr-1">Fonts:</strong> To be able to use different webfonts in the game, they have to be loaded as css. This parameter points to this file in the assets directory. </li>
 						    <li><strong class="mr-1">GUI Config, Story Config and Story Setup:</strong> Where to find these key story files.</li>
@@ -530,16 +531,19 @@ transitions:
 					</section><!--//section-->
 					<section class="docs-section" id="config-punctuation">
 						<h2 class="section-heading">Punctuation Wait</h2>
-						<p>The message box shows the message text by adding characters one by one. The time between each character is uniform, and defined by the <strong>speedText user preference</strong>. For dramatic effect, sometimes we want to wait extra time when certain characters are encountered, usually punctuation marks such as dots, commas, ellipsis, etc. To configure this feature, we need to set two properties:</p>
+						<p>The message box shows the message text by adding characters one by one. The time between each character is uniform, and defined by the <strong>speedText user preference</strong>. For dramatic effect, sometimes we want to wait extra time when certain characters are encountered, usually punctuation marks such as dots, commas, ellipsis, etc.</p>
 						<ul>
 						    <li><strong class="mr-1">Punctuation Marks:</strong> A list of all the punctuation marks that will have an extra wait time.</li>
 						    <li><strong class="mr-1">Punctuation Wait:</strong> How much, relative to the normal text speed, will be waited until the next character appears after a punctuation mark. For example, a <strong>punctuationWait</strong> equal to five means that when a <strong>punctuation mark</strong> is added to the message box, it will wait 5x times what it waits to add a new character.</li>
 						</ul>
+						<p>When the message box has a sound effect associated with it (or a character voice), you can change how the sfx will be played. The <strong>Characters per sfx</strong> defines how many characters will be placed in the message box before playing the sfx. Normally, if your sfx is very short, you'll want to play it every time a character is added. For longer sfx, you can set this number higher to skip a few characters between sounds. The first character of a word (after punctuation marks or whitespaces) will always sound. You can set this property with the value <strong>auto</strong> to calculate automatically this value related to the sfx lenght and the text speed. If you want to play the sfx only once when the message box appears, you can set this property as <strong>-1</strong>.</p>
 						<pre><code class="language-yaml">
 punctuationMarks: [".",",","!","?","-"]
 # when a punctuation mark is shown, X extra puntuation wait times will be spent after adding the next character
 # the total amount of wait will be this value multiplied the text speed
 punctuationWait: 5
+# how the message box sfx will sound
+charPerSfx: 1
 						</code></pre>
 					</section><!--//section-->
 					<section class="docs-section" id="config-lazy-loading">
@@ -582,17 +586,16 @@ lazyloading:
 					    <section class="docs-intro">
 						    <p>The <strong>GUI</strong>, or <strong>Graphic User Interface</strong>, is everything that is not strictly part of the story, like the <strong>menus</strong> and the <strong>HUD</strong>. The GUI is just as important for the story, since it sets the mood for the player even before she starts the game. There are many <a href="http://blog.cyanide-tea.net/2014/07/22/design-101-gui-design/">resources</a> about how to choose the best interface for your game. There’s also a rich community of visual novel developers who create and distribute their own art and designs, sometimes as free creative commons assets.</p>
 						    <p>To setup the <strong>GUI</strong> you need a configuration YAML file (identified as the <strong>guiConfig</strong> in the boot file). In this file, you will describe each part of the GUI. For example, a menu is usually composed of a background and a few buttons. In the file, you would have to write where to find the background image, same for the buttons, adding also where they should be located and what they do when clicked.</p>
-						    <p>This configuration file can be done in two ways: you can write it it manually, or using the RenJS GUIBuilder tool, that lets you create the file visually by dragging and dropping the components. </p>
+						    <p>This configuration file can be done in two ways: you can write it manually, or using the RenJS GUIBuilder tool, that lets you create the file visually by dragging and dropping the components. </p>
 							<p>But before diving into the design, let's define exactly how is a GUI composed: Which components do we need, which menus are mandatory, etc.</p>
 						</section><!--//docs-intro-->
 				    </header>
 				     <section class="docs-section" id="gui-menus">
 						<h2 class="section-heading">Menus</h2>
 						<p>A <strong>menu</strong> is a set of options presented to the player, to help them start the game, find information, change settings, or save and load the current game.</p>
-						<p>In RenJS, there's only one mandatory menu, the <strong>Main Menu</strong>. This menu is the first screen the players will see after the game is loaded, and it should allow them to (at least) start a new game. Other menus, such as the <strong>Settings Menu</strong> or the <strong>Save and Load Menu</strong>, are optional.</p>
-						<p>The usual components you can find in these menus are:</p>
+						<p>In RenJS, there's only one mandatory menu, the <strong>Main Menu</strong>. This menu is the first screen the players will see after the game is loaded, and it should allow them to (at least) start a new game. You can have as many other menus as you want, such as a <strong>Settings Menu</strong> or a <strong>Save and Load Menu</strong>.</p>
+						<p>Each menu is described as a list of elements, such as: </p>
 						<ul>
-							<li><strong>Background</strong>: A background image, normally occuping the whole screen.</li>
 							<li><strong>Buttons</strong>: The buttons have an event asociated to their interaction. This event can be, for example, starting a new game, changing the menu, loading a game, etc.</li>
 							<li><strong>Images and Animations</strong>: Static or moving decorations that you can place anywhere on the menu.</li>
 							<li><strong>Labels</strong>: Written text that you can place anywhere on the menu.</li>
@@ -600,15 +603,15 @@ lazyloading:
 							<li><strong>Sliders</strong>: A component to set a numeric value to a property, for example, the music volume. Normally, you'll use this component on the <strong>Settings Menu</strong>.</li>
 							<li><strong>Save/Load Slot</strong>: A thumbnail showing a screenshot of the saved game in that slot. A default image will be shown when the slot is empty.Normally, you'll use this component on the <strong>Save and Load Menu</strong>.</li>
 						</ul>
-						<h3>Main Menu</h3>
-						<p>This menu is the first thing the player will see after the game is loaded. From here, the player should be able to start the game, and could also access the <strong>Settings Menu</strong> and/or the <strong>Save and Load Menu</strong>. If you don't want to use a Save and Load Menu, but want to have a simpler scheme with one only save slot, you could add here a <i>continue</i> button that will load the last saved game.</p>
+						<!-- <h3>Main Menu</h3>
+						<p>This menu is the first thing the player will see after the game is loaded. From here, the player should be able to start the game, and could also access the <strong>Settings Menu</strong> and/or the <strong>Save and Load Menu</strong>. If you don't want to use a Save and Load Menu, but want to have a simpler scheme with one only save slot, you could add here a <i>continue</i> button that will load the last saved game.</p> -->
 						<div class="text-center">
 						    <figure class="figure docs-figure py-3 text-center">
 							    <img class="figure-img img-fluid shadow rounded" src="assets/images/main.png" alt="">
 							    <figcaption class="figure-caption mt-3">The main menu for the Tutorial and Quickstart games.</figcaption>
 							</figure>
 						</div>
-						<h3>Settings Menu</h3>
+						<!-- <h3>Settings Menu</h3>
 						<p>This menu should allow the player to change the game settings. A <strong>return button</strong> will also close this menu return to either the Main Menu or the game (if called from the HUD). There are currently four properties available for the player to change:</p>
 						<ul>
 							<li><strong>Music Volume</strong>: The volume of the background music.</li>
@@ -629,21 +632,18 @@ lazyloading:
 							    <img class="figure-img img-fluid shadow rounded" src="assets/images/menusettings.png" alt="">
 							    <figcaption class="figure-caption mt-3">The save/load menu for the Tutorial and Quickstart games.</figcaption>
 							</figure>
-						</div>
+						</div> -->
 					</section><!--//section-->
 					
 					<section class="docs-section" id="gui-hud">
 						<h2 class="section-heading">HUD</h2>
-						<p>The <strong>HUD (heads-up display)</strong>, is the method by which information is visually relayed to the player as part of a game's user interface; that is, everything you see in the screen while playing the game, that is not strictly part of the stort itself. This includes the message box where the story text and dialogues will be displayed, and buttons for using the Skip/Auto features or accessing the Menus.</p>
-						<p>Let's see in detail which elements can be part of the HUD:</p>
+						<p>The <strong>HUD (heads-up display)</strong>, is the method by which information is visually relayed to the player as part of a game's user interface; that is, everything you see in the screen while playing the game, that is not strictly part of the stort itself. This includes the message box where the story text and dialogues will be displayed, the name box, where the talking character name will be displayed, buttons for using the Skip/Auto features or accessing the menus, any many more.</p>
+						<p>In addition to all of the elements available to the menus, the HUD has a few more:</p>
 						<ul>
 							<li><strong>Message Box</strong>: A box, usually ocuppying the bottom of the screen, where the story text will be displayed.</li>
 							<li><strong>Name Box</strong>: When the text displaying in the Message Box is part of a dialogue, the an extra box will be shown containing the name of the character talking.</li>
 							<li><strong>Click to Continue (CTC)</strong>: To give the players all the time they need to read the contents of the Message Box, the game will not continue until they click anywhere on the screen. The Click to Continue is simply an animated image that will indicate to the players that the game is waiting for them to click to continue.</li>
-							<li><strong>Choice Box</strong>: The <strong>choice action</strong> allows the players to make decisions during the game by choosing between different options. These options will be presented each in their own box, that the player can click as a button.</li>
-							<li><strong>Interrupt Box</strong>: Very similar to the Choice Box, the Interrupt Box can have two states: One <i>normal</i> interruption, and one <i>urgent</i> state, that indicated the interrupt is about to be lost.</li>
-							<li><strong>Buttons</strong>: Apart from opening the Settings and Save/Load Menus, during the game the player can choose to use the Skip and Auto features. All of this should be available through buttons on the HUD.</li>
-							<li><strong>Images and Animations</strong>: You can add other images and animations to the HUD to achieve some kind of aesthetics.</li>
+							<li><strong>Choice Box</strong>: The <strong>choice action</strong> allows the players to make decisions during the game by choosing between different options. These options will be presented each in their own box, that the player can click as a button.</li>											
 						</ul>
 						<div class="text-center">
 						    <figure class="figure docs-figure py-3 text-center">
@@ -686,7 +686,7 @@ lazyloading:
 						<p>If you're using the <strong>RenJS GUI Builder</strong> tool this file will be created automatically.</p>
 					</section><!--//section-->
 					<section class="docs-section" id="gui-config-file">
-						<h2 class="section-heading">Manual Configuration</h2>
+						<h2 class="section-heading">The GUI File</h2>
 						<div class="callout-block callout-block-warning">
                             <div class="content">
                                 <h4 class="callout-title">
@@ -695,188 +695,342 @@ lazyloading:
 		                            </span><!--//icon-holder-->
 	                                Warning
 	                            </h4>
-                                <p>This is the old way of setting up the GUI and it's somewhat limited. If you want an easier and more flexible way to make your GUI check the GUI Builder.</p>
+                                <p>The old GUI configuration file is no longer supported! Make sure your GUI yaml file has the structure as described in this section.</p>
                             </div><!--//content-->
                         </div><!--//callout-block-->
                         <p>One of the ways to configurate the GUI is by manually writing the configuration file (GUI.yaml). This file is written in a way that is easy to understand and, therefore, easy to write.</p>
 						<p>The GUI file (identified in the <a href="boot-file-section">boot file</a> as <strong>guiConfig</strong>) has three main sections:</p>
 						<ul>
 							<li><strong>Assets</strong>: The list of assets used to build the gui, with key and file name.</li>
-							<li><strong>HUD</strong>: The head-up display, this is what the player will see during the game, and it includes the text box to show the dialogs, the name box to show the name of the character talking and any button the player can use during game like autoplay, skip or save.</li>
-							<li><strong>Menus</strong>: All the different menus of the game. You should at least have one main menu to start the game, but you can have as many extra menus as you want. Some examples of what extra menus you could need are a settings menu, a load game menu, a scenes menu, etc.</li>
+							<li><strong>Configuration</strong>: The way the assets will be used in each menu and the HUD.</li>
 						</ul>
+						<p>Additionally, there are two more properties, such as:</p>
+						<ul>
+							<li><strong>Assets Path</strong>: All the asset files should be relative to this path.</li>
+							<li><strong>GUI Version</strong>: Used to identify which version of the GUI the YAML file refers to. This documentation corresponds to version "2.0".</li>
+						</ul>
+						<pre><code class="language-yaml">
+assets:
+	# assets list
+config:
+	hud:
+		# hud configuration
+	menus:
+		main:
+			# main menu configuration
+		menu2:
+			# other menu configuration
+# path to assets
+assetsPath: assets/gui/ 
+# gui version
+GUIVersion: "2.0"
+						</code></pre>
+						<br>
 						<h3>Assets</h3>
-						<p>A list of all the assets, ordered by their types: images, spritesheets (for the buttons), audio, etc. The spritesheets take two extra parameters that indicate the width and height of each of its frames.</p>
-						<p>You can call each of this assets whatever you like, but it’s a good practice to use descriptive names for each one. The following example is a list of the assets for the Tutorial/Quickstart game GUI.</p>
+						<p>A list of all the assets, ordered by their types: images, spritesheets (for the buttons), audio, etc. Most assets have only a <strong>tag</strong> (withouth whitespaces or special characters) and <strong>path</strong>, but the spritesheets take two extra parameters for <strong>width</strong> and <strong>height</strong> of each of its frames.</p>
+						<p>The fonts are a simple list, that should refer to the fonts configured in the <strong>css fonts file</strong>.</p>
+						<p>You can call each of this assets whatever you like, but it’s a good practice to use descriptive names for each one.</p>
 						<pre><code class="language-yaml">
 assets:
   fonts:
-    - audimat-mono
+    - font1
+    - font2
   images:
-    mainBackground: assets/gui/menu.png
-    settingsBackground: assets/gui/settings.png
-    sliderFull: assets/gui/slider.png
-    messageBox:  assets/gui/textbox.png
-    nameBox:  assets/gui/namebox.png
-    ctc: assets/gui/ctc.png
+    image1: path/to/image1
+    image2: path/to/image2
   spritesheets:
-    startButton: assets/gui/startbutton.png 163 83
-    loadButton: assets/gui/loadbutton.png 163 83
-    saveButton: assets/gui/savebutton.png 163 83
-    settingsButton: assets/gui/settingsbutton.png 163 83
-    returnButton: assets/gui/returnbutton.png 163 83
-    qmAutoButton: assets/gui/qmenuauto.png 47 45
-    qmSkipButton: assets/gui/qmenuskip.png 47 45
-    qmSettingsButton: assets/gui/qmenusettings.png 47 45
-    qmMuteButton: assets/gui/Mute.png 50 50
-    qmSaveButton: assets/gui/qmenusave.png 47 45
-    choice: assets/gui/choice.png 716 65
-    interrupt: assets/gui/interrupt.png 716 95
+    sprt1: path/to/sprt1 width height
+    sprt2: path/to/sprt2 width height
   audio:
-    mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
+  	music1: path/to/music1
+  	sfx1: path/to/sfx1
 						</code></pre>
-						<h3>HUD</h3>
-						<p>The hud, as explained above, is the part of the user interface shown during the game. The HUD configuration for the Tutorial/Quickstart games is the following:</p>
+						<br>
+						<h3>Configuration</h3>
+						<p>The config section of the GUI file, separated between <strong>hud</strong> and <strong>menus</strong> is where the magic happens. Each of the menus/hud configured here is a list of GUI elements describing how the GUI will look exactly. The elements (buttons, images, etc) will be loaded in order of appearance, meaning that the order of this list determines de z-order of the elements. For example, if you want to place an image behind a button, the image should appeart first in the list.</p>
+						<p>The <strong>gui</strong> and the <strong>menus</strong> configuration have the same format, but the <strong>hud</strong> has a few special elements used during the game, such as the <strong>message box</strong>, <strong>name box</strong> and <strong>choice box</strong>.</p>
+						<p>The following code sample shows the format a menu configuration should have. The properties for each element depend on the <strong>element type</strong>. The elements can optionally have an id, that will make them indexed inside the corresponding menu. What this means is that you'll be able to find it more easily programatically from a <strong>plugin</strong>.</p>
 						<pre><code class="language-yaml">
-hud:
-  area:
-    - 640 450 748 554
-  message:
-    position: 
-      x: 46 
-      y: 435
-    textPosition: 
-      x: 36 
-      y: 36
-    textStyle:
-      font: 16pt audimat-mono
-      wordWrap: true
-      wordWrapWidth: 545
-      fill: "#ac9393"
-  name:
-    position: 
-      x: 36 
-      y: -40
-    textStyle:
-      font: 20pt audimat-mono
-      boundsAlignH: center
-      boundsAlignV: middle
-  ctc: 
-    position:
-      x: 570 
-      y: 90
-    animated: false
-  choice:
-    separation: 95
-    textStyle:
-      font: 20pt audimat-mono
-      boundsAlignH: center
-      boundsAlignV: middle
-      fill: "#666666"
-  interrupt:
-    textStyle:
-      font: 20pt audimat-mono
-      boundsAlignH: center
-      boundsAlignV: middle
-      fill: "#664b4b"        
-  buttons:
-    auto: 
-      position:
-        x: 647
-        y: 502
-      sprite: qmAutoButton
-    skip: 
-      position:
-        x: 694
-        y: 502
-      sprite: qmSkipButton
-    save: 
-      position:
-        x: 694
-        y: 457
-      sprite: qmSaveButton
-    settings: 
-      position:
-        x: 647
-        y: 457
-      sprite: qmSettingsButton
+config:
+	menus:
+		# menu tag
+		menu1:
+			# first element
+			- type: ['image'|'button'|'label'|'slider'|'saveSlot']
+			  [id: 'elementId']
+			  elementProperty1: value1
+			  elementProperty2: value2
+			  ...
+			# second element
+			- type: ['image'|'button'|'label'|'slider'|'saveSlot']
+			  elementProperty1: value1
+			  elementProperty2: value2  
 						</code></pre>
-						<p>The <strong>area</strong> refers to a space defined by two points in the screen (x1 y1 x2 y2) inside of which the clicks of the player don’t count as <i>game clicks</i>. So, if the game is waiting for the player to click, to continue with the story, but the player clicks inside this area, the game will not continue. We need this area to manage the interaction with the buttons on the HUD. If the player clicks in the <strong>Save Button</strong>, it just means they want to save, not continue with the story. This area doesn’t have to be exactly the size of the menu, and it can actually cover more parts of the screen. You can define as many <i>non clickable areas</i> as you like by adding more lines to this section.</p>
-						<p>The <strong>message</strong> is where we define the <strong>Message Box</strong>. It takes a position in the screen to show the image (relative to its top left corner), a text position to define where to start writing the text, relative to the message position, not the screen; and the text style defined by font, if it should wordwrap, and the width and the text color. You can add more text style options as long as they are valid for a <a href="https://phaser.io/docs/2.6.2/Phaser.Text.html">Phaser Text Object</a>.</p>
-						<p>The <strong>name</strong> tag defines the Name Box. Its position should be relative to the Message Box, and you also need to define a text style for it.</p>
-						<p>For the <strong>CTC (click to continue)</strong> you just need to define a position relative to the text box, and say if it’s animated or not. If not animated (not a spritesheet) it will blink.</p>
-						<p>The <strong>choice</strong> is the Choice Box. Unless you specify a position, it will be centered in the screen. You also need to define a text style and a separation, in pixels, to show all of the choices as a list.</p>
-						<p>In <strong>interrupt</strong> you can only define a different text style, since it will take the same parameters defined for the choice.</p>
-						<p>In <strong>interrupt</strong> you can only define a different text style, since it will take the same parameters defined for the choice.</p>
-						<p>Under the <strong>buttons</strong> tag we define each button by key. This key will be used to determine what the button will do. For example, the button <strong>save</strong> will call the save action, the button <strong>skip</strong> will call the skip action, and so on. The button has also a position and a sprite.</p>
-						<p>You proably noticed that there’s no sprites declared for message, name, etc. This is because the names of the assets are the default ones. If you change the asset name, then you would need to define also a sprite name in each of these elements.</p>
-						<h3>Menus</h3>
-						<p>The <strong>menus</strong> section is a list with the different available menus of the game. The only mandatory one has to be called <strong>main</strong>, and it’s the menu that will be called when the game loads. Each menu has a background (if not declared, it will take the default asset _menuname_Background), optionally music, and a list of buttons. To make it easier for making a settings menu, you can define also sliders, for things like volume or game speed.</p>
-						<p>As with the HUD, the buttons and sliders keys will also define what they do (or what property they change).</p>
+						<p>Let's see how to configure each of the elements, starting with the general elements allowed by both menus and hud.</p>
+						<br>
+						<h3>General Elements</h3>
+						<h4>Images</h4>
 						<pre><code class="language-yaml">
-menus:
-  main: 
-    music: mainMusic
-    buttons: 
-      start: 
-        position:
-          x: 112
-          y: 462
-        sprite: startButton
-      load:  
-        position:
-          x: 320
-          y: 462
-        sprite: loadButton
-      settings:
-        position:
-          x: 528
-          y: 462
-        sprite: settingsButton
-  settings:
-    buttons:
-      return: 
-        position:
-          x: 112
-          y: 500
-        sprite: returnButton
-      start:  
-        position:
-          x: 320
-          y: 500
-        sprite: startButton
-      load:
-        position:
-          x: 528
-          y: 500
-        sprite: loadButton
-    sliders:
-      textSpeed: 
-        position:
-          x: 436
-          y: 235
-        sprite: sliderFull
-      autoSpeed:
-        position:
-          x: 436
-          y: 364
-        sprite: sliderFull
-      bgmv:
-        position:
-          x: 147
-          y: 235
-        sprite: sliderFull
-      sfxv:
-        position:
-          x: 147
-          y: 364
-        sprite: sliderFull
-
+	- type: 'image'
+	  # optional image id
+	  id: 'imageId'
+      # tag of asset as used in the assets list
+      # if asset is spritesheet, the animation will be run in a loop
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
 						</code></pre>
+						<h4>Buttons</h4>
+						<pre><code class="language-yaml">
+	- type: 'button'
+	  # optional button id
+	  id: 'buttonId'
+      # tag of asset as used in the assets list
+      # asset can have up to 4 frames -> over,out,down,up
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # optional sound effect to play when button is pressed
+	  sfx: 'soundAssetTag'
+	  # what the button will do when pressed
+	  binding: ['start'|'load'|'save'|'openMenu'|'return'|'auto'|'skip'|'mute'|'otherAction']
+	  # optionally, a button can be a "pushButton" with 'on' and 'off' state
+	  # the asset of these buttons should have twice the amount of frames for when the button is pushed
+	  pushButton: [true|false]
+	  pushed: [true|false]
+						</code></pre>
+						<p>The <strong>binding</strong> of a button refers to the action that will be executed when the button is pressed. There are a few actions readily available to use, but you can add any other action from a <a href="#plugins-section">Plugin</a>.</p>
+						<p>Lets see what the availabe button bindings do, and what extra parameters they need.</p>
+						<ul>
+							<li><strong>start</strong>: Starts the game from the beginning, by starting the scene tagged as 'start'.</li>
+							<li><strong>load</strong>: Starts the game from a saved game. The button needs a 'slot' property for loading the game. If no slot is specified, it will try to load from slot 0. If no data is found in the slot, it will start a new game.</li>
+							<li><strong>save</strong>: Saves the current game. The button needs a 'slot' property for loading the game. If no slot is specified, it will try to load from slot 0.</li>
+							<li><strong>openMenu</strong>: Changes from one menu (or the HUD) to another one. The button needs a 'menu' property to know which menu to open.</li>
+							<li><strong>return</strong>: Return to the previous menu (or the HUD).</li>
+							<li><strong>auto</strong>: Starts auto play mode. In this mode, the game will not wait for the player to click to continue after a text action. Can be a pushButton.</li>
+							<li><strong>skip</strong>: Starts skip mode. This mode is like autoplay, but really really fast, and skipping transitions. Can be a pushButton.</li>
+							<li><strong>mute</strong>: Mutes or unmutes the audio. Can be a pushButton.</li>
+						</ul>
+						<p>The asset of a button should be a spritesheet with 1 to 4 frames. Each frame will represent a different state of a button, and this will be determined automatically according to the amount of frames.</p>
+						<ul>
+							<li><strong>1 frame</strong>: The button will look always the same.</li>
+							<li><strong>2 frames</strong>: Normal/Hover and Pressed</li>
+							<li><strong>3 frames</strong>: Normal/Hover/Pressed</li>
+							<li><strong>4 frames</strong>: Normal/Hover/Pressed/Released</li>
+						</ul>
+						<p>In the case of a push button, you should have twice the amount of frames. The states will be the same, but adding the same states for when the button is pushed. For example, if the button normally has two frames, the push button should have four.</p>
+						<div class="text-center">
+						    <figure class="figure docs-figure py-3 text-center">
+							    <img class="figure-img img-fluid shadow rounded" src="assets/images/buttonframes.png" alt="">
+							    <figcaption class="figure-caption mt-3">Button frames examples.</figcaption>
+							</figure>
+						</div>
+						<h4>Labels</h4>
+						<pre><code class="language-yaml">
+	- type: 'label'
+	  # optional label id
+	  id: 'labelId'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # text of the label
+	  text: "Label 1"
+	  # distance between the lines of the text (in multiline text) => 0: normal spacing, <0 tighter lines, >0 farther away lines
+	  lineSpacing: 0
+	  style:
+	  	font: "audimat-mono"
+	  	fontSize: "32px"
+	  	fill: "#00FF00"	  	
+						</code></pre>
+						<p id="text-style">The text style in this element, and in any other element that uses text, can have any property allowed for <a href="https://phaser.io/docs/2.6.2/Phaser.Text.html">Phaser Text</a> objects. Some of the most important properties are:</p>
+						<ul>
+							<li><strong>font</strong>: The name of the font as configured in the <strong>fonts css file</strong> (and fonts list in this same file). It can also include style and size. E.g. 'bold 20pt Arial'.</li>
+							<li><strong>fontStyle</strong>: The style of the font (it will override the style in font, if present): <strong>normal</strong>, <strong>italic</strong> or <strong>oblique</strong>.</li>
+							<li><strong>fontWeight</strong>: The weight of the font (it will override the weight in font, if present): <strong>normal</strong> or <strong>bold</strong>.</li>
+							<li><strong>fontSize</strong>: The size of the font (it will override the size in font, if present), in pixels.</li>
+							<li><strong>fill</strong>: The color of the text as a hex color.</li>
+						</ul>
+						<p>Text alignment has to be setup differently for single line and multiline texts. In multiline text you need to set:</p>
+						<ul>
+							<li><strong>wordWrap</strong>: Set as true for multiline text.</li>
+							<li><strong>wordWrapWidth</strong>: If text is wrapped, what's the width in pixels to wrap it.</li>
+							<li><strong>align</strong>: Horizontal alignment for multiline text. It can be: <strong>left</strong>, <strong>center</strong> or <strong>right</strong>.</li>
+						</ul>
+						<p>In single line texts, the alignment is important relative to some other element. For example, the character names inside the name box. In these cases, where the text has a parent (not labels), you can set the alignment with these properties:</p>
+						<ul>
+							<li><strong>boundsAlignH</strong>: Horizontal alignment of the text within the parent. Can be: 'left', 'center' or 'right'.</li>
+							<li><strong>boundsAlignV</strong>: Vertical alignment of the text within the parent. Can be: 'top', 'middle' or 'bottom'.</li>
+						</ul>
+						<h4>Sliders</h4>
+						<pre><code class="language-yaml">
+	- type: 'slider'
+	  # optional slider id
+	  id: 'sliderId'
+      # tag of asset as used in the assets list
+      # asset should have two frames => empty,full
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # optional sound effect to play when clicking on slider
+	  sfx: 'soundAssetTag'
+	  # what the slider will do when value is changed
+	  binding: ['changeUserPreference'|'otherAction']
+						</code></pre>
+						<p>The <strong>binding</strong> of a slider refers to the action that will be executed when the slider is clicked on. This will change the value of the slider. The only pre defined action you can use with sliders is <strong>changeUserPreference</strong> that needs an extra property called <strong>userPreference</strong> to know wich value to change, such as:</p>
+						<ul>
+							<li><strong>textSpeed</strong>: How fast the message box animation will run.</li>
+							<li><strong>autoSpeed</strong>: In auto mode, after a text action, the game will pause for a moment so the player has time to read. This value affects the lenght of this pause.</li>
+							<li><strong>bgmv</strong>: Background music volume.</li>
+							<li><strong>sfxv</strong>: Sound effects volume.</li>
+						</ul>
+						<h4>SaveSlot</h4>
+						<pre><code class="language-yaml">
+	- type: 'saveSlot'
+	  # optional saveslot id
+	  id: 'saveslot'
+      # tag of asset as used in the assets list
+      # asset will be used as "empty slot" background
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # slot number related to this element
+	  slot: 0
+	  # screenshot of the saved game in this slot
+	  thumbnail:
+	  	# offset from the top left corner of the element
+	  	x: 0
+	  	y: 0
+	  	# size of the thumbnail, in pixels
+	  	widht: 40
+	  	height: 40
+						</code></pre>
+						<br>
+						<h3>HUD Specific Elements</h3>
+						<h4>Message Box</h4>
+						<pre><code class="language-yaml">
+	- type: 'messageBox'
+	  # id is mandatory, at least one message box in the HUD should be id='default'
+	  id: 'default'
+      # tag of asset as used in the assets list
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # sound effect associated with this message box
+	  # related to charPerSfx configuration property
+	  sfx: 'soundAssetTag'
+	  # transition to show this message box, if not present the default message box transition will be used
+	  transition: "CUT"
+	  # if the message box should remain in the screen all the time (text will clear after actions, but box won't be hidden)
+	  alwaysOn: false
+	  # configuration for the text, should normally be wrapped
+	  text:
+	  	# position related to the top left corner of the box
+	  	x: 12
+	  	y: 12
+	  	lineSpacing: 0
+	  	style:
+	  		font: audimat-mono
+	  		fontSize: 32px
+	  		fill: #FFFFFF
+	  		align: left
+	        wordWrap: true
+	        wordWrapWidth: 550
+	  # click to continue configuration
+	  ctc:
+	  	# position related to the top left corner of the box
+	  	x: 500
+	  	y: 100
+	  	# ctc image can be a normal image or a spritesheet to animate
+	  	asset: ctcAsset
+	  	# sfx to play when the text in the message box is completed and ctc is shown
+	  	sfx: ctcSoundAsset	  	
+	  	# The ctc can be animated: as a spritesheet or tweening the animation
+	  	animationStyle: spritesheet|tween|static
+						</code></pre>
+						<p>Check other text style properties <a href="#text-style">here</a>.</p>
+						<h4>Name Box</h4>
+						<pre><code class="language-yaml">
+	- type: 'nameBox'
+	  # id is mandatory, if you're not using specific name boxes for characters, you should have one with id='default'
+	  id: 'default'
+	  # tag of asset as used in the assets list
+	  asset: 'assetTag'
+	  # location from top left corner
+	  x: 0
+	  y: 0
+	  # transition to show this name box, if not present the default name box transition will be used
+	  transition: "CUT"
+	  # when showing text in the namebox, it comes associated with a character color too
+	  # this color can be used to change the text color or tint the whole box
+	  tintStyle: text|box
+	  # configuration for the text, will normally be single line and aligned inside the box
+	  text:
+	  	# position related to the top left corner of the box
+	  	x: 0
+	  	y: 0
+	  	style:
+	  		font: audimat-mono
+	  		fontSize: 32px
+	  		# center inside the box
+	  		boundsAlignH: center
+          	boundsAlignV: middle
+						</code></pre>
+						<h4>Choice Box</h4>
+						<pre><code class="language-yaml">
+	- type: 'choices'
+	  # id is mandatory, you should have at least one with id='default'
+	  id: 'default'
+	  # tag of asset as used in the assets list, should have the same format as a button asset
+	  asset: 'assetTag'
+	  # base location of the choices, related to choices alignment
+	  x: 400
+	  y: 300
+	  # there will be a number of choices shown at the same time,
+	  # each will be shown in its own box, one on top of another
+	  # the alignment determines how to position the boxes related to the base location
+	  alignment: centered|bottomUp|topDown
+	  # separation between the choice boxes, in pixels
+	  separation: 10	  
+	  # transition to show the choices, if not present the default choices transition will be used
+	  transition: "CUT"
+	  # the chosenColor property will be used to tint the choices previously taken in game
+	  chosenColor: #FF0000
+	  # sfx to play when a choice is pressed
+  	  sfx: soundAsset	  	
+	  # configuration for the text, could be either single or multi line
+	  text:
+	  	# position related to the top left corner of the box
+	  	x: 0
+	  	y: 0
+	  	style:
+	  		font: audimat-mono
+	  		fontSize: 32px
+	  		fill: #FFFFFF
+	  		# center inside the box
+	  		boundsAlignH: center
+          	boundsAlignV: middle
+						</code></pre>
+						
 					</section><!--//section-->
 					<section class="docs-section" id="gui-builder">
 						<h2 class="section-heading">RenJS GUI Builder</h2>
 						<p>RenJS GUI Builder is a tool to automate the creation of the GUI configuration file. This tool allows you to create the GUI by adding components visually, moving them around easily and adjusting every little detail until you have exactly the GUI you want. When everything is ready, you can <i>build</i> it, and this will create a template for your game where you'll only have to add the parts of your story.</p>
+						<div class="callout-block callout-block-warning">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder mr-1">
+		                                <i class="fas fa-bullhorn"></i>
+		                            </span><!--//icon-holder-->
+	                                Warning
+	                            </h4>
+                                <p>RenJS GUI Builder documentation coming soon!</p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
 					</section><!--//section-->
 			    </article><!--//docs-article-->
 			    <article class="docs-article" id="actions-section">
