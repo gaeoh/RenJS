@@ -1779,6 +1779,8 @@ RenJSGame.launch()
 
 		onStart(): void {}
 
+		onAction(action): void {}
+
 		onCall(params): void {}
 
 		onLoad(slot,data): void {}
@@ -1794,6 +1796,8 @@ RenJSGame.launch()
 						<p>This handle is perfect for adding new features to the GUI, since no part of the GUI, except the loading screen, is shown yet. For example, you could add new menus like a gallery, a glosary, etc.</p>
 						<h3>On Start</h3>
 						<p>This handle will be executed at the start of a new game, just before the first action of the script is executed. Use it to set up things you need to do in a per game run basis. For example, if you want to change some things in a New Game + run.</p>
+						<h3>On Action</h3>
+						<p>This handle will be executed before executing a new action. The parameter received is the parsed Action object, with all its parameters.</p>
 						<h3>On Call</h3>
 						<p>The <strong>onCall</strong> handle will be called from the story script, by way of the <a href="#call-action">call action</a>. You can send to this handle as many parameters as you want (and in any format), and there is no limit to what you can do inside it. The only mandatory thing is that, at some point, there has to be a call to the <i>this.game.resolveAction()</i> function.</p>
 						<p>The functions you call during the story can be, as previously said, basically anything. RenJS can't make any asumptions on when the action is over to continue executing the next action, since these functions can be either syncronous (when the function is over, the action is over) or asyncronous (the function is over, but the action is still pending). For example, if you want to use an external API called as a REST service, you'll normally need to wait for the asyncronous response.</p>
@@ -1822,36 +1826,42 @@ RenJSGame.launch()
 					</section><!--//section-->
 					
 					<section class="docs-section" id="transition-plugin-section">
-						<h2 class="section-heading">Plugins as Transitions</h2>
-						<p>Another way to use the <strong>Plugins</strong> is to add new <a href="transitions-section">transitions</a> to the game. For this, the <strong>onCall</strong> handle has to be overloaded with the right parameters to conform to a transition, but then it can be used as any other transition during the story.</p>
-						<p>When using the <strong>onCall</strong> handle in this way, the function doesn't have to call <i>this.game.resolveAction()</i>, but it will have to return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Javascript Promise</a>, to let the game know when the transition is over.</p>
-						<p>Let's see an easy example on how to do a <strong>Transition Plugin</strong>. This example will do a transition from one sprite to another one by first hiding the old sprite, then waiting for one second, and finally shoing the new sprite. It is probably not really useful in a story, but it's a good way to see what does what.</p>
+						<h2 class="section-heading">Adding Transitions</h2>
+						<p>Another way to use the <strong>Plugins</strong> is to add new <a href="transitions-section">transitions</a> to the game. A transition is simply a function that will receive two sprites: <strong>from</strong> and <strong>to</strong>, and a few other parameters. The goal of this function is to transition between these two sprites, so that <strong>from</strong> will end up hidden at the end of the transition and <strong>to</strong> will be shown. The extra parameters are position and scale, that have to be set in <strong>to</strong>.</p>
+						<p>Since sometimes you'll want to show or hide elements without showing another, it's normal that one of the parameters <strong>from</strong> or <strong>to</strong> will be missing, so you have to check that in the function before doing anything else.</p>
+						<p>Since transitions can take a bit of time to go from one state to the other, these functions return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Javascript Promise</a>, to let the game know when the transition is over.</p>
+						<p>Finally, you need to add this transition to the transitions manager inside RenJS, that you can access from <i>this.game.screenEffects.transition</i>. In this way, you'll be able to use it as any of the usual transitions.</p>
+						<p>Let's see an easy example on how to add a new <strong>Transition</strong>. This example will transition from one sprite to another one by first hiding the old sprite, then waiting for one second, and finally shoing the new sprite. It is probably not really useful in a story, but it's a good way to see what does what.</p>
 						<pre><code class="language-js">
 	class MoveAfterOneSecond extends RenJS.Plugin {
-	    // Transitions don't need to call resolveAction, but return a Promise
-		onCall(from, to, position, scaleX) {
-	       return new Promise(resolve => {
-	            // set new properties 
-	            to.x = position.x;
-	            to.y = position.y;
-	            to.scale.x = scaleX;
-	            //hide old sprite
-	            from.alpha = 0;
-	            //wait for one second
-	            setTimeout(() => {
-	            	// show new sprite
-					to.alpha = 1;
-					// finish transition
-					resolve();
-				}, 1500);
-	        }); 
-		}
+
+		// We add the transition on the onInit handler, to make sure it'll be available all the time
+		onInit(){
+			// We add the transition to the transition manager, with the name 'MoveAfterOneSecond'
+			this.game.screenEffects.transition['MoveAfterOneSecond'] = (from, to, position, scaleX) => {
+				// We need to return a promise so the game will know when the transition finished
+				return new Promise(resolve => {
+		            // set new properties 
+		            to.x = position.x;
+		            to.y = position.y;
+		            to.scale.x = scaleX;
+		            //hide old sprite
+		            from.alpha = 0;
+		            //wait for one second
+		            setTimeout(() => {
+		            	// show new sprite
+						to.alpha = 1;
+						// finish transition
+						resolve();
+					}, 1500);
+		        }); 
+			}
+		}	    
 	}
 
 	RenJSGame.addPlugin('MOVEONESECOND',MoveAfterOneSecond)
-						</code></pre>
-						<p>When using the Plugins as Transitions, the <strong>onCall</strong> handle will receive all the parameters a normal transition would receive, and it has to return a <strong>Promise</strong>, to let the game know when the transition has finished.</p>
-						<p>The parameters are:</p>
+						</code></pre>						
+						<p>Let's see in more detail what the parameters are:</p>
 						<ul>
 							<li><strong>From</strong>: A <a href="https://phaser.io/docs/2.6.2/Phaser.Sprite.html">Phaser Sprite</a> representing the RenJS element (a background, character look or cgs) to hide. When showing an element for the first time, this property will be <i>null</i>.</li>
 							<li><strong>To</strong>: A <a href="https://phaser.io/docs/2.6.2/Phaser.Sprite.html">Phaser Sprite</a> representing the RenJS element (a background, character look or cgs) to show. When hiding elements, this property will be <i>null</i>.</li>
@@ -1859,6 +1869,14 @@ RenJSGame.launch()
 							<li><strong>ScaleX</strong>: A number with the scale in the x axis for the <strong>To</strong> element. This number is usually either 1 or -1, and represents the sprite as <strong>flipped</strong> or not.</li>
 						</ul>
 						<p>Make sure to check if the <strong>from</strong> and <strong>to</strong> elements are not null before using them, and also that at the end of the transition, the <strong>from</strong> element is hidden (alpha=0) and that the <strong>to</strong> element is showing (alpha=1).</p>
+						<p>You can use this transition with the name used to index it in the Transition Manager as you would any other transition. For example:</p>
+						<pre><code class="language-yaml">
+start:
+	# Show deuzi at once
+	show deuzi: WITH CUT AT LEFT
+	# Move deuzi to the other side of the screen after one second
+	show deuzi: WITH MoveAfterOneSecond AT RIGHT
+						</code></pre>	
 					</section><!--//section-->
 					
 					<section class="docs-section" id="renjs-internals">
