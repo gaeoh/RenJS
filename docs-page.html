@@ -139,7 +139,7 @@
 		    <div class="container">
 			    <article class="docs-article" id="intro-section">
 				    <header class="docs-header">
-					    <h1 class="docs-heading">Introduction <span class="docs-time">Last updated: 2019-06-01</span></h1>
+					    <h1 class="docs-heading">Introduction <span class="docs-time">Last updated: 2021-09-18</span></h1>
 					    <section class="docs-intro">
 						    <p>If you’re reading this, you’re probably thinking about making a visual novel. That is, a videogame of the genre <b>Visual Novel</b>, subgenre of <b>Interactive Fiction</b>. It's important to define what this means, because it will give you a framework in which you can develop the game more easily.</p>
 						    <p>For example, visual novels often tell a rich story aided by static visuals. There are many more rules and conventions of visual novels that you should familiarize yourself before starting to write such a game. Of course, you can bend, break and subverse these guidelines, but knowing them will help you write better games.</p>  
@@ -176,8 +176,8 @@
 								<!-- <script src="https://gitlab.com/lunafromthemoon/RenJSTutorial/-/snippets/2039029.js"></script> -->
 							</div><!--//docs-code-block-->
 							<p>All of the <strong>story</strong> files are in a standard format called YAML, a human-readable data-serialization language. A key aspect of this language is that indentation is very important, as it marks the start and end of the different sections.</p>
-							<p>Indentation is the amount of spaces at the start of the line, before any text. You can choose between two or four whitespaces, or a tab character, but you can't mix between them once you decided on one.</p>
-							<p>In the script example above you can see the indentation at play. The first word, marking the name of the scene starts at zero level of indentation, and all the actions inside it are at level one. The <strong>choice</strong> action has a list of options inside (that will be displayed to the player to make a decision), and each is indented one extra level.Furthermore, each possible option in the action has inside a list of actions that will be played if the player chooses that path, and each of these actions are indented one more level.</p>
+							<p>Indentation is the amount of spaces at the start of the line, before any text. You can choose between two or four whitespaces, or a tab character, but you can't mix between them once you decided on one.</p> <!-- TODO add link to yaml -->
+							<p>In the script example above you can see the indentation at play. The first word, marking the name of the scene starts at zero level of indentation, and all the actions inside it are at level one. The <strong>choice</strong> action has a list of options inside (that will be displayed to the player to make a decision), and each is indented one extra level. Furthermore, each possible option in the action has inside a list of actions that will be played if the player chooses that path, and each of these actions are indented one more level.</p>
 						</section><!--//docs-intro-->
 						
 				    </header>
@@ -1050,14 +1050,16 @@ config:
 				    </header>
 				     <section class="docs-section" id="actions-syntax">
 						<h2 class="section-heading">Syntax Cheatsheet</h2>
-						<a href="#show-hide-actions">Show and Hide</a>
+						<a href="#show-hide-actions">Show and Hide</a> <!-- TODO doesn't work -->
 						<pre><code class="language-yaml">
 	- show [background]: WITH [transition]
 	- show [character]: [character_look] WITH [transition] AT [position]
 	- show [cgs]: WITH [transition] AT [position]
-	# hide anything
+	# hide something
 	- hide [background|character|cgs]: WITH [transition]
-						</code></pre>
+	# hide every instance
+	- hide [CHARS|CGS|ALL]: WITH [transition]
+</code></pre>
 						<strong>Say and text</strong>
 						<pre><code class="language-yaml">
 	- [character] says: Text
@@ -1174,6 +1176,8 @@ SCENE2:
 						<pre><code class="language-yaml">
 	# hide a character
 	- hide deuzi: WITH FADE
+	# hide all cgs
+	- hide CGS:
 	# hide all characters
 	- hide CHARS:
 	# hide all
@@ -1516,7 +1520,7 @@ choosePartner:
   - show teachersRoom:
   # other actions
 						</code></pre>
-						<p>If you want to end the game and  return to the main menu you have to call the <strong>endgame</strong> action. Another way to end the game is through the  strong>effect ROLLINGCREDITS</strong>. This <strong>effect</strong> takes a parameter called endGame, that, when set to true, will automatically end the game and return to the main menu after the effect is over.</p>
+						<p>If you want to end the game and  return to the main menu you have to call the <strong>endgame</strong> action. Another way to end the game is through the  <strong>effect ROLLINGCREDITS</strong>. This <strong>effect</strong> takes a parameter called endGame, that, when set to true, will automatically end the game and return to the main menu after the effect is over.</p>
 						<pre><code class="language-yaml">
   - text: What kind of ending?
   - choice:
